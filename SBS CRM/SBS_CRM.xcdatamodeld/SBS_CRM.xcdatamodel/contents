@@ -1,4 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Attachment" representedClassName="Attachment" syncable="YES">
+        <attribute name="attachmentID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="atyMnemonic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Communication" representedClassName="Communication" syncable="YES">
+        <attribute name="cmnAreaCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cmnEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cmnInternationalCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cmnNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="communicationNumberID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cotDescription" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Company" representedClassName="Company" syncable="YES">
+        <attribute name="addCounty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addPostCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addStreetAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addStreetAddress2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addStreetAddress3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addTown" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coaCompanyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companySiteID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cosDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cosSiteName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="couCountryName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Contact" representedClassName="Contact" syncable="YES">
+        <attribute name="companySiteID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="conFirstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="conMiddleName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="conSurname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="conTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cosDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cosSiteName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Events" representedClassName="Event" syncable="YES">
+        <attribute name="companySiteID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveComments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveCreatedBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveCreatedDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveCreatedTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveDueDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="eveDueTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveEndDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveEndTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventPriority" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventType2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ourContactID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Attachment" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Communication" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="Company" positionX="160" positionY="192" width="128" height="210"/>
+        <element name="Contact" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Events" positionX="160" positionY="192" width="128" height="315"/>
+    </elements>
 </model>

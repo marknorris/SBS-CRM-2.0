@@ -7,6 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "Events.h"
+#import "Communication.h"
+#import "Contact.h"
+#import "Company.h"
+#import "Attachment.h"
+
+NSInteger appUserID = 0;
+NSString *appURL = @"";
 
 @implementation AppDelegate
 
@@ -17,10 +25,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    //self.window.backgroundColor = [UIColor whiteColor];
+    //[self.window makeKeyAndVisible];
     return YES;
 }
 
