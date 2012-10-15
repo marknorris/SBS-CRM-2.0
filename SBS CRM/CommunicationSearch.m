@@ -1,14 +1,14 @@
 //
-//  communicationSearch.m
+//  CommunicationSearch.m
 //  SBS CRM
 //
 //  Created by Tom Couchman on 17/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "communicationSearch.h"
+#import "CommunicationSearch.h"
 
-@implementation communicationSearch
+@implementation CommunicationSearch
 
 @synthesize contactID;
 @synthesize communicationNumberID;

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DDXML.h"
 
 @interface XMLParser : NSObject
+
+- (NSArray *)parseXMLDoc:(DDXMLDocument *)Doc toClass:(Class)outputClass;
 
 @end

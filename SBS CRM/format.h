@@ -10,4 +10,11 @@
 
 @interface format : NSObject
 
++ (NSString *)nameFromComponents:(NSMutableArray *)nameArray;
++ (NSString *)secondsSinceMidnightFromDate:(NSDate *)date;
++ (NSDate *)dateFromSecondsSinceMidnight:(int)seconds;
++ (NSString *)timeStringFromSecondsSinceMidnight:(int)seconds;
++ (NSDate *)formatDate:(NSString *)date;
++ (NSString *)setDefaultTime:(NSString *)dueTime;
+
 @end

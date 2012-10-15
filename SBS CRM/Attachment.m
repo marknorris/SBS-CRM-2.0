@@ -7,7 +7,7 @@
 //
 
 #import "Attachment.h"
-
+#import "AppDelegate.h"
 
 @implementation Attachment
 
@@ -15,5 +15,6 @@
 @dynamic attachmentID;
 @dynamic attDescription;
 @dynamic atyMnemonic;
+@dynamic attOriginalFilename;
 
 @end

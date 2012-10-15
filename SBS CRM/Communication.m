@@ -7,7 +7,7 @@
 //
 
 #import "Communication.h"
-
+#import "AppDelegate.h"
 
 @implementation Communication
 

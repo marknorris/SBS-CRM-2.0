@@ -7,7 +7,7 @@
 //
 
 #import "Contact.h"
-
+#import "AppDelegate.h"
 
 @implementation Contact
 

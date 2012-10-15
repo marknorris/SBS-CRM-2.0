@@ -10,4 +10,8 @@
 
 @implementation UserDetails
 
+@synthesize contactID;
+@synthesize userID;
+@synthesize companySiteID;
+
 @end

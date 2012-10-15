@@ -7,14 +7,22 @@
 //
 
 #import "AppDelegate.h"
-#import "Events.h"
+#import "Event.h"
 #import "Communication.h"
 #import "Contact.h"
 #import "Company.h"
 #import "Attachment.h"
+#import "myEventsTableViewController.h"
+#import "CoreDataManager.h"
 
 NSInteger appUserID = 0;
+NSInteger appContactID = 0;
+NSInteger appCompanySiteID = 0;
 NSString *appURL = @"";
+NSString *appEventID = @"";
+NSDate *appDefaultAlertTime;
+//TODO: get this with userID
+//NSString * internalCompanySiteID = @"6487576";
 
 @implementation AppDelegate
 
@@ -25,10 +33,104 @@ NSString *appURL = @"";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+    //reset user defaults for the initial view incase they were not correctly reset previosly.
+    [[NSUserDefaults standardUserDefaults]  setValue:@"" forKey:@"initialID"];
+    [[NSUserDefaults standardUserDefaults]  setValue:@"" forKey:@"initialView"];
+    [[NSUserDefaults standardUserDefaults]  setValue:@"" forKey:@"initialCore"];
+    
+    [TestFlight takeOff:@"4162eaa944120d432e6b8e6a3f24aadd_NjQwMjEyMDEyLTAyLTIwIDA4OjAxOjI1Ljc5NzE2OA"];
     //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     //self.window.backgroundColor = [UIColor whiteColor];
     //[self.window makeKeyAndVisible];
+    
+    //register with notification center
+    [[UIApplication sharedApplication]registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | 
+     UIRemoteNotificationTypeAlert |
+     UIRemoteNotificationTypeSound];
+
+    
+    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (localNotif) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"eve" forKey:@"initialView"];
+        [[NSUserDefaults standardUserDefaults] setObject:[localNotif.userInfo objectForKey:[[localNotif.userInfo allKeys] objectAtIndex:0]] forKey:@"initialID"];
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"initialCore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    NSURL *recievedURL = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
+    if (recievedURL) {
+        NSString *entity;
+        NSString *entityID;
+ 
+        //get the query string from the url, and break it down into components
+        NSArray *URLArray = [[recievedURL query] componentsSeparatedByString:@"&"];
+        //break the queries down to get the required values.
+        for (int i = 0; i < [URLArray count]; i++)
+        {
+            NSArray *queryItems = [[URLArray objectAtIndex:i] componentsSeparatedByString:@"="];
+            if ([[queryItems objectAtIndex:0] isEqualToString:@"entity"]) { entity = [queryItems objectAtIndex:1]; }
+            else if ([[queryItems objectAtIndex:0] isEqualToString:@"id"]) { entityID = [queryItems objectAtIndex:1]; }
+        }
+        
+        //place data in user defaults
+        [[NSUserDefaults standardUserDefaults] setObject:entity forKey:@"initialView"];
+        [[NSUserDefaults standardUserDefaults] setObject:entityID forKey:@"initialID"];
+        [[NSUserDefaults standardUserDefaults] setValue:@"0" forKey:@"initialCore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    return YES;
+}
+
+- (void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification
+{    
+    NSString *title = [[notification.userInfo allKeys] objectAtIndex:0];
+    //userInfoForLocalNotification = notification.userInfo;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Event Due: %@",title] message:@"Would you like to view the event?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [alert show];
+    alert.tag = [[notification.userInfo objectForKey:[[notification.userInfo allKeys] objectAtIndex:0]] intValue];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Yes"])
+    {
+        //create a dictionary using the id stored in the alert view tag
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d",alertView.tag] forKey:@"id"];
+        [userInfo setValue:@"1" forKey:@"core"];
+        //send notification to the initial view reguarding the view that should be displayed.
+        [[NSNotificationCenter defaultCenter] 
+         postNotificationName:@"openEventFromNotification" 
+         object:self userInfo:userInfo];
+    }
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if (!url) {  return NO; }
+    //NSString *entity;
+    NSString *entityID;
+    
+    //get the query string from the url, and break it down into components
+    NSArray *URLArray = [[url query] componentsSeparatedByString:@"&"];
+    //break the queries down to get the required values.
+    for (int i = 0; i < [URLArray count]; i++)
+    {
+        NSArray *queryItems = [[URLArray objectAtIndex:i] componentsSeparatedByString:@"="];
+        //if ([[queryItems objectAtIndex:0] isEqualToString:@"entity"]) { NSString *entity = [queryItems objectAtIndex:1]; }
+        if ([[queryItems objectAtIndex:0] isEqualToString:@"id"]) { entityID = [queryItems objectAtIndex:1]; }
+    }
+    
+    //create a local notification containing id in a userinfo dictionary.
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:entityID forKey:@"id"];
+    [userInfo setValue:@"0" forKey:@"core"];
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:@"openEventFromNotification" 
+     object:self userInfo:userInfo];
     return YES;
 }
 
@@ -42,6 +144,9 @@ NSString *appURL = @"";
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:@"didEnterBackground" 
+     object:self userInfo:nil];
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -50,6 +155,9 @@ NSString *appURL = @"";
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:@"willEnterForeground" 
+     object:self userInfo:nil];
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
@@ -57,6 +165,7 @@ NSString *appURL = @"";
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
@@ -66,6 +175,9 @@ NSString *appURL = @"";
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    
+    //if (
+    
 }
 
 - (void)saveContext
@@ -83,7 +195,7 @@ NSString *appURL = @"";
              */
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
-        } 
+        }
     }
 }
 
@@ -180,5 +292,7 @@ NSString *appURL = @"";
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
+
 
 @end

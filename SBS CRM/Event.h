@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSString * eveCreatedTime;
 @property (nonatomic, retain) NSDate * eveDueDate;
 @property (nonatomic, retain) NSString * eveDueTime;
-@property (nonatomic, retain) NSString * eveEndDate;
+@property (nonatomic, retain) NSDate * eveEndDate;
 @property (nonatomic, retain) NSString * eveEndTime;
 @property (nonatomic, retain) NSString * eventID;
 @property (nonatomic, retain) NSString * eventPriority;
@@ -30,7 +30,7 @@
 @property (nonatomic, retain) NSString * eveStatus;
 @property (nonatomic, retain) NSString * eveTitle;
 @property (nonatomic, retain) NSString * ourContactID;
-@property (nonatomic, retain) NSNumber * unread;
-@property (nonatomic, retain) NSNumber * watched;
+@property (nonatomic) NSInteger readEvent;
+@property (nonatomic) NSInteger watched;
 
 @end

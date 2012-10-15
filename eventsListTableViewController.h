@@ -8,23 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "DDXML.h"
-#import "eventSearch.h"
+#import "EventSearch.h"
 #import "CompanySearch.h"
-#import "contactSearch.h"
+#import "ContactSearch.h"
 #import "EventsCellData.h"
+#import "AppDelegate.h"
 
 @interface eventsListTableViewController : UITableViewController{
-    //NSMutableArray *eventsArray;
     NSMutableArray *orderedEventsArray;
 }
 
 @property (strong, nonatomic) CompanySearch *company;
-@property (strong, nonatomic) contactSearch *contact;
+@property (strong, nonatomic) ContactSearch *contact;
+@property (nonatomic) BOOL orderByCreatedDate;
 
-//@property (strong, nonatomic) NSString *companySiteID;
-//@property (strong, nonatomic) NSString *contactID;
-
-@property (strong, nonatomic) NSString *viewTitle;
-- (BOOL)getDataFromServer;
+@property (strong, nonatomic) NSString *advancedURL;
 
 @end

@@ -7,8 +7,17 @@
 //
 
 #import "dateTimePickerViewController.h"
+#import "AppDelegate.h"
 
 @implementation dateTimePickerViewController
+
+@synthesize delegate;
+
+@synthesize dateTimePicker;
+@synthesize dateTime;
+@synthesize mode;
+@synthesize sourceCellIdentifier;
+@synthesize sender;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,16 +45,22 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    if (mode)
+        dateTimePicker.datePickerMode = mode;
+    if (dateTime)
+        dateTimePicker.date = dateTime;
 }
-*/
+
 
 - (void)viewDidUnload
 {
+    [self setDateTimePicker:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -54,7 +69,22 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
+- (IBAction)clickDone:(id)btnSender {
+    
+    //save the new time to user defaults
+    // Store the data
+    
+    //dateTimePicker.date;
+    
+    [self.delegate dateTimePickerViewController:self didSelectDateTime:dateTimePicker.date  withSourceCellIdentifier:sourceCellIdentifier withSender:sender];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)clickCancel:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end

@@ -10,4 +10,6 @@
 
 @interface alertsAndBadges : NSObject
 
++(void)setAlertsAndBadges:(NSArray *)EventArray;
+
 @end

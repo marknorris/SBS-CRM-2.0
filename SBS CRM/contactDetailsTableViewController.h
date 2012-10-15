@@ -7,21 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "contactSearch.h"
+#import "ContactSearch.h"
 #import "contactsTableViewController.h"
 #import "CompanySearch.h"
 
+@class Reachability;
+
+
 @interface contactDetailsTableViewController : UITableViewController{
     NSString *fullAddress;
-    NSMutableArray *communicationArray;
     NSString *fullName;
-    
+    Reachability* internetReachable;
+    Reachability* hostReachable;
+    BOOL internetActive;
+    BOOL hostActive; 
 }
 //@property (strong, nonatomic) IBOutlet UITableViewCell *emailCell;
 
-@property (nonatomic, retain) NSManagedObjectContext *context;
-
-@property (strong, nonatomic) contactSearch *contactDetail;
+@property (strong, nonatomic) ContactSearch *contactDetail;
 @property (strong, nonatomic) CompanySearch *company;
 
 @property (nonatomic) BOOL isCoreData;
@@ -31,5 +34,10 @@
 @property (strong, nonatomic) IBOutlet UITextView *addressOutlet;
 @property (strong, nonatomic) IBOutlet UITableViewCell *eventsOutlet;
 @property (strong, nonatomic) IBOutlet UITableViewCell *addressCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *cellAdvancedEvents;
+
+@property (strong, nonatomic) NSMutableArray *communicationArray;
+
+-(void) checkNetworkStatus:(NSNotification *)notice;
 
 @end

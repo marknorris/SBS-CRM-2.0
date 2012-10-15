@@ -8,22 +8,30 @@
 
 #import "contactsTableViewController.h"
 #import "Contact.h"
-#import "syncData.h"
 #import "AppDelegate.h"
 #import "ContactSearch.h"
+
+#import "XMLParser.h"
+
+#import "CoreDataManager.h"
+
+@interface contactsTableViewController()
+    @property (nonatomic, retain) fetchXML *getContactsDom;
+@end
 
 
 @implementation contactsTableViewController
 
-@synthesize context;
 
 //search
 @synthesize searchDisplayController;
 @synthesize searchBar;
 @synthesize searchResults;
 
+@synthesize getContactsDom;
 
-
+@synthesize isSearching;
+@synthesize fetchingSearchResults;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,16 +56,25 @@
 {
     [super viewDidLoad];
     
+    // listen out for notifications calling to reload core data (syncs all happen at the same time).
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshTableView) 
                                                  name:@"reloadCoreData"
                                                object:nil];
     
+    
     contactsArray = [[NSMutableArray alloc] init];
+    //load data into the tableview.
     [self refreshTableView];
+    
     isSearching = NO;
     searchResults = [[NSMutableArray alloc] init];
 
+    //set up the activity spinner
+    refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    refreshSpinner.frame = CGRectMake(5, 0, 20, 20);
+    refreshSpinner.hidesWhenStopped = YES;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -95,41 +112,48 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 
 
 
+//###############################################
+//#                                             #
+//#                                             #
+//#          Prepare TableView Data             #
+//#                                             #
+//#                                             #
+//###############################################
+
 // ############ Refresh Data ###################
 - (void)refreshTableView{
     [contactsArray removeAllObjects];
     
-    if (context == nil) { context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; }
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Contact" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-    [request setEntity:entity];
-    
+    //retrieve contacts from core data:                                                                                      
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:@"conFirstName" ascending:YES];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    
-    NSError *error = nil;
-    NSArray *deviceContactArray = [context executeFetchRequest:request error:&error];
+    NSArray *deviceContactArray = [NSManagedObject fetchObjectsForEntityName:@"Contact" withPredicate:nil withSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
     NSDictionary *dict = [NSDictionary dictionaryWithObject:deviceContactArray forKey:@"Device"];
     
     [contactsArray addObject:dict];
     
+    //fill tableview.
     [self.tableView reloadData];
 }
 
 
 
 
-
+//###############################################
+//#                                             #
+//#                                             #
+//#               Table View                    #
+//#                                             #
+//#                                             #
+//###############################################
 
 #pragma mark - Table view data source
 
@@ -148,17 +172,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
+    // Return the number of rows in the section: source depends on whether search results or core data are being displayed.
     if (isSearching)
     {
-        NSLog(@"search results count: %d", [searchResults count]);
+        //NSLog(@"search results count: %d", [searchResults count]);
         return [searchResults count];
     }
     else{
         NSDictionary *dict = [contactsArray objectAtIndex:section];
-        NSArray *keys = [dict allKeys];
-        id key = [keys objectAtIndex:0];
-        NSArray *sectionArray = [dict objectForKey:key];
+        //NSArray *keys = [dict allKeys]; // don't need to search for all keys as there is only one, "Device"
+        //id key = [keys objectAtIndex:0];
+        NSArray *sectionArray = [dict objectForKey:@"Device"];
         
         return [sectionArray count];
     }
@@ -173,6 +197,8 @@
 {
     if (isSearching)
     {
+        if ([searchBar.text length] < 3)
+            return @"Click search to fetch results";
         NSString *sectionTitle = [@"Number of results: " stringByAppendingFormat:@"%d",[searchResults count]];
         return sectionTitle;
     }
@@ -198,42 +224,60 @@
     {
         if ([searchResults count] > 0){
             
-            contactSearch *currentSearchResult = [searchResults objectAtIndex:indexPath.row];
-            NSString *fullName = @"";
-            if ([currentSearchResult.conTitle length])
-                fullName = [currentSearchResult.conTitle stringByAppendingFormat:@" "];
-            if ([currentSearchResult.conFirstName length])
-                fullName = [fullName stringByAppendingFormat:@"%@ ", currentSearchResult.conFirstName];
-            if ([currentSearchResult.conMiddleName length])
-                fullName = [fullName stringByAppendingFormat:@"%@ ", currentSearchResult.conMiddleName];
-            if ([currentSearchResult.conSurname length])
-                fullName = [fullName stringByAppendingFormat:@"%@", currentSearchResult.conSurname];
-            cell.textLabel.text = fullName;
+            ContactSearch *currentSearchResult = [searchResults objectAtIndex:indexPath.row];
+            NSMutableArray *nameArray = [NSMutableArray arrayWithObjects:currentSearchResult.conTitle,currentSearchResult.conFirstName, currentSearchResult.conMiddleName, currentSearchResult.conSurname, nil];
+            [nameArray removeObject:@""];
+            cell.textLabel.text = [nameArray componentsJoinedByString:@"\n"];
             cell.detailTextLabel.text = [currentSearchResult.cosSiteName stringByAppendingFormat:@" - %@", currentSearchResult.cosDescription];
         }
     }
     else{
         NSDictionary *dict = [contactsArray objectAtIndex:indexPath.section];
-        NSArray *keys = [dict allKeys];
-        id key = [keys objectAtIndex:0];
-        NSArray *sectionArray = [dict objectForKey:key];
+        //NSArray *keys = [dict allKeys];
+        //id key = [keys objectAtIndex:0];
+        NSArray *sectionArray = [dict objectForKey:@"Device"];
         Contact *currentContact = [sectionArray objectAtIndex:indexPath.row];
         
-        NSString *fullName = @"";
-        if ([currentContact.conTitle length])
-            fullName = [currentContact.conTitle stringByAppendingFormat:@" "];
-        if ([currentContact.conFirstName length])
-            fullName = [fullName stringByAppendingFormat:@"%@ ", currentContact.conFirstName];
-        if ([currentContact.conMiddleName length])
-            fullName = [fullName stringByAppendingFormat:@"%@ ", currentContact.conMiddleName];
-        if ([currentContact.conSurname length])
-            fullName = [fullName stringByAppendingFormat:@"%@", currentContact.conSurname];
-        cell.textLabel.text = fullName;
+        NSMutableArray *nameArray = [NSMutableArray arrayWithObjects:currentContact.conTitle,currentContact.conFirstName, currentContact.conMiddleName, currentContact.conSurname, nil];
+        [nameArray removeObject:@""];
+        cell.textLabel.text = [nameArray componentsJoinedByString:@"\n"];
         cell.detailTextLabel.text = [currentContact.cosSiteName stringByAppendingFormat:@" - %@", currentContact.cosDescription];
     }
     
-    
     return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    // create the parent view that will hold header Label
+	UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 20)];
+    if (fetchingSearchResults)
+    {
+        
+        
+        
+        customView.backgroundColor = [UIColor blackColor];
+
+        
+        UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        headerLabel.backgroundColor = [UIColor clearColor];
+        headerLabel.opaque = NO;
+        headerLabel.textColor = [UIColor whiteColor];
+        headerLabel.font = [UIFont boldSystemFontOfSize:18];
+        headerLabel.highlightedTextColor = [UIColor whiteColor];
+        headerLabel.frame = CGRectMake(30.0, 0.0, 200.0, 20.0);
+        
+        // If you want to align the header text as centered
+        // headerLabel.frame = CGRectMake(150.0, 0.0, 300.0, 44.0);
+        
+        headerLabel.text = @"Fetching results..."; // i.e. array element
+        [customView addSubview:refreshSpinner];// add refresh spinner to the custom view
+        [refreshSpinner startAnimating]; // begin spinner animation.
+        [customView addSubview:headerLabel]; //add the custom view to the header
+    	return customView;
+    }
+    
+    return nil;
 }
 
 /*
@@ -289,11 +333,15 @@
      */
 }
 
-//###################
-//#                 #
-//#     SEARCH:     #
-//#                 #
-//###################
+
+
+//###############################################
+//#                                             #
+//#                                             #
+//#                   Search:                   #
+//#                                             #
+//#                                             #
+//###############################################
 
 // when the user clicks the search bar:
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
@@ -304,53 +352,39 @@
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar1 {
     
     
-    if ([self.searchBar.text length] < 3)
+    if ([self.searchBar.text length] < 3) //ensure the search string is at least 3 characters long.
     {
         UIAlertView *stringTooShortAlert = [[UIAlertView alloc] initWithTitle:@"Search length" message:@"Search term must be 3 characters or more" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [stringTooShortAlert show];
     }
     else
     {
-        //cancelled = YES;
+        
         [searchResults removeAllObjects];
+        fetchingSearchResults = YES; //TODO:make sure this gets set back to no!
         [self.searchDisplayController.searchResultsTableView reloadData];
         
-        //BOOL searched = NO;
-        NSString *searchText = self.searchBar.text;
         
-        //send the query to the server and get the results back.
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{ 
-            
-            UIApplication *app = [UIApplication sharedApplication];  
-            [app setNetworkActivityIndicatorVisible:YES];
-            
-            BOOL searched = [self getContactResults:searchText];
 
-            [app setNetworkActivityIndicatorVisible:NO];
-            
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                if (searched == YES)
-                    [self.searchDisplayController.searchResultsTableView reloadData];
-                else
-                {
-                    UIAlertView *searchFailed = [[UIAlertView alloc] initWithTitle:@"Live search" message:@"Could not perform live search" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                    [searchFailed show];
-                }
-            });
-        });
+        
+        NSString *searchText = [self.searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+        NSURL *url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsABL?searchString=%@",searchText]];
+        getContactsDom = [[fetchXML alloc] initWithUrl:url delegate:self className:@"ContactSearch"];
+        
+        if (![getContactsDom fetchXML])
+        {
+            UIAlertView *domGetFailed = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [domGetFailed show];
+        }
+        //NSLog(@"url: %@", [appURL stringByAppendingFormat:@"/service1.asmx/searchContactsABL?searchString=%@",searchText]);
+
     }
-    //while (cancelled == NO)
-    
-    
-    //[self filterContentForSearchText:searchBar.text 
-    //scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-    //objectAtIndex:[self.searchDisplayController.searchBar
-    //selectedScopeButtonIndex]]];
-    
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    cancelled = YES;
+    //TODO: Test This:
+    [getContactsDom cancel];
+    //cancelled = YES;
     isSearching = NO;
     [searchResults removeAllObjects];
     [self.searchDisplayController.searchResultsTableView reloadData];
@@ -395,67 +429,43 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
     }
 }
 
-- (BOOL)getContactResults:(NSString *)searchText{
-    
-    NSError *error;
-    //replace spaces with + so the query can be sent as a url
-    searchText = [searchText stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    url = [[NSURL alloc] initWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContacts?searchString=%@",searchText]];
-    
-    xmlString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    
-    //remove xmlns from the xml file 
-    xmlString = [xmlString stringByReplacingOccurrencesOfString:@"xmlns" withString:@"noNSxml"];
-    xmlData = [xmlString dataUsingEncoding:NSUTF8StringEncoding];
-    contactsDocument = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:&error];
-    if (error)
-        return NO;
-    
-    
-    //create an array of the nodes in the document
-    NSArray* nodes = nil;
-    nodes = [[contactsDocument rootElement] children];
-    
-    
-    //loop through each of the element and place them in to the compaySearch class.
-    for (DDXMLElement *element in nodes)
-    { 
-        contactSearch *contactSearchResult = [[contactSearch alloc] init];
-        DDXMLElement *contactID = [[element nodesForXPath:@"contactID" error:nil] objectAtIndex:0];
-        contactSearchResult.contactID = contactID.stringValue;
-        DDXMLElement *conTitle = [[element nodesForXPath:@"conTitle" error:nil] objectAtIndex:0];
-        contactSearchResult.conTitle = conTitle.stringValue;
-        DDXMLElement *conFirstName = [[element nodesForXPath:@"conFirstName" error:nil] objectAtIndex:0];
-        contactSearchResult.conFirstName = conFirstName.stringValue;
-        DDXMLElement *conMiddleName = [[element nodesForXPath:@"conMiddleName" error:nil] objectAtIndex:0];
-        contactSearchResult.conMiddleName = conMiddleName.stringValue;
-        DDXMLElement *conSurname = [[element nodesForXPath:@"conSurname" error:nil] objectAtIndex:0];
-        contactSearchResult.conSurname = conSurname.stringValue;
-        
-        DDXMLElement *companySiteID = [[element nodesForXPath:@"companySiteID" error:nil] objectAtIndex:0];
-        contactSearchResult.companySiteID = companySiteID.stringValue;
-        DDXMLElement *cosDescription = [[element nodesForXPath:@"cosDescription" error:nil] objectAtIndex:0];
-        contactSearchResult.cosDescription = cosDescription.stringValue;
-        DDXMLElement *cosSiteName = [[element nodesForXPath:@"cosSiteName" error:nil] objectAtIndex:0];
-        contactSearchResult.cosSiteName = cosSiteName.stringValue;
-        
-        //NSLog(@"result: %@", companySearchResult.companySiteID);
-        //add the result to the results array;
-        [searchResults addObject:contactSearchResult];
-        //NSLog(@"count: %@", [searchResults count]);
-        
-        if (error)
-            return NO;
+
+-(void)fetchXMLError:(NSString *)errorResponse:(id)sender{
+    if (self.view.window) // don't display if this view is not active. TODO:make sure this method is never even called!
+    {
+        // If error recieved, display alert.
+        [[[UIAlertView alloc] initWithTitle:@"Error Fetching Data" message:errorResponse delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
     }
-    
-    
-    
-    //if (cancelled == YES)
-    //return NO;
-    
-    return YES;
+    fetchingSearchResults = NO;
 }
 
+-(void)docRecieved:(NSDictionary *)docDic:(id)sender{
+    NSString *classKey = [docDic objectForKey:@"ClassName"];
+    [searchResults addObjectsFromArray:[[[XMLParser alloc] init]parseXMLDoc:[docDic objectForKey:@"Document"] toClass:NSClassFromString(classKey)]];
+    
+    /*
+    NSSortDescriptor *nameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"conFirstName" ascending:YES];
+    //sort the array:
+      NSMutableArray *sortedArray = [[NSMutableArray alloc] initWithArray:[searchResults sortedArrayUsingDescriptors:[NSArray arrayWithObjects:nameSortDescriptor,nil]]];
+    */
+    
+    
+    fetchingSearchResults = NO;
+    [self.searchDisplayController.searchResultsTableView reloadData];
+}
+
+
+
+
+
+
+//###############################################
+//#                                             #
+//#                                             #
+//#                   SEGUE                     #
+//#                                             #
+//#                                             #
+//###############################################
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -466,29 +476,28 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
         contactDetailsTableViewController *detailViewController = segue.destinationViewController;
         
         //set up the required data in the detail View controller
-        contactSearch *currentContact;
+        ContactSearch *currentContact;
         if(!isSearching)
         {
+            // find the data in the array that has been selected
             NSInteger row = [[self tableView].indexPathForSelectedRow row];
             NSInteger section = [[self tableView].indexPathForSelectedRow section];
             NSDictionary *dict = [contactsArray objectAtIndex:section];
-            NSArray *keys = [dict allKeys];
-            id key = [keys objectAtIndex:0];
-            NSArray *sectionArray = [dict objectForKey:key];
+            NSArray *sectionArray = [dict objectForKey:@"Device"];
             currentContact = [sectionArray objectAtIndex:row];
             detailViewController.isCoreData = YES;
         }
         else{
+            // find the search result that has been selected
             NSInteger row = [[self.searchDisplayController searchResultsTableView].indexPathForSelectedRow row];
             currentContact = [searchResults objectAtIndex:row];
             detailViewController.isCoreData = NO;
         }
         
 
-        NSLog(@"contact surname: %@",currentContact.conSurname);
+        //NSLog(@"contact surname: %@",currentContact.conSurname);
+        // Send the data through to the detailViewController.
         detailViewController.contactDetail = currentContact;
-
-        
     }
 }
 

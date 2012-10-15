@@ -7,21 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "eventSearch.h"
+#import "EventSearch.h"
 #import "CompanySearch.h"
-#import "contactSearch.h"
+#import "ContactSearch.h"
+#import "fetchXML.h"
+#import "editTableViewConrtoller.h"
 
-@interface eventDetailsTableViewController : UITableViewController{
+@class Reachability;
+
+@interface eventDetailsTableViewController : UITableViewController <UIActionSheetDelegate, fetchXMLDelegate, editEventDelegate> {
     NSMutableArray *attachmentArray;
+    Reachability* internetReachable;
+    Reachability* hostReachable;
+    BOOL internetActive;
+    BOOL hostActive;
 }
 
 @property (nonatomic) BOOL isCoreData;
 
-@property (strong, nonatomic) eventSearch *eventDetails;
+@property (strong, nonatomic) EventSearch *eventDetails;
 @property (strong, nonatomic) CompanySearch *company;
-@property (strong, nonatomic) contactSearch *contact;
-@property (strong, nonatomic) contactSearch *ourContact;
+@property (strong, nonatomic) ContactSearch *contact;
+@property (strong, nonatomic) ContactSearch *ourContact;
 
+//cell and label outlets:
 @property (strong, nonatomic) IBOutlet UILabel *lblTitle;
 @property (strong, nonatomic) IBOutlet UILabel *lblType;
 @property (strong, nonatomic) IBOutlet UILabel *lblCustomer;
@@ -33,12 +42,13 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellLblCreateByName;
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellLblCreateByDateTime;
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellLblOurContact;
-
-
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellComments;
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellCommentLink;
 
-@property (nonatomic, retain) NSManagedObjectContext *context;
+- (IBAction)btnActions_Click:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIView *viewEventDetail;
+
+-(void) checkNetworkStatus:(NSNotification *)notice;
 
 @end

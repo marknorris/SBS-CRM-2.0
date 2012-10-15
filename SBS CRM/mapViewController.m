@@ -7,6 +7,7 @@
 //
 
 #import "mapViewController.h"
+#import "myLocation.h"
 
 @implementation mapViewController
 
@@ -14,6 +15,9 @@
 @synthesize address;
 @synthesize companyName;
 @synthesize mapTypeSwitcher;
+@synthesize addressCoord;
+@synthesize lastLocation = _lastLocation;
+@synthesize locationMgr = _locationMgr;
 
 
 /*
@@ -48,8 +52,18 @@
 {
     [super viewDidLoad];
     [self goToLocation];
+    
+    self.locationMgr = [[CLLocationManager alloc] init];
+    self.locationMgr.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationMgr.delegate = self;
+    [self.locationMgr startUpdatingLocation];
 }
 
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+
+    self.lastLocation = newLocation;
+
+}
 
 - (void)viewDidUnload
 {
@@ -62,7 +76,8 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 - (IBAction)closeClick:(id)sender {
@@ -78,13 +93,71 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(locationCoords,200,200);
     MKCoordinateRegion adjustedRegion = [mapView regionThatFits:viewRegion]; 
     
-    MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
-    annotationPoint.coordinate = locationCoords;
-    annotationPoint.title = companyName;
-    annotationPoint.subtitle = address;
-    [mapView addAnnotation:annotationPoint]; 
+    mapView.delegate = self;
+    
+    
+//    MKPointAnnotation *annotationPoint = [[MKPointAnnotation alloc] init];
+//    annotationPoint.coordinate = locationCoords;
+//    annotationPoint.title = companyName;
+//    annotationPoint.subtitle = address;
+//    
+//    [mapView addAnnotation:annotationPoint]; 
     [mapView setRegion:adjustedRegion animated:YES];   
-    [mapView selectAnnotation:annotationPoint animated:YES];
+//    [mapView selectAnnotation:annotationPoint animated:YES];
+    
+    
+    myLocation *location = [[myLocation alloc] initWithName:companyName address:address coordinate:locationCoords];
+    
+    MKPinAnnotationView *mapPin = [[MKPinAnnotationView alloc] initWithAnnotation:location reuseIdentifier:@"Pin"];
+    mapPin.canShowCallout = YES;
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    mapPin.rightCalloutAccessoryView = infoButton;
+    
+    [mapView addAnnotation:location];
+    
+    [mapView selectAnnotation:location animated:YES];
+    
+}
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PinView"];
+    pin.canShowCallout = YES;
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    pin.rightCalloutAccessoryView = infoButton;
+    pin.animatesDrop = YES;
+    
+    return pin;
+    
+}
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Navigate using..." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Google Maps",@"TomTom",@"NavFree", nil];
+    [actionSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    double fromlat = self.lastLocation.coordinate.latitude;
+    double fromlon = self.lastLocation.coordinate.longitude;
+    double lat = addressCoord.latitude;
+    double lon = addressCoord.longitude;
+    if (buttonIndex == 0) {
+        NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps?daddr=%f,%f&saddr=%f,%f", lat, lon,fromlat, fromlon, [companyName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSURL *ttURL = [[NSURL alloc] initWithString:urlString];
+        [[UIApplication sharedApplication] openURL:ttURL];
+    }
+    if (buttonIndex == 1) {
+        NSString *urlString = [NSString stringWithFormat:@"tomtomhome:geo:action=navigateto&lat=%f&long=%f&name=%@", lat, lon, [companyName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSURL *ttURL = [[NSURL alloc] initWithString:urlString];
+        [[UIApplication sharedApplication] openURL:ttURL];
+    }
+    if (buttonIndex == 2) {
+        NSString *urlString = [NSString stringWithFormat:@"navfree://%f,%f", lat, lon];
+        NSURL *ttURL = [[NSURL alloc] initWithString:urlString];
+        [[UIApplication sharedApplication] openURL:ttURL];
+    }
+    
 }
 
 - (IBAction)mapTypeSwitchClick:(id)sender {
@@ -109,7 +182,7 @@
 
 -(CLLocationCoordinate2D)addressCoordinates {
     
-    CLLocationCoordinate2D addressCoord;
+    //CLLocationCoordinate2D addressCoord;
     addressCoord.longitude = 0.0;
     addressCoord.latitude = 0.0;
     
@@ -117,7 +190,7 @@
                   [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
     NSError *error;
-    NSLog(@"URL: %@",url);
+    //NSLog(@"URL: %@",url);
     NSString *coordinatesString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
     //NSString *coordinatesString = [NSString stringWithContentsOfURL:url usedEncoding:NSString error:&error];
     

@@ -10,13 +10,16 @@
 #import "mapViewController.h"
 #import "eventsListTableViewController.h"
 #import "contactListTableViewController.h"
+#import "advancedSearchTableViewController.h"
 
+#import "Reachability.h"
 
 @implementation companyDetailsTableViewController
 
 @synthesize txtAddress;
 @synthesize lblSiteName;
 @synthesize lblDescription;
+@synthesize cellAddress;
 
 @synthesize companyDetail;
 
@@ -43,43 +46,24 @@
 {
     [super viewDidLoad];
     
-    
     lblSiteName.text = companyDetail.cosSiteName;
     lblDescription.text = companyDetail.cosDescription;
+    
+    //create an array of address components, remove blanks, put in string with newlines between them.
+    NSMutableArray *addressArray = [NSMutableArray arrayWithObjects:companyDetail.addStreetAddress, companyDetail.addStreetAddress2, companyDetail.addStreetAddress3, companyDetail.addTown,companyDetail.addCounty, companyDetail.couCountryName, companyDetail.addPostCode, nil];
+    [addressArray removeObject:@""];
+    fullAddress = [addressArray componentsJoinedByString:@"\n"];
 
-    fullAddress = [[NSString alloc] initWithString:@""];
-    if ([companyDetail.addStreetAddress length])
-        fullAddress = [fullAddress stringByAppendingFormat:@"%@\n",companyDetail.addStreetAddress];
-    if ([companyDetail.addStreetAddress2 length])
-        fullAddress = [fullAddress stringByAppendingFormat:@"%@\n",companyDetail.addStreetAddress2];
-    if ([companyDetail.addStreetAddress3 length])
-        fullAddress = [fullAddress stringByAppendingFormat:@"%@\n",companyDetail.addStreetAddress3];
-    if ([companyDetail.addCounty length])
-        fullAddress = [fullAddress stringByAppendingFormat:@"%@\n",companyDetail.addCounty];
-    if ([companyDetail.addTown length])
-        fullAddress = [fullAddress stringByAppendingFormat:@"%@\n",companyDetail.addTown];
-    if ([companyDetail.couCountryName length])
-        fullAddress = [fullAddress stringByAppendingFormat:@"%@\n",companyDetail.couCountryName];
-    if ([companyDetail.addPostCode length])
-        fullAddress = [fullAddress stringByAppendingFormat:@"%@",companyDetail.addPostCode];
-    // TODO could append all with newlines then remove multiple occurances of \n but could be 2,3 or more in a row...
-    // fullAddress = [fullAddress stringByReplacingOccurrencesOfString:@"\n\n" withString:@"\n"];
     txtAddress.text = fullAddress;
         
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
 {
-
-
     [self setLblDescription:nil];
     [self setLblSiteName:nil];
     [self setTxtAddress:nil];
+    [self setCellAddress:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -88,6 +72,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // check for internet connection
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+    
+    internetReachable = [Reachability reachabilityForInternetConnection];
+    [internetReachable startNotifier];
+    
+    // check if a pathway to a googlemaps exists
+    hostReachable = [Reachability reachabilityWithHostName: @"maps.google.com"];
+    [hostReachable startNotifier];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -103,66 +97,39 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if (indexPath.section == 0)
+    {
+        //check internet connection
+        if (internetActive)
+        {
+            if (hostActive)
+                [self performSegueWithIdentifier:@"toMap" sender:self];
+            else {
+                UIAlertView *noInternetConnection = [[UIAlertView alloc] initWithTitle:@"Google Maps Unavailable" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [noInternetConnection show];
+                [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow]  animated:YES];
+            }
+            
+        }
+        else {
+            UIAlertView *noInternetConnection = [[UIAlertView alloc] initWithTitle:@"No Internet Connection" message:@"Please connect and try again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [noInternetConnection show];
+            [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow]  animated:YES];
+        }
+        
+    }
 }
 
 
@@ -173,7 +140,7 @@
     {
         //set up the required data in the Map View controller        
         mapViewController *mapController = segue.destinationViewController;
-        mapController.address = fullAddress;
+        mapController.address = [fullAddress stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
         mapController.companyName = companyDetail.cosSiteName;
         
     }
@@ -182,8 +149,14 @@
         // create list view controller, set the required variables.     
         eventsListTableViewController *listViewController = segue.destinationViewController;
         listViewController.company = companyDetail;
-        //send site name for view title
-        listViewController.viewTitle = companyDetail.cosSiteName;
+    }
+    else if([segue.identifier isEqualToString:@"toAdvancedSearch"])
+    {
+        advancedSearchTableViewController *_advancedSearchTableViewController = segue.destinationViewController;
+        _advancedSearchTableViewController.companySiteID = companyDetail.companySiteID;
+        _advancedSearchTableViewController.cosSiteName = companyDetail.cosSiteName;
+        _advancedSearchTableViewController.company = companyDetail;
+        
     }
     else if ([segue.identifier isEqualToString:@"toContactList"])
     {
@@ -193,5 +166,64 @@
         listViewController.company = companyDetail;
     }
 }
+
+
+
+-(void) checkNetworkStatus:(NSNotification *)notice
+{
+    // called after network status changes
+    NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
+    switch (internetStatus)
+    {
+        case NotReachable:
+        {
+            NSLog(@"The internet is down.");
+            internetActive = NO;
+            
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"The internet is working via WIFI.");
+            internetActive = YES;
+            
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"The internet is working via WWAN.");
+            internetActive = YES;
+            
+            break;
+        }
+    }
+    
+    NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
+    switch (hostStatus)
+    {
+        case NotReachable:
+        {
+            NSLog(@"A gateway to the host server is down.");
+            hostActive = NO;
+            
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            NSLog(@"A gateway to the host server is working via WIFI.");
+            hostActive = YES;
+            
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"A gateway to the host server is working via WWAN.");
+            hostActive = YES;
+            
+            break;
+        }
+    }
+}
+
 
 @end

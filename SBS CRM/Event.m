@@ -7,7 +7,8 @@
 //
 
 #import "Event.h"
-
+#import "EventSearch.h"
+#import "AppDelegate.h"
 
 @implementation Event
 
@@ -29,7 +30,7 @@
 @dynamic eveStatus;
 @dynamic eveTitle;
 @dynamic ourContactID;
-@dynamic unread;
+@dynamic readEvent;
 @dynamic watched;
 
 @end

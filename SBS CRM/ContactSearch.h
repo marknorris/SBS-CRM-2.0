@@ -1,5 +1,5 @@
 //
-//  contactSearch.h
+//  ContactSearch.h
 //  SBS CRM
 //
 //  Created by Tom Couchman on 13/02/2012.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface contactSearch : NSObject
+@interface ContactSearch : NSObject
 
 @property (nonatomic, strong) NSString * conFirstName;
 @property (nonatomic, strong) NSString * conMiddleName;

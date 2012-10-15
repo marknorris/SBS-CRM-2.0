@@ -14,6 +14,8 @@
 @synthesize eventTypeType2;
 @synthesize eventComments;
 @synthesize eventDueTime;
+@synthesize unreadClosedImage;
+@synthesize watchedImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

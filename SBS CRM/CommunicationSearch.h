@@ -1,5 +1,5 @@
 //
-//  communicationSearch.h
+//  CommunicationSearch.h
 //  SBS CRM
 //
 //  Created by Tom Couchman on 17/02/2012.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface communicationSearch : NSObject
+@interface CommunicationSearch : NSObject
 
 @property (nonatomic, retain) NSString * contactID;
 @property (nonatomic, retain) NSString * communicationNumberID;

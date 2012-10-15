@@ -10,4 +10,8 @@
 
 @interface UserDetails : NSObject
 
+@property (nonatomic) NSInteger contactID;
+@property (nonatomic) NSInteger userID;
+@property (nonatomic) NSInteger companySiteID;
+
 @end

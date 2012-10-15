@@ -8,15 +8,19 @@
 
 #import "contactListTableViewController.h"
 #import "DDXML.h"
-#import "contactSearch.h"
+#import "ContactSearch.h"
 #import "AppDelegate.h"
 #import "contactDetailsTableViewController.h"
+#import "fetchXML.h"
+#import "XMLParser.h"
 
 @interface contactListTableViewController(){
-    NSMutableArray *contactsArray;
+    NSArray *contactsArray;
+    
+    UIActivityIndicatorView *refreshSpinner;
+    BOOL fetchingSearchResults;
 }
 
-- (BOOL)fetchDataFromServer;
 - (void)loadData;
 
 @end
@@ -47,7 +51,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    contactsArray = [[NSMutableArray alloc] init];
+    //contactsArray = [[NSMutableArray alloc] init];
+    
+    fetchingSearchResults = NO;
+    //set up the activity spinner
+    refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    refreshSpinner.frame = CGRectMake(5, 0, 20, 20);
+    refreshSpinner.hidesWhenStopped = YES;
+    
     [self loadData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -86,107 +97,67 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
-- (void)loadData{
-    //reload data from server asynchronously
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{  
-        
-        UIApplication *app = [UIApplication sharedApplication];  
-        [app setNetworkActivityIndicatorVisible:YES];
-        
-        BOOL loaded =  [self fetchDataFromServer];
-        
-        [app setNetworkActivityIndicatorVisible:NO];
-        
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if (!loaded)
-            {
-                //alert user the are not connected to the server
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fetch data" message:@"Could not retrieve the data" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-            }
-            // put the data into the table
-            [self.tableView reloadData];
-        });
-    });
-}
-
-- (BOOL)fetchDataFromServer{
- 
-    
-    //get the data from the server
-    NSError* error = nil;    
-    //url will depend on the query
-    NSURL *url;
-    if (company) // if there is a company site id perform the search by company site
-    {
-        url = [[NSURL alloc] initWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsByCompany?searchCompanySiteID=%@",company.companySiteID]];
-    }
-    else
-    {
-        // a site id is required to perform the search so return 0 to indicate failure.
-        return 0;
-    }
-    
-    NSString *xmlString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    //remove xmlns from the xml file 
-    xmlString = [xmlString stringByReplacingOccurrencesOfString:@"xmlns" withString:@"noNSxml"];
-    NSLog(@"xml string: %@",xmlString);
-    NSData *xmlData = [xmlString dataUsingEncoding:NSUTF8StringEncoding];
-    DDXMLDocument *eventsDocument = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:&error];
-    if (error)
-        return NO;
-    
-    NSArray* nodes = nil;
-    nodes = [[eventsDocument rootElement] children];
-    
-    
-    for (DDXMLElement *element in nodes)
-    { 
-        contactSearch *contactToSave = [[contactSearch alloc] init];
-        DDXMLElement *contactID = [[element nodesForXPath:@"contactID" error:nil] objectAtIndex:0];
-        contactToSave.contactID = contactID.stringValue;
-        DDXMLElement *conTitle = [[element nodesForXPath:@"conTitle" error:nil] objectAtIndex:0];
-        contactToSave.conTitle = conTitle.stringValue;
-        DDXMLElement *conFirstName = [[element nodesForXPath:@"conFirstName" error:nil] objectAtIndex:0];
-        contactToSave.conFirstName = conFirstName.stringValue;
-        DDXMLElement *conMiddleName = [[element nodesForXPath:@"conMiddleName" error:nil] objectAtIndex:0];
-        contactToSave.conMiddleName = conMiddleName.stringValue;
-        DDXMLElement *conSurname = [[element nodesForXPath:@"conSurname" error:nil] objectAtIndex:0];
-        contactToSave.conSurname = conSurname.stringValue;
-        
-        contactToSave.companySiteID = company.companySiteID;
-        DDXMLElement *cosDescription = [[element nodesForXPath:@"cosDescription" error:nil] objectAtIndex:0];
-        contactToSave.cosDescription = cosDescription.stringValue;
-        DDXMLElement *cosSiteName = [[element nodesForXPath:@"cosSiteName" error:nil] objectAtIndex:0];
-        contactToSave.cosSiteName = cosSiteName.stringValue;
-        
-        [contactsArray addObject:contactToSave];
-    }
-
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
     return YES;
 }
 
 
+//###############################################
+//#                                             #
+//#                                             #
+//#                  Get Data                   #
+//#                                             #
+//#                                             #
+//###############################################
+
+- (void)loadData{
+    fetchingSearchResults = YES;
+    [self.tableView reloadData];
+    
+    //download the dom doc file.
+    NSURL *url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsByCompanyABL?searchCompanySiteID=%@",company.companySiteID] ];
+    fetchXML *getContactsDom = [[fetchXML alloc] initWithUrl:url delegate:self className:@"ContactSearch"];
+    
+    if (![getContactsDom fetchXML])
+    {[[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show]; return;}
+}
+
+-(void)docRecieved:(NSDictionary *)docDic:(id)sender{
+    NSString *classKey = [docDic objectForKey:@"ClassName"];
+    contactsArray = [[[XMLParser alloc] init]parseXMLDoc:[docDic objectForKey:@"Document"] toClass:NSClassFromString(classKey)];
+    
+    //create sort descriptors to order the contacts.
+    NSSortDescriptor *firstNameSortDescriptor, *middleNameSortDescriptor, *lastNameSortDescriptor;
+    firstNameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"conFirstName" ascending:YES];
+    middleNameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"conMiddleName" ascending:YES];
+    lastNameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"conSurname" ascending:YES];
+    // create an ordered array of the contacts
+    contactsArray = [contactsArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:firstNameSortDescriptor,middleNameSortDescriptor, lastNameSortDescriptor,nil]];
+
+    fetchingSearchResults = NO;
+    [self.tableView reloadData];
+}
+    
 
 
-
+//###############################################
+//#                                             #
+//#                                             #
+//#               Table View                    #
+//#                                             #
+//#                                             #
+//###############################################
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [contactsArray count];
 }
@@ -199,88 +170,63 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    //get the contact to be displayed.
+    ContactSearch* contact = [contactsArray objectAtIndex:indexPath.row];
     
-    contactSearch* contact = [contactsArray objectAtIndex:indexPath.row];
-    
-    NSString *fullName = @"";
-    if ([contact.conTitle length])
-        fullName = [contact.conTitle stringByAppendingFormat:@" "];
-    if ([contact.conFirstName length])
-        fullName = [fullName stringByAppendingFormat:@"%@ ", contact.conFirstName];
-    if ([contact.conMiddleName length])
-        fullName = [fullName stringByAppendingFormat:@"%@ ", contact.conMiddleName];
-    if ([contact.conSurname length])
-        fullName = [fullName stringByAppendingFormat:@"%@", contact.conSurname];
+    NSString *fullName;
+    NSMutableArray *nameArray = [NSMutableArray arrayWithObjects:contact.conTitle,contact.conFirstName, contact.conMiddleName, contact.conSurname, nil];
+    [nameArray removeObject:@""];
+    fullName = [nameArray componentsJoinedByString:@"\n"];
     cell.textLabel.text = fullName;
-    
     
     cell.detailTextLabel.text = [contact.cosSiteName stringByAppendingFormat:@" - %@", contact.cosDescription];
     
-    /*
-    cell.eventTitle.text = event.eveTitle;
-    cell.eventComments.text = event.eveComments;
-    cell.eventTypeType2.text = [event.eventType stringByAppendingFormat:@" - %@",event.eventType2];
-    //cell.siteNameDesc.text = [company.cosSiteName stringByAppendingFormat:@" - %@",company.cosDescription];
-    
-    int hours = [event.eveDueTime integerValue] / 3600;
-    int minutes = ([event.eveDueTime integerValue] / 60) % 60;
-    cell.eventDueTime.text = [NSString stringWithFormat:@"%02d:%02d",hours,minutes];
-    */
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    
+    if (fetchingSearchResults)
+    {
+        // create a view
+        UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 20)];
+        
+        [refreshSpinner startAnimating];
+        
+        customView.backgroundColor = [UIColor blackColor];
+        // create the button object
+        
+        UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        headerLabel.backgroundColor = [UIColor clearColor];
+        headerLabel.opaque = NO;
+        headerLabel.textColor = [UIColor whiteColor];
+        headerLabel.font = [UIFont boldSystemFontOfSize:18];
+        headerLabel.highlightedTextColor = [UIColor whiteColor];
+        headerLabel.frame = CGRectMake(30.0, 0.0, 200.0, 20.0);
+        
+        // If you want to align the header text as centered
+        // headerLabel.frame = CGRectMake(150.0, 0.0, 300.0, 44.0);
+        
+        headerLabel.text = @"Fetching results..."; // i.e. array element
+        [customView addSubview:refreshSpinner];
+        [customView addSubview:headerLabel];
+    	return customView;
+    }
+    
+    return nil;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
+//###############################################
+//#                                             #
+//#                                             #
+//#                  Segue                      #
+//#                                             #
+//#                                             #
+//###############################################
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

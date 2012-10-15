@@ -7,43 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DDXML.h"
 #import "companyDetailsTableViewController.h"
+#import "fetchXML.h"
 
-@interface companyTableViewController : UITableViewController
+@interface companyTableViewController : UITableViewController <fetchXMLDelegate>
 {
     NSMutableArray *companyArray;
     
     //Search:
-    IBOutlet UISearchDisplayController *searchDisplayController;
-    IBOutlet UISearchBar *searchBar;
-    NSMutableArray *searchResults;
-    BOOL isSearching;
     NSMutableArray *allEventsArray;
-    BOOL cancelled;
+    UIActivityIndicatorView *refreshSpinner;
     
-    //XML parsing
-    DDXMLDocument *companiesDocument;    
-    NSURL *url;
-    NSString *xmlString;
-    NSData *xmlData;
 }
 
 //search
 @property (nonatomic, retain) IBOutlet UISearchDisplayController *searchDisplayController;
 @property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, copy) NSMutableArray *searchResults;
+@property (nonatomic) BOOL isSearching;
+@property (nonatomic) BOOL fetchingSearchResults;
 
-
-@property (nonatomic, retain) NSManagedObjectContext *context;
-
-- (void)reloadCoreData;
 - (void)refreshTableView;
 
 //search
 - (void)filterContentForSearchText:(NSString*)searchText 
                              scope:(NSString*)scope;
-- (BOOL)getCompanyResults:(NSString *)searchText;
-
 
 @end

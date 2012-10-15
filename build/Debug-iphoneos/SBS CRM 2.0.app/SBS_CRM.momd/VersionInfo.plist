@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSManagedObjectModel_CurrentVersionName</key>
+	<string>SBS_CRM</string>
+	<key>NSManagedObjectModel_VersionHashes</key>
+	<dict>
+		<key>SBS_CRM</key>
+		<dict>
+			<key>Attachment</key>
+			<data>
+			QNnsygp44p7V1pRnBx9LtjsfZ6FAExnFBC/RqL/iYJA=
+			</data>
+			<key>Communication</key>
+			<data>
+			0KQa1z6QqBA/QtZqeelA9ph6o7lNQAMSDY7I1EIldKY=
+			</data>
+			<key>Company</key>
+			<data>
+			Dxa0F2qZkok5NfikRJK7ks6sc3Zaf0BYWpnnPWPrc+8=
+			</data>
+			<key>Contact</key>
+			<data>
+			qtcthADdyNlh39VDVatZXa7So5WyzhOPMxj3sInT+XM=
+			</data>
+			<key>Entity</key>
+			<data>
+			yxItEAVbb1ESINQO2Nsq7IkEKXfGDlblt0Ggb9WjVuo=
+			</data>
+			<key>Event</key>
+			<data>
+			RBN9rLoxwet0I8bXl4AeqE5qyGv7YNlTYmiQgkt0Ftk=
+			</data>
+		</dict>
+	</dict>
+</dict>
+</plist>

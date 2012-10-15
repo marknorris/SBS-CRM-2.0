@@ -7,7 +7,7 @@
 //
 
 #import "Company.h"
-
+#import "AppDelegate.h"
 
 @implementation Company
 

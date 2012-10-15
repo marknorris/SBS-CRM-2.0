@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+/*
 #import <Foundation/Foundation.h>
-#import "Events.h"
+#import "Event.h"
 #import "Communication.h"
 #import "Contact.h"
 #import "Company.h"
@@ -15,31 +16,23 @@
 #import "DDXML.h"
 #import "AppDelegate.h"
 
+#import "EventSearch.h"
+#import "ContactSearch.h"
+#import "CompanySearch.h"
+#import "CommunicationSearch.h"
+#import "AttachmentSearch.h"
 
-@interface syncData : NSObject <UIApplicationDelegate>{
-    DDXMLDocument *eventsDocument;
-    DDXMLDocument *contactsDocument;
-    DDXMLDocument *companiesDocument;
-    DDXMLDocument *communicationDocument;
-    DDXMLDocument *attachmentsDocument;
-    
-    NSURL *url;
-    NSString *xmlString;
-    NSData *xmlData;
-    
-}
+@interface syncData : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain) AppDelegate *appDelegate;
 
 - (NSDate *)formatDate:(NSString *)date;
+- (NSString *)setDefaultTime:(NSString *)dueTime;
 
-- (BOOL)doSync;
-- (BOOL)getDom;
-- (BOOL)reloadEvents;
-- (BOOL)reloadCompanies;
-- (BOOL)reloadContacts;
-- (BOOL)reloadCommunication;
-- (BOOL)reloadAttachments;
-//- (BOOL)reloadEntity:(NSString *)entity:(DDXMLDocument *)currentDocument;
 
+
+//2.0 methods:
+- (NSArray *)parseXMLDoc:(DDXMLDocument *)Doc:(NSString *)className;
+- (BOOL)storeInCoreData:(NSArray *)eventArray:(NSString *)entityName;
 @end
+*/

@@ -8,21 +8,26 @@
 
 #import "companyTableViewController.h"
 #import "Company.h"
-#import "syncData.h"
 #import "AppDelegate.h"
 #import "CompanySearch.h"
+#import "XMLParser.h"
+#import "CoreDataManager.h"
 
+@interface companyTableViewController()
+    @property (nonatomic, retain) fetchXML *getCompaniesDom;
+@end
 
 @implementation companyTableViewController
-
-@synthesize context;
-
-
 
 //search
 @synthesize searchDisplayController;
 @synthesize searchBar;
 @synthesize searchResults;
+
+@synthesize getCompaniesDom;
+
+@synthesize isSearching;
+@synthesize fetchingSearchResults;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -56,7 +61,15 @@
     companyArray = [[NSMutableArray alloc] init];
     [self refreshTableView];
     isSearching = NO;
+    fetchingSearchResults = NO;
     searchResults = [[NSMutableArray alloc] init];
+    
+    //set up the activity spinner
+    refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    refreshSpinner.frame = CGRectMake(5, 0, 20, 20);
+    refreshSpinner.hidesWhenStopped = YES;
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -95,12 +108,19 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 
 
-
+//###############################################
+//#                                             #
+//#                                             #
+//#          Prepare TableView Data             #
+//#                                             #
+//#                                             #
+//###############################################
 
 
 
@@ -108,19 +128,10 @@
 - (void)refreshTableView{
     [companyArray removeAllObjects];
     
-    if (context == nil) { context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; }
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Company" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-    [request setEntity:entity];
-    
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:@"cosSiteName" ascending:YES];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
-    NSError *error = nil;
-    NSArray *deviceCompanyArray = [context executeFetchRequest:request error:&error];
+    NSArray *deviceCompanyArray = [NSManagedObject fetchObjectsForEntityName:@"Company" withPredicate:nil withSortDescriptors:[NSArray arrayWithObject: sortDescriptor]];
     
     NSDictionary *dict = [NSDictionary dictionaryWithObject:deviceCompanyArray forKey:@"Device"];
     
@@ -133,7 +144,13 @@
 
 
 
-
+//###############################################
+//#                                             #
+//#                                             #
+//#               Table View                    #
+//#                                             #
+//#                                             #
+//###############################################
 
 #pragma mark - Table view data source
 
@@ -155,7 +172,7 @@
     // Return the number of rows in the section.
     if (isSearching)
     {
-        NSLog(@"search results count: %d", [searchResults count]);
+        //NSLog(@"search results count: %d", [searchResults count]);
         return [searchResults count];
     }
     else{
@@ -177,6 +194,9 @@
 {
     if (isSearching)
     {
+        if ([searchBar.text length] < 3)
+            return @"Click search to fetch results";
+
         NSString *sectionTitle = [@"Number of results: " stringByAppendingFormat:@"%d",[searchResults count]];
         return sectionTitle;
     }
@@ -220,6 +240,43 @@
 
     
     return cell;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+
+    // create the parent view that will hold header Label
+	UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 20)];
+    if (fetchingSearchResults)
+    {
+
+        //[something addSubview:refreshSpinner];
+        [refreshSpinner startAnimating];
+        //return refreshSpinner;
+        
+        
+        customView.backgroundColor = [UIColor blackColor];
+        // create the button object
+        
+        UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        headerLabel.backgroundColor = [UIColor clearColor];
+        headerLabel.opaque = NO;
+        headerLabel.textColor = [UIColor whiteColor];
+        headerLabel.font = [UIFont boldSystemFontOfSize:18];
+        headerLabel.highlightedTextColor = [UIColor whiteColor];
+        headerLabel.frame = CGRectMake(30.0, 0.0, 200.0, 20.0);
+        
+        // If you want to align the header text as centered
+        // headerLabel.frame = CGRectMake(150.0, 0.0, 300.0, 44.0);
+        
+        headerLabel.text = @"Fetching results..."; // i.e. array element
+        [customView addSubview:refreshSpinner];
+        [customView addSubview:headerLabel];
+    	return customView;
+    }
+    
+    return nil;
 }
 
 /*
@@ -276,11 +333,17 @@
      */
 }
 
-//###################
-//#                 #
-//#     SEARCH:     #
-//#                 #
-//###################
+
+
+
+
+//###############################################
+//#                                             #
+//#                                             #
+//#                   Search:                   #
+//#                                             #
+//#                                             #
+//###############################################
 
 // when the user clicks the search bar:
 - (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
@@ -299,31 +362,26 @@
     else
     {
     //cancelled = YES;
-    [searchResults removeAllObjects];
-    [self.searchDisplayController.searchResultsTableView reloadData];
-    //BOOL searched = NO;
-    NSString *searchText = self.searchBar.text;
-    
-    //send the query to the server and get the results back.
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{ 
+        [searchResults removeAllObjects];
+        fetchingSearchResults = YES;
+        [self.searchDisplayController.searchResultsTableView reloadData];
         
-        UIApplication *app = [UIApplication sharedApplication];  
-        [app setNetworkActivityIndicatorVisible:YES];
+        //replace spaces in the search string with + to allow use as url
+        NSString *searchText = [self.searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"+"];
         
-        BOOL searched = [self getCompanyResults:searchText];
+        NSURL *url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchCompaniesABL?searchString=%@",searchText]];
         
-        [app setNetworkActivityIndicatorVisible:NO];
+        getCompaniesDom = [[fetchXML alloc] initWithUrl:url delegate:self className:@"CompanySearch"];
         
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if (searched == YES)
-                [self.searchDisplayController.searchResultsTableView reloadData];
-            else
-            {
-                UIAlertView *searchFailed = [[UIAlertView alloc] initWithTitle:@"Live search" message:@"Could not perform live search" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [searchFailed show];
-            }
-        });
-    });
+        if (![getCompaniesDom fetchXML])
+        {
+            UIAlertView *domGetFailed = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]; 
+            [domGetFailed show];
+        }        
+        
+        
+           //     [self.searchDisplayController.searchResultsTableView reloadData];
+
     }
     //while (cancelled == NO)
     
@@ -336,7 +394,8 @@
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    cancelled = YES;
+    //cancelled = YES;
+    [getCompaniesDom cancel];
     isSearching = NO;
     [searchResults removeAllObjects];
     [self.searchDisplayController.searchResultsTableView reloadData];
@@ -381,75 +440,39 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
     }
 }
 
-- (BOOL)getCompanyResults:(NSString *)searchText{
-    
-    NSError *error;
-    //replace spaces with + so the query can be sent as a url
-    searchText = [searchText stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    url = [[NSURL alloc] initWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchCompanies?searchString=%@",searchText]];
-    
-    xmlString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    
-    //remove xmlns from the xml file 
-    xmlString = [xmlString stringByReplacingOccurrencesOfString:@"xmlns" withString:@"noNSxml"];
-    xmlData = [xmlString dataUsingEncoding:NSUTF8StringEncoding];
-    companiesDocument = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:&error];
-    if (error)
-        return NO;
 
-    
-    //create an array of the nodes in the document
-    NSArray* nodes = nil;
-    nodes = [[companiesDocument rootElement] children];
-    
-    
-    //loop through each of the element and place them in to the compaySearch class.
-    for (DDXMLElement *element in nodes)
-    { 
-        CompanySearch *companySearchResult = [[CompanySearch alloc] init];
-        DDXMLElement *companySiteID = [[element nodesForXPath:@"companySiteID" error:&error] objectAtIndex:0];
-        companySearchResult.companySiteID = companySiteID.stringValue;
-        DDXMLElement *coaCompanyName = [[element nodesForXPath:@"coaCompanyName" error:&error] objectAtIndex:0];
-        companySearchResult.coaCompanyName = coaCompanyName.stringValue;
-        DDXMLElement *cosSiteName = [[element nodesForXPath:@"cosSiteName" error:&error] objectAtIndex:0];
-        companySearchResult.cosSiteName = cosSiteName.stringValue;     
-        DDXMLElement *cosDescription = [[element nodesForXPath:@"cosDescription" error:&error] objectAtIndex:0];
-        companySearchResult.cosDescription = cosDescription.stringValue;  
-        DDXMLElement *addStreetAddress = [[element nodesForXPath:@"addStreetAddress" error:&error] objectAtIndex:0];
-        companySearchResult.addStreetAddress = addStreetAddress.stringValue; 
-        DDXMLElement *addStreetAddress2 = [[element nodesForXPath:@"addStreetAddress2" error:&error] objectAtIndex:0];
-        companySearchResult.addStreetAddress2 = addStreetAddress2.stringValue; 
-        DDXMLElement *addStreetAddress3 = [[element nodesForXPath:@"addStreetAddress3" error:&error] objectAtIndex:0];
-        companySearchResult.addStreetAddress3 = addStreetAddress3.stringValue; 
-        DDXMLElement *addTown = [[element nodesForXPath:@"addTown" error:&error] objectAtIndex:0];
-        companySearchResult.addTown = addTown.stringValue;  
-        DDXMLElement *addCounty = [[element nodesForXPath:@"addCounty" error:&error] objectAtIndex:0];
-        companySearchResult.addCounty = addCounty.stringValue; 
-        DDXMLElement *addPostCode = [[element nodesForXPath:@"addPostCode" error:&error] objectAtIndex:0];
-        companySearchResult.addPostCode = addPostCode.stringValue; 
-        DDXMLElement *couCountryName = [[element nodesForXPath:@"couCountryName" error:&error] objectAtIndex:0];
-        companySearchResult.couCountryName = couCountryName.stringValue; 
-        
-        //NSLog(@"result: %@", companySearchResult.companySiteID);
-        //add the result to the results array;
-        [searchResults addObject:companySearchResult];
-        //NSLog(@"count: %@", [searchResults count]);
-        
-        if (error)
-            return NO;
+-(void)fetchXMLError:(NSString *)errorResponse:(id)sender{
+    if (self.view.window) // don't display if this view is not active. TODO:make sure this method is never even called!
+    {
+        // If error recieved, display alert.
+        [[[UIAlertView alloc] initWithTitle:@"Error Fetching Data" message:errorResponse delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
     }
+    fetchingSearchResults = NO;
+}
+
+-(void)docRecieved:(NSDictionary *)docDic:(id)sender{
+    NSString *classKey = [docDic objectForKey:@"ClassName"];
+    [searchResults addObjectsFromArray:[[[XMLParser alloc] init]parseXMLDoc:[docDic objectForKey:@"Document"] toClass:NSClassFromString(classKey)]];
     
+    //sort the array:
+    NSSortDescriptor *nameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"cosSiteName" ascending:YES];
+    searchResults = [[NSMutableArray alloc] initWithArray:[searchResults sortedArrayUsingDescriptors:[NSArray arrayWithObjects:nameSortDescriptor,nil]]];
     
-    
-    //if (cancelled == YES)
-        //return NO;
-    
-    return YES;
+    fetchingSearchResults = NO;
+    [self.searchDisplayController.searchResultsTableView reloadData];
 }
 
 
 
 
+
+//###############################################
+//#                                             #
+//#                                             #
+//#                   SEGUE                     #
+//#                                             #
+//#                                             #
+//###############################################
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

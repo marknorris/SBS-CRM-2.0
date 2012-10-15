@@ -11,6 +11,11 @@
 
 @implementation lookUpTableViewController
 
+@synthesize delegate;
+@synthesize item;
+@synthesize itemArray;
+@synthesize sourceCellIdentifier;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -34,6 +39,10 @@
 {
     [super viewDidLoad];
 
+
+    
+    selectedIndex = [itemArray indexOfObject:item];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -71,23 +80,22 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [itemArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,6 +106,13 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    cell.textLabel.text = [itemArray objectAtIndex:indexPath.row];
+    
+    if(indexPath.row == selectedIndex)
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    else
+        cell.accessoryType = UITableViewCellAccessoryNone;
     
     // Configure the cell...
     
@@ -154,6 +169,14 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    
+    [self.delegate lookUpTableViewController:self didSelectItem:(int *)indexPath.row  withSourceCellIdentifier:sourceCellIdentifier];
+    [self dismissModalViewControllerAnimated:YES];
+    
 }
 
+- (IBAction)btnCancelClick:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end

@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TestFlight.h"
+#import "UserDetails.h"
 
 extern NSInteger appUserID;
+extern NSInteger appContactID;
+extern NSInteger appCompanySiteID;
 extern NSString *appURL;
+extern NSString *appEventID;
+extern NSDate *appDefaultAlertTime;
+
+// TODO get this from initial user ID fetch
+//extern NSString *internalCompanySiteID;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

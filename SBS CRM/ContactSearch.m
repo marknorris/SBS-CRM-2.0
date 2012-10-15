@@ -1,14 +1,14 @@
 //
-//  contactSearch.m
+//  ContactSearch.m
 //  SBS CRM
 //
 //  Created by Tom Couchman on 13/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "contactSearch.h"
+#import "ContactSearch.h"
 
-@implementation contactSearch
+@implementation ContactSearch
 
 @synthesize conFirstName;
 @synthesize conMiddleName;

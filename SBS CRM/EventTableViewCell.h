@@ -14,5 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *eventTypeType2;
 @property (strong, nonatomic) IBOutlet UILabel *eventComments;
 @property (strong, nonatomic) IBOutlet UILabel *eventDueTime;
+@property (strong, nonatomic) IBOutlet UIImageView *unreadClosedImage;
+@property (strong, nonatomic) IBOutlet UIImageView *watchedImage;
 
 @end

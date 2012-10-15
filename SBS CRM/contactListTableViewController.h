@@ -11,8 +11,6 @@
 
 @interface contactListTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSString *companySiteID;
 @property (strong, nonatomic) CompanySearch *company;
-
 
 @end

@@ -1,0 +1,1499 @@
+TSBS CRM
+v4
+r1
+cCheck dependencies
+cCpResource /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/ResourceRules.plist "build/Debug-iphoneos/SBS CRM.app/ResourceRules.plist"
+cProcessInfoPlistFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Info.plist" "SBS CRM/SBS CRM-Info.plist"
+cDataModelVersionCompile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS_CRM.momd" "/Users/tom.c/Documents/SBS CRM/SBS CRM/SBS_CRM.xcdatamodeld"
+cProcessPCH "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch.pth" "SBS CRM/SBS CRM-Prefix.pch" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/main.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/main.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/AppDelegate.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/AppDelegate.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/loginViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/loginViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/KeychainItemWrapper.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KeychainItemWrapper.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElementAdditions.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Additions/DDXMLElementAdditions.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/NSString+DDXML.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Categories/NSString+DDXML.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLDocument.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLDocument.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElement.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLElement.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLNode.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLNode.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/moreTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/myEventsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/syncData.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/syncData.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Attachment.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Attachment.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Company.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Company.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Communication.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Communication.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Events.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Events.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventTableViewCell.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/PullRefreshTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/PullRefreshTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventsCellData.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventsCellData.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Contact.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Contact.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/CompanySearch.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/CompanySearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactSearch.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactSearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyDetailsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/companyDetailsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/mapViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/mapViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactDetailsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactDetailsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventDetailsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventDetailsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/textViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/textViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventsListTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventsListTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventSearch.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/eventSearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactListTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/communicationSearch.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/communicationSearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRM" normal armv7
+cGenerateDSYMFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app.dSYM" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRM"
+cCompileStoryboard "/Users/tom.c/Documents/SBS CRM/SBS CRM/../Storyboard.storyboard"
+cCopyStringsFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/en.lproj/InfoPlist.strings" "SBS CRM/en.lproj/InfoPlist.strings"
+cCpResource "SBS CRM/suttleworth_r1_c2.jpg" "build/Debug-iphoneos/SBS CRM.app/suttleworth_r1_c2.jpg"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/83-calendar.png" "SBS CRM/83-calendar.png"
+cCompileXIB "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.xib"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrow.png" "SBS CRM/arrow.png"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrowwhite.png" "SBS CRM/arrowwhite.png"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/177-building.png" "SBS CRM/177-building.png"
+cCopyTiffFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/icon.tiff" "SBS CRM/icon.tiff"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Excel2007.PNG" "SBS CRM/Excel2007.PNG"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/233px-Microsoft_Word_Icon.svg.png" "SBS CRM/233px-Microsoft_Word_Icon.svg.png"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon.png" "SBS CRM/Icon.png"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon.png" "SBS CRM/../Icon.png"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon@2x.png" "SBS CRM/../Icon@2x.png"
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default.png" Default.png
+cCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default@2x.png" Default@2x.png
+cCpResource "SBS CRM/../TestFlightSDK0-1/README.txt" "build/Debug-iphoneos/SBS CRM.app/README.txt"
+cCpResource "SBS CRM/../TestFlightSDK0-1/release_notes.txt" "build/Debug-iphoneos/SBS CRM.app/release_notes.txt"
+cProcessProductPackaging "/Users/tom.c/Library/MobileDevice/Provisioning Profiles/E160A3F9-04C2-42C9-9322-498A8BD7359F.mobileprovision" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/embedded.mobileprovision"
+cProcessProductPackaging "/Users/tom.c/Library/MobileDevice/Provisioning Profiles/E160A3F9-04C2-42C9-9322-498A8BD7359F.mobileprovision" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/embedded.mobileprovision"
+cTouch "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"
+cProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/Entitlements.plist "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM.xcent"
+cCodeSign "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk
+c000000004E7840290000000000000110
+t1316503593
+s272
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/Entitlements.plist
+c000000004E5C595800000000000001A7
+t1314675032
+s423
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/ResourceRules.plist
+c000000004E5C595800000000000001E5
+t1314675032
+s485
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004E72F3A400000000002566C0
+t1316156324
+s2451136
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004E72F28700000000003AB0A0
+t1316156039
+s3846304
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004E72F3440000000000529540
+t1316156228
+s5412160
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004E78098C00000000000AF270
+t1316489612
+s717424
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004E72F8910000000000173260
+t1316157585
+s1520224
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/Security.framework/Security
+c000000004E72F23A00000000000CCA60
+t1316155962
+s838240
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004E7808C7000000000078BE50
+t1316489415
+s7913040
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/lib/libz.dylib
+c000000004E72EB4000000000000240F0
+t1316154176
+s147696
+
+N/Users/tom.c/Documents/SBS CRM/Default.png
+c000000004F3E6A0000000000000482CA
+t1329490432
+s295626
+
+N/Users/tom.c/Documents/SBS CRM/Default@2x.png
+c000000004F3E6A0000000000000482CA
+t1329490432
+s295626
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/../Icon.png
+c000000004F3E5136000000000000242E
+t1329484086
+s9262
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/../Icon@2x.png
+c000000004F3E51600000000000005824
+t1329484128
+s22564
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/../Storyboard.storyboard
+c000000004F3E5F880000000000025736
+t1329487752
+s153398
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/../TestFlightSDK0-1/README.txt
+c000000004F393D7A00000000000035D9
+t1329151354
+s13785
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/../TestFlightSDK0-1/libTestFlight.a
+c000000004F393D7A00000000002B2CDC
+t1329151354
+s2829532
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/../TestFlightSDK0-1/release_notes.txt
+c000000004F3A679600000000000016F5
+t1329227670
+s5877
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.m
+c000000004F3E3A76000000000000431A
+t1329478262
+s17178
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventDetailsTableViewController.m
+c000000004F3E707C000000000000675D
+t1329492092
+s26461
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventsListTableViewController.m
+c000000004F3E643600000000000040B0
+t1329488950
+s16560
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/177-building.png
+c000000004CBB982C0000000000000099
+t1287362604
+s153
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/233px-Microsoft_Word_Icon.svg.png
+c000000004F3BE8BA0000000000005E2F
+t1329326266
+s24111
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/83-calendar.png
+c000000004CB8527E0000000000000B49
+t1287148158
+s2889
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/AppDelegate.m
+c000000004F42454C0000000000001CBF
+t1329743180
+s7359
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/Attachment.m
+c000000004F33DA2A0000000000000124
+t1328798250
+s292
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/Communication.m
+c000000004F3E36CE000000000000017E
+t1329477326
+s382
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/Company.m
+c000000004F33DA2A00000000000001CB
+t1328798250
+s459
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/CompanySearch.m
+c000000004F39102F00000000000001FD
+t1329139759
+s509
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/Contact.m
+c000000004F38DCA90000000000000175
+t1329126569
+s373
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.m
+c000000004F351EF900000000000002FA
+t1328881401
+s762
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.xib
+c000000004F3B92000000000000004BEC
+t1329304064
+s19436
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/Events.m
+c000000004F3400110000000000000243
+t1328807953
+s579
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/EventsCellData.m
+c000000004F353068000000000000016F
+t1328885864
+s367
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/Excel2007.PNG
+c000000004F3BE8690000000000004EF1
+t1329326185
+s20209
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/Icon.png
+c000000004F3E5136000000000000242E
+t1329484086
+s9262
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/KeychainItemWrapper.m
+c000000004F1708AB00000000000034F9
+t1326909611
+s13561
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Additions/DDXMLElementAdditions.m
+c000000004EF484DA0000000000000DA5
+t1324647642
+s3493
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Categories/NSString+DDXML.m
+c000000004EF484DA000000000000023C
+t1324647642
+s572
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLDocument.m
+c000000004EF484DA0000000000000F7A
+t1324647642
+s3962
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLElement.m
+c000000004EF484DA0000000000005089
+t1324647642
+s20617
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLNode.m
+c000000004EF484DA000000000001166A
+t1324647642
+s71274
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/PullRefreshTableViewController.m
+c000000004F34EC7200000000000019F1
+t1328868466
+s6641
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/SBS CRM-Prefix.pch
+c000000004F329278000000000000015F
+t1328714360
+s351
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/SBS_CRM.xcdatamodeld
+c000000004F38DD180000000000000088
+t1329126680
+s136
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/arrow.png
+c000000004F293CC50000000000000F9E
+t1328102597
+s3998
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/arrowwhite.png
+c000000004F3538F700000000000004EF
+t1328888055
+s1263
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/communicationSearch.m
+c000000004F3E3D3B00000000000001A4
+t1329478971
+s420
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/companyDetailsTableViewController.m
+c000000004F3D1229000000000000197C
+t1329402409
+s6524
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.m
+c000000004F3E25180000000000004004
+t1329472792
+s16388
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/contactDetailsTableViewController.m
+c000000004F3E820B0000000000005BD9
+t1329496587
+s23513
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m
+c000000004F3D342A0000000000002800
+t1329411114
+s10240
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/contactSearch.m
+c000000004F3931F2000000000000019E
+t1329148402
+s414
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/en.lproj/InfoPlist.strings
+c000000004F33BA47000000000000002D
+t1328790087
+s45
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/eventSearch.m
+c000000004F3BBD720000000000000288
+t1329315186
+s648
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/icon.tiff
+c000000004F38F7610000000000011E8C
+t1329133409
+s73356
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/loginViewController.m
+c000000004F3CEC6600000000000037AC
+t1329392742
+s14252
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/main.m
+c000000004F3D0BE1000000000000015A
+t1329400801
+s346
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/mapViewController.m
+c000000004F3B8F2B0000000000000F4D
+t1329303339
+s3917
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m
+c000000004F33CB9A0000000000001154
+t1328794522
+s4436
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m
+c000000004F3E61B50000000000005F33
+t1329488309
+s24371
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/suttleworth_r1_c2.jpg
+c000000004F339D1F000000000000146E
+t1328782623
+s5230
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/syncData.m
+c000000004F4241110000000000004C43
+t1329742097
+s19523
+
+N/Users/tom.c/Documents/SBS CRM/SBS CRM/textViewController.m
+c000000004F3BAA53000000000000056C
+t1329310291
+s1388
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app.dSYM
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/177-building.png
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/233px-Microsoft_Word_Icon.svg.png
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/83-calendar.png
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default.png
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default@2x.png
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/EventTableViewCell.nib
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Excel2007.PNG
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon.png
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon@2x.png
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Info.plist
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/PkgInfo
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/README.txt
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/ResourceRules.plist
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRM
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS_CRM.momd
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Storyboard.storyboardc
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrow.png
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrowwhite.png
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/embedded.mobileprovision
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/en.lproj/InfoPlist.strings
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/icon.tiff
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/release_notes.txt
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/suttleworth_r1_c2.jpg
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/AppDelegate.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Attachment.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Communication.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Company.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/CompanySearch.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Contact.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLDocument.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElement.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElementAdditions.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLNode.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventTableViewCell.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Events.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventsCellData.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/KeychainItemWrapper.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/NSString+DDXML.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/PullRefreshTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/SBS CRM.LinkFileList
+c000000004F424CC00000000000000FB1
+t1329745088
+s4017
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/communicationSearch.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyDetailsTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactDetailsTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactListTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactSearch.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactsTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventDetailsTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventSearch.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventsListTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/loginViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/main.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/mapViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/moreTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/myEventsTableViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/syncData.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/textViewController.o
+t2
+s0
+
+N/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM.xcent
+t2
+s0
+
+N/Users/tom.c/Library/MobileDevice/Provisioning Profiles/E160A3F9-04C2-42C9-9322-498A8BD7359F.mobileprovision
+c000000004F424BEC0000000000001C9F
+t1329744876
+s7327
+
+N/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch.pth
+t2
+s0
+
+NSBS CRM/SBS CRM-Info.plist
+c000000004F3E69AA0000000000000687
+t1329490346
+s1671
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventDetailsTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventsListTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/AppDelegate.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/Attachment.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/Communication.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/Company.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/CompanySearch.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/Contact.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/Events.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventsCellData.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/KeychainItemWrapper.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Additions/DDXMLElementAdditions.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Categories/NSString+DDXML.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLDocument.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLElement.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLNode.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/PullRefreshTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/communicationSearch.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/companyDetailsTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactDetailsTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactSearch.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/eventSearch.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/loginViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/main.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/mapViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/syncData.m"
+r0
+
+CBuild AST from "/Users/tom.c/Documents/SBS CRM/SBS CRM/textViewController.m"
+r0
+
+CCheck dependencies
+r0
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies5d6cae4084f2b441^7db2e64084f2b441^---0#1#0#--18"Check dependencies36"819C9084-585E-48CB-AC52-0BFF949DC0DA-
+
+CCodeSign "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"
+s351437893.789846
+e351437899.062143
+r1
+xCodeSign
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection43"CodeSign "build/Debug-iphoneos/SBS CRM.app"da53ca4584f2b441^6efa0f4b84f2b441^---0#0#0#-19%DVTDocumentLocation2@84"file://localhost/Users/tom.c/Documents/SBS%20CRM/build/Debug-iphoneos/SBS%20CRM.app/0000000000000000^675"CodeSign "build/Debug-iphoneos/SBS CRM.app"    cd "/Users/tom.c/Documents/SBS CRM"    setenv CODESIGN_ALLOCATE /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/codesign --force --sign "iPhone Developer: Tom Couchman (FJ3DRHWW37)" "--resource-rules=/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/ResourceRules.plist" --entitlements "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM.xcent" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"36"0A9FE5A0-7C2F-4436-B65D-081FF07326CC-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/AppDelegate.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/AppDelegate.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.298170
+e351437889.442222
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/AppDelegate.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/AppDelegate.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection60"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/AppDelegate.m73804c4184f2b441^ce34714184f2b441^---0#0#0#-19%DVTDocumentLocation2@72"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/AppDelegate.m0000000000000000^2483"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/AppDelegate.o" "SBS CRM/AppDelegate.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/AppDelegate.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/AppDelegate.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/AppDelegate.o"36"722455B6-55C1-4C7F-923A-B230E5568826-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Attachment.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Attachment.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.681703
+e351437889.762843
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Attachment.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/Attachment.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection59"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/Attachment.m75b0ae4184f2b441^de8fcb4184f2b441^---0#0#0#-19%DVTDocumentLocation2@71"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/Attachment.m0000000000000000^2478"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Attachment.o" "SBS CRM/Attachment.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Attachment.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/Attachment.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Attachment.o"36"E2735DFE-9F57-46B5-B344-D70310B65657-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Communication.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Communication.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.841534
+e351437889.914235
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Communication.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/Communication.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection62"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/Communication.m179ad74184f2b441^c70eea4184f2b441^---0#0#0#-19%DVTDocumentLocation2@74"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/Communication.m0000000000000000^2493"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Communication.o" "SBS CRM/Communication.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Communication.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/Communication.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Communication.o"36"BB344E5F-C743-44D3-989A-9E28551ED971-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Company.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Company.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.764244
+e351437889.840156
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Company.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/Company.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection56"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/Company.mffcdc34184f2b441^9814d74184f2b441^---0#0#0#-19%DVTDocumentLocation2@68"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/Company.m0000000000000000^2463"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Company.o" "SBS CRM/Company.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Company.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/Company.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Company.o"36"3B32BB26-0BC9-4122-ABA6-1024AB2CD97D-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/CompanySearch.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/CompanySearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.036978
+e351437890.106222
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/CompanySearch.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/CompanySearch.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection62"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/CompanySearch.m8fa7094284f2b441^293d1b4284f2b441^---0#0#0#-19%DVTDocumentLocation2@74"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/CompanySearch.m0000000000000000^2493"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/CompanySearch.o" "SBS CRM/CompanySearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/CompanySearch.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/CompanySearch.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/CompanySearch.o"36"332FEEC6-F3CE-4FA1-BECF-DD1B960C8E5D-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Contact.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Contact.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.004722
+e351437890.057365
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Contact.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/Contact.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection56"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/Contact.m2060014284f2b441^25af0e4284f2b441^---0#0#0#-19%DVTDocumentLocation2@68"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/Contact.m0000000000000000^2463"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Contact.o" "SBS CRM/Contact.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Contact.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/Contact.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Contact.o"36"0BE449A1-1B75-42C1-9886-3386A92F81CA-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLDocument.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLDocument.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.443972
+e351437889.551650
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLDocument.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLDocument.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLDocument.m30d4714184f2b441^bd388d4184f2b441^---0#0#0#-19%DVTDocumentLocation2@82"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/KissXML/DDXMLDocument.m0000000000000000^2509"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLDocument.o" "SBS CRM/KissXML/DDXMLDocument.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLDocument.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLDocument.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLDocument.o"36"59242B46-903D-440F-9BE6-CB4DA5853B28-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElement.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLElement.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.482200
+e351437889.675623
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElement.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLElement.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection69"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLElement.ma99f7b4184f2b441^dd06ad4184f2b441^---0#0#0#-19%DVTDocumentLocation2@81"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/KissXML/DDXMLElement.m0000000000000000^2504"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElement.o" "SBS CRM/KissXML/DDXMLElement.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElement.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLElement.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElement.o"36"2B6D0733-1F17-4840-83D5-74F7BA256570-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElementAdditions.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Additions/DDXMLElementAdditions.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.374567
+e351437889.480848
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElementAdditions.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Additions/DDXMLElementAdditions.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Additions/DDXMLElementAdditions.m0a11604184f2b441^3f197b4184f2b441^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/KissXML/Additions/DDXMLElementAdditions.m0000000000000000^2569"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElementAdditions.o" "SBS CRM/KissXML/Additions/DDXMLElementAdditions.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElementAdditions.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Additions/DDXMLElementAdditions.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLElementAdditions.o"36"22AF2383-A0C4-4219-BA7D-6C6EA314AF00-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLNode.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLNode.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.500152
+e351437889.915338
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLNode.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLNode.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLNode.m622f804184f2b441^5c93ea4184f2b441^---0#0#0#-19%DVTDocumentLocation2@78"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/KissXML/DDXMLNode.m0000000000000000^2489"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLNode.o" "SBS CRM/KissXML/DDXMLNode.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLNode.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/DDXMLNode.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/DDXMLNode.o"36"4D8A74A3-AC1B-46E2-95EF-EA8F2B943B64-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventTableViewCell.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.915551
+e351437890.016366
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventTableViewCell.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection67"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.mf487ea4184f2b441^1c43044284f2b441^---0#0#0#-19%DVTDocumentLocation2@79"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/EventTableViewCell.m0000000000000000^2518"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventTableViewCell.o" "SBS CRM/EventTableViewCell.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventTableViewCell.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventTableViewCell.o"36"D999A9DA-5555-4E0A-9207-00BEC7E133EC-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Events.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Events.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.915549
+e351437889.970374
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Events.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/Events.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection55"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/Events.m7785ea4184f2b441^9a7bf84184f2b441^---0#0#0#-19%DVTDocumentLocation2@67"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/Events.m0000000000000000^2458"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Events.o" "SBS CRM/Events.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Events.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/Events.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/Events.o"36"DE620532-F9EA-41B2-9725-7AF5691E2CED-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventsCellData.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventsCellData.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.971839
+e351437890.035641
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventsCellData.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/EventsCellData.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection63"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/EventsCellData.m5df9f84184f2b441^8b38094284f2b441^---0#0#0#-19%DVTDocumentLocation2@75"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/EventsCellData.m0000000000000000^2498"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventsCellData.o" "SBS CRM/EventsCellData.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventsCellData.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventsCellData.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/EventsCellData.o"36"1C3EF124-8DF3-4DE5-A2DE-133C85AC8ADF-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/KeychainItemWrapper.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KeychainItemWrapper.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.298924
+e351437889.404580
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/KeychainItemWrapper.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/KeychainItemWrapper.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/KeychainItemWrapper.m42b24c4184f2b441^a391674184f2b441^---0#0#0#-19%DVTDocumentLocation2@80"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/KeychainItemWrapper.m0000000000000000^2523"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/KeychainItemWrapper.o" "SBS CRM/KeychainItemWrapper.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/KeychainItemWrapper.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/KeychainItemWrapper.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/KeychainItemWrapper.o"36"B9688943-F7FC-4295-BB0F-3239622AE586-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/NSString+DDXML.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Categories/NSString+DDXML.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.405957
+e351437889.498866
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/NSString+DDXML.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Categories/NSString+DDXML.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Categories/NSString+DDXML.m431b684184f2b441^26c57f4184f2b441^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/KissXML/Categories/NSString+DDXML.m0000000000000000^2536"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/NSString+DDXML.o" "SBS CRM/KissXML/Categories/NSString+DDXML.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/NSString+DDXML.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/KissXML/Categories/NSString+DDXML.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/NSString+DDXML.o"36"FEC7F86C-2968-4753-A3AA-0B12F6DC038A-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/PullRefreshTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/PullRefreshTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.924803
+e351437890.093214
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/PullRefreshTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/PullRefreshTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/PullRefreshTableViewController.m8eeaec4184f2b441^122e184284f2b441^---0#0#0#-19%DVTDocumentLocation2@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/PullRefreshTableViewController.m0000000000000000^2578"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/PullRefreshTableViewController.o" "SBS CRM/PullRefreshTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/PullRefreshTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/PullRefreshTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/PullRefreshTableViewController.o"36"2824D52C-71D7-4F8B-A915-6F40922D6776-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/communicationSearch.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/communicationSearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.628114
+e351437890.688229
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/communicationSearch.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/communicationSearch.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/communicationSearch.m27f6a04284f2b441^7287b14284f2b441^---0#0#0#-19%DVTDocumentLocation2@80"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/communicationSearch.m0000000000000000^2523"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/communicationSearch.o" "SBS CRM/communicationSearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/communicationSearch.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/communicationSearch.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/communicationSearch.o"36"C542A64E-B49D-491A-8DD0-81CB84DA57AB-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyDetailsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/companyDetailsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.107552
+e351437890.302759
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyDetailsTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/companyDetailsTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/companyDetailsTableViewController.m9eb11b4284f2b441^7311534284f2b441^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/companyDetailsTableViewController.m0000000000000000^2593"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyDetailsTableViewController.o" "SBS CRM/companyDetailsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyDetailsTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/companyDetailsTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyDetailsTableViewController.o"36"E32F2CF6-C6F3-48F3-BA53-B6754FC947E6-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.017685
+e351437890.302813
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.m:16:1: warning: incomplete implementation [-Wincomplete-implementation,3]
+o @implementation companyTableViewController
+o ^
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.h:40:1: note: method definition for 'reloadCoreData' not found [3]
+o - (void)reloadCoreData;
+o ^
+o1 warning generated.
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.m85b2044284f2b441^5d1a534284f2b441^-370"/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.m:16:1: warning: incomplete implementation [-Wincomplete-implementation,3] @implementation companyTableViewController ^/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.h:40:1: note: method definition for 'reloadCoreData' not found [3] - (void)reloadCoreData; ^1 warning generated.1(21%IDEActivityLogMessage2@25"Incomplete implementation-351437890#0#141#1(2@48"Method definition for 'reloadCoreData' not found-351437890#188#133#-0#-23%DVTTextDocumentLocation3@87"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/companyTableViewController.h0000000000000000^39#0#39#0#18446744073709551615#0#14"Semantic Issue--1#-3@87"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/companyTableViewController.m0000000000000000^15#0#15#0#18446744073709551615#0#14"Semantic Issue--0#0#0#-19%DVTDocumentLocation4@87"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/companyTableViewController.m0000000000000000^2558"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyTableViewController.o" "SBS CRM/companyTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/companyTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/companyTableViewController.o"36"4638BF89-948C-4B1B-9D65-B2F8B70D2C44-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactDetailsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactDetailsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.304120
+e351437890.649221
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactDetailsTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/contactDetailsTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/contactDetailsTableViewController.m:354:1: warning: control may reach end of non-void function [-Wreturn-type,3]
+o }
+o ^
+o1 warning generated.
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/contactDetailsTableViewController.mde014e4284f2b441^9032a64284f2b441^-179"/Users/tom.c/Documents/SBS CRM/SBS CRM/contactDetailsTableViewController.m:354:1: warning: control may reach end of non-void function [-Wreturn-type,3] } ^1 warning generated.1(21%IDEActivityLogMessage2@42"Control may reach end of non-void function-351437890#0#152#-1#-23%DVTTextDocumentLocation3@94"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactDetailsTableViewController.m0000000000000000^353#0#353#0#18446744073709551615#0#14"Semantic Issue--0#0#0#-19%DVTDocumentLocation4@94"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactDetailsTableViewController.m0000000000000000^2593"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactDetailsTableViewController.o" "SBS CRM/contactDetailsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactDetailsTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactDetailsTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactDetailsTableViewController.o"36"DC161E52-740A-4ED7-AF54-0E54D21669C8-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactListTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.539527
+e351437890.713989
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactListTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:182:2: warning: #warning Potentially incomplete method implementation. [-W#warnings,7]
+o #warning Potentially incomplete method implementation.
+o  ^
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:189:2: warning: #warning Incomplete method implementation. [-W#warnings,7]
+o #warning Incomplete method implementation.
+o  ^
+oIn file included from /Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:9:
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.h:14:41: warning: property 'companySiteID' requires method 'companySiteID' to be defined - use @synthesize, @dynamic or provide a method implementation [3]
+o @property (strong, nonatomic) NSString *companySiteID;
+o                                         ^
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:24:1: note: implementation is here [3]
+o @implementation contactListTableViewController
+o ^
+oIn file included from /Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:9:
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.h:14:41: warning: property 'companySiteID' requires method 'setCompanySiteID:' to be defined - use @synthesize, @dynamic or provide a method implementation [3]
+o @property (strong, nonatomic) NSString *companySiteID;
+o                                         ^
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:24:1: note: implementation is here [3]
+o @implementation contactListTableViewController
+o ^
+o4 warnings generated.
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m6f498a4284f2b441^a392be4284f2b441^-1608"/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:182:2: warning: #warning Potentially incomplete method implementation. [-W#warnings,7] #warning Potentially incomplete method implementation.  ^/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:189:2: warning: #warning Incomplete method implementation. [-W#warnings,7] #warning Incomplete method implementation.  ^In file included from /Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:9:/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.h:14:41: warning: property 'companySiteID' requires method 'companySiteID' to be defined - use @synthesize, @dynamic or provide a method implementation [3] @property (strong, nonatomic) NSString *companySiteID;                                         ^/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:24:1: note: implementation is here [3] @implementation contactListTableViewController ^In file included from /Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:9:/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.h:14:41: warning: property 'companySiteID' requires method 'setCompanySiteID:' to be defined - use @synthesize, @dynamic or provide a method implementation [3] @property (strong, nonatomic) NSString *companySiteID;                                         ^/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:24:1: note: implementation is here [3] @implementation contactListTableViewController ^4 warnings generated.4(21%IDEActivityLogMessage2@54"#warning Potentially incomplete method implementation.-351437890#0#159#-1#-23%DVTTextDocumentLocation3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.m0000000000000000^181#1#181#1#18446744073709551615#0#18"#warning Directive--2@42"#warning Incomplete method implementation.-351437890#219#147#-1#-3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.m0000000000000000^188#1#188#1#18446744073709551615#0#18"#warning Directive--2@133"Property 'companySiteID' requires method 'companySiteID' to be defined - use @synthesize, @dynamic or provide a method implementation-351437890#511#226#3(36%IDEActivityLogHeaderInclusionMessage4@96"In file included from /Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:9:-351437890#414#97#-0#-3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.m0000000000000000^8#18446744073709551615#8#18446744073709551615#18446744073709551615#0#---2@208"Property 'companySiteID' requires method 'companySiteID' to be defined - use @synthesize, @dynamic or provide a method implementation in /Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.h-351437890#18446744073709551615#0#-0#-3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.h0000000000000000^13#40#13#40#18446744073709551615#0#---2@22"Implementation is here-351437890#836#111#-0#-3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.m0000000000000000^23#0#23#0#18446744073709551615#0#14"Semantic Issue--1#-3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.h0000000000000000^13#40#13#40#18446744073709551615#0#14"Semantic Issue--2@137"Property 'companySiteID' requires method 'setCompanySiteID:' to be defined - use @synthesize, @dynamic or provide a method implementation-351437890#1095#230#3(4@96"In file included from /Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m:9:-351437890#998#97#-0#-3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.m0000000000000000^8#18446744073709551615#8#18446744073709551615#18446744073709551615#0#---2@212"Property 'companySiteID' requires method 'setCompanySiteID:' to be defined - use @synthesize, @dynamic or provide a method implementation in /Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.h-351437890#18446744073709551615#0#-0#-3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.h0000000000000000^13#40#13#40#18446744073709551615#0#---2@22"Implementation is here-351437890#1424#111#-0#-3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.m0000000000000000^23#0#23#0#18446744073709551615#0#14"Semantic Issue--1#-3@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.h0000000000000000^13#40#13#40#18446744073709551615#0#14"Semantic Issue--0#0#0#-19%DVTDocumentLocation5@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactListTableViewController.m0000000000000000^2578"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactListTableViewController.o" "SBS CRM/contactListTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactListTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactListTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactListTableViewController.o"36"A6D200CC-B31F-48AF-9568-AF721BE4B827-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactSearch.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactSearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.094627
+e351437890.160109
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactSearch.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/contactSearch.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection62"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/contactSearch.maa64184284f2b441^9413294284f2b441^---0#0#0#-19%DVTDocumentLocation2@74"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/contactSearch.m0000000000000000^2493"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactSearch.o" "SBS CRM/contactSearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactSearch.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/contactSearch.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactSearch.o"36"F54E938A-97FE-4EC0-8EFD-44801196EFAA-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.058720
+e351437890.353515
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactsTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.m:16:1: warning: incomplete implementation [-Wincomplete-implementation,3]
+o @implementation contactsTableViewController
+o ^
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.h:40:1: note: method definition for 'reloadCoreData' not found [3]
+o - (void)reloadCoreData;
+o ^
+o1 warning generated.
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.m1a350f4284f2b441^dc815a4284f2b441^-379"/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.m:16:1: warning: incomplete implementation [-Wincomplete-implementation,3] @implementation contactsTableViewController ^/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.h:40:1: note: method definition for 'reloadCoreData' not found [3] - (void)reloadCoreData; ^1 warning generated.1(21%IDEActivityLogMessage2@25"Incomplete implementation-351437890#0#145#1(2@48"Method definition for 'reloadCoreData' not found-351437890#193#137#-0#-23%DVTTextDocumentLocation3@78"file://localhost/Users/tom.c/Documents/SBS%20CRM/contactsTableViewController.h0000000000000000^39#0#39#0#18446744073709551615#0#14"Semantic Issue--1#-3@78"file://localhost/Users/tom.c/Documents/SBS%20CRM/contactsTableViewController.m0000000000000000^15#0#15#0#18446744073709551615#0#14"Semantic Issue--0#0#0#-19%DVTDocumentLocation4@91"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/../contactsTableViewController.m0000000000000000^2569"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactsTableViewController.o" "SBS CRM/../contactsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactsTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/../contactsTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/contactsTableViewController.o"36"01503D2E-A0FB-4875-829C-E2557CDEC359-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventDetailsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventDetailsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.305026
+e351437890.677040
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventDetailsTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventDetailsTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection83"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/../eventDetailsTableViewController.mee3f4e4284f2b441^d480b14284f2b441^---0#0#0#-19%DVTDocumentLocation2@95"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/../eventDetailsTableViewController.m0000000000000000^2589"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventDetailsTableViewController.o" "SBS CRM/../eventDetailsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventDetailsTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventDetailsTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventDetailsTableViewController.o"36"FA631853-2E04-4706-8007-CF36BE9D1BD9-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventSearch.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/eventSearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.446897
+e351437890.538238
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventSearch.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/eventSearch.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection60"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/eventSearch.m151b734284f2b441^86e3894284f2b441^---0#0#0#-19%DVTDocumentLocation2@72"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/eventSearch.m0000000000000000^2483"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventSearch.o" "SBS CRM/eventSearch.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventSearch.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/eventSearch.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventSearch.o"36"AA517779-DF39-473D-AF0A-09C388EB9812-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventsListTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventsListTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.355030
+e351437890.626347
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventsListTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventsListTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/../eventsListTableViewController.maa105b4284f2b441^a16aa04284f2b441^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/../eventsListTableViewController.m0000000000000000^2579"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventsListTableViewController.o" "SBS CRM/../eventsListTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventsListTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/../eventsListTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/eventsListTableViewController.o"36"403E94DD-26E6-45F3-B6FB-9E012EB6A36C-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/loginViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/loginViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.298793
+e351437889.560006
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/loginViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/loginViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection68"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/loginViewController.m8ba94c4184f2b441^93c78f4184f2b441^---0#0#0#-19%DVTDocumentLocation2@80"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/loginViewController.m0000000000000000^2523"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/loginViewController.o" "SBS CRM/loginViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/loginViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/loginViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/loginViewController.o"36"497BD79C-2B77-4262-BB76-7E9D8563347C-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/main.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/main.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.298135
+e351437889.373242
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/main.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/main.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/main.m30804c4184f2b441^f59d5f4184f2b441^---0#0#0#-19%DVTDocumentLocation2@65"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/main.m0000000000000000^2448"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/main.o" "SBS CRM/main.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/main.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/main.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/main.o"36"9924F3D5-649E-45E3-9DCC-A39FCD78DC3D-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/mapViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/mapViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.161422
+e351437890.333222
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/mapViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/mapViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection66"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/mapViewController.mc87b294284f2b441^e960554284f2b441^---0#0#0#-19%DVTDocumentLocation2@78"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/mapViewController.m0000000000000000^2513"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/mapViewController.o" "SBS CRM/mapViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/mapViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/mapViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/mapViewController.o"36"440B91AB-F934-4DC6-BA74-43688B3308BF-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/moreTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.553001
+e351437889.680350
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/moreTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m:85:2: warning: #warning Potentially incomplete method implementation. [-W#warnings,7]
+o #warning Potentially incomplete method implementation.
+o  ^
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m:92:2: warning: #warning Incomplete method implementation. [-W#warnings,7]
+o #warning Incomplete method implementation.
+o  ^
+o2 warnings generated.
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection72"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.mcfbf8d4184f2b441^700bae4184f2b441^-420"/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m:85:2: warning: #warning Potentially incomplete method implementation. [-W#warnings,7] #warning Potentially incomplete method implementation.  ^/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m:92:2: warning: #warning Incomplete method implementation. [-W#warnings,7] #warning Incomplete method implementation.  ^2 warnings generated.2(21%IDEActivityLogMessage2@54"#warning Potentially incomplete method implementation.-351437889#0#151#-1#-23%DVTTextDocumentLocation3@84"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/moreTableViewController.m0000000000000000^84#1#84#1#18446744073709551615#0#18"#warning Directive--2@42"#warning Incomplete method implementation.-351437889#211#139#-1#-3@84"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/moreTableViewController.m0000000000000000^91#1#91#1#18446744073709551615#0#18"#warning Directive--0#0#0#-19%DVTDocumentLocation4@84"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/moreTableViewController.m0000000000000000^2543"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/moreTableViewController.o" "SBS CRM/moreTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/moreTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/moreTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/moreTableViewController.o"36"4E658363-8CD1-4CA6-AEAF-FDDA6178D249-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/myEventsTableViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.561369
+e351437889.923430
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/myEventsTableViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m:279:2: warning: #warning Potentially incomplete method implementation. [-W#warnings,7]
+o #warning Potentially incomplete method implementation.
+o  ^
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m:286:2: warning: #warning Incomplete method implementation. [-W#warnings,7]
+o #warning Incomplete method implementation.
+o  ^
+o/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m:648:21: warning: unused variable 'searchArray' [-Wunused-variable,12]
+o     NSMutableArray *searchArray = [[NSMutableArray alloc] init];
+o                     ^
+o3 warnings generated.
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.mb3ea8f4184f2b441^f871ec4184f2b441^-658"/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m:279:2: warning: #warning Potentially incomplete method implementation. [-W#warnings,7] #warning Potentially incomplete method implementation.  ^/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m:286:2: warning: #warning Incomplete method implementation. [-W#warnings,7] #warning Incomplete method implementation.  ^/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m:648:21: warning: unused variable 'searchArray' [-Wunused-variable,12]     NSMutableArray *searchArray = [[NSMutableArray alloc] init];                     ^3 warnings generated.3(21%IDEActivityLogMessage2@54"#warning Potentially incomplete method implementation.-351437889#0#156#-1#-23%DVTTextDocumentLocation3@88"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/myEventsTableViewController.m0000000000000000^278#1#278#1#18446744073709551615#0#18"#warning Directive--2@42"#warning Incomplete method implementation.-351437889#216#144#-1#-3@88"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/myEventsTableViewController.m0000000000000000^285#1#285#1#18446744073709551615#0#18"#warning Directive--2@29"Unused variable 'searchArray'-351437889#408#139#-1#-3@88"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/myEventsTableViewController.m0000000000000000^647#20#647#20#18446744073709551615#0#19"Unused Entity Issue--0#0#0#-19%DVTDocumentLocation4@88"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/myEventsTableViewController.m0000000000000000^2563"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/myEventsTableViewController.o" "SBS CRM/myEventsTableViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/myEventsTableViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/myEventsTableViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/myEventsTableViewController.o"36"904AEBC2-EBE6-46ED-837B-92B63FF174D4-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/syncData.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/syncData.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437889.677787
+e351437890.003410
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/syncData.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/syncData.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection57"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/syncData.m4ab3ad4184f2b441^88f7004284f2b441^---0#0#0#-19%DVTDocumentLocation2@69"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/syncData.m0000000000000000^2468"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/syncData.o" "SBS CRM/syncData.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/syncData.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/syncData.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/syncData.o"36"74D10A48-B30F-4BD5-A6D0-0829244AE7F9-
+
+CCompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/textViewController.o" "/Users/tom.c/Documents/SBS CRM/SBS CRM/textViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437890.334565
+e351437890.445580
+r1
+xCompileC
+xbuild/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/textViewController.o
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/textViewController.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection67"Compile /Users/tom.c/Documents/SBS CRM/SBS CRM/textViewController.m75cc554284f2b441^7924724284f2b441^---0#0#0#-19%DVTDocumentLocation2@79"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/textViewController.m0000000000000000^2518"CompileC "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/textViewController.o" "SBS CRM/textViewController.m" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -include "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch" -MMD -MT dependencies -MF "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/textViewController.d" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/textViewController.m" -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/textViewController.o"36"5D8AB2BC-F457-43D9-8EC8-A2CD6678003F-
+
+CCompileStoryboard "/Users/tom.c/Documents/SBS CRM/SBS CRM/../Storyboard.storyboard"
+s351437890.925829
+e351437893.705556
+r1
+xCompileStoryboard
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/../Storyboard.storyboard
+o/* com.apple.ibtool.document.warnings */
+o/Users/tom.c/Documents/SBS CRM/Storyboard.storyboard:p5L-Jm-SVN: warning: Prototype table cells must have reuse identifiers [9]
+o/Users/tom.c/Documents/SBS CRM/Storyboard.storyboard:DVg-2f-3UU: warning: Prototype table cells must have reuse identifiers [9]
+o/Users/tom.c/Documents/SBS CRM/Storyboard.storyboard:u7p-tU-SJg: warning: Prototype table cells must have reuse identifiers [9]
+o/Users/tom.c/Documents/SBS CRM/Storyboard.storyboard:tsa-hB-a01: warning: Prototype table cells must have reuse identifiers [9]
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection52"CompileStoryboard "SBS CRM/../Storyboard.storyboard"541aed4284f2b441^419fb44584f2b441^-553"/* com.apple.ibtool.document.warnings *//Users/tom.c/Documents/SBS CRM/Storyboard.storyboard:p5L-Jm-SVN: warning: Prototype table cells must have reuse identifiers [9]/Users/tom.c/Documents/SBS CRM/Storyboard.storyboard:DVg-2f-3UU: warning: Prototype table cells must have reuse identifiers [9]/Users/tom.c/Documents/SBS CRM/Storyboard.storyboard:u7p-tU-SJg: warning: Prototype table cells must have reuse identifiers [9]/Users/tom.c/Documents/SBS CRM/Storyboard.storyboard:tsa-hB-a01: warning: Prototype table cells must have reuse identifiers [9]4(21%IDEActivityLogMessage2@49"Prototype table cells must have reuse identifiers-351437893#18446744073709551615#0#-1#-23%DVTTextDocumentLocation3@70"file://localhost/Users/tom.c/Documents/SBS%20CRM/Storyboard.storyboard0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#25"Unsupported Configuration--2@49"Prototype table cells must have reuse identifiers-351437893#18446744073709551615#0#-1#-3@70"file://localhost/Users/tom.c/Documents/SBS%20CRM/Storyboard.storyboard0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#25"Unsupported Configuration--2@49"Prototype table cells must have reuse identifiers-351437893#18446744073709551615#0#-1#-3@70"file://localhost/Users/tom.c/Documents/SBS%20CRM/Storyboard.storyboard0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#25"Unsupported Configuration--2@49"Prototype table cells must have reuse identifiers-351437893#18446744073709551615#0#-1#-3@70"file://localhost/Users/tom.c/Documents/SBS%20CRM/Storyboard.storyboard0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#25"Unsupported Configuration--0#0#0#-19%DVTDocumentLocation4@83"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/../Storyboard.storyboard0000000000000000^662"CompileStoryboard "SBS CRM/../Storyboard.storyboard"    cd "/Users/tom.c/Documents/SBS CRM"    setenv IBSC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Developer/usr/bin/..    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Storyboard.storyboardc" "/Users/tom.c/Documents/SBS CRM/SBS CRM/../Storyboard.storyboard" --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk36"AF15F894-1731-462D-BDDE-E9155B6C7CD0-
+
+CCompileXIB "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.xib"
+s351437890.930006
+e351437892.083886
+r1
+xCompileXIB
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.xib
+oFeb 20 13:38:11 Pauls-MacBook-Pro.local ibtoold[2542] <Error>: CGContextGetBaseCTM: invalid context 0x0
+oFeb 20 13:38:11 Pauls-MacBook-Pro.local ibtoold[2542] <Error>: CGContextConvertSizeToDeviceSpace: invalid context 0x0
+oFeb 20 13:38:11 Pauls-MacBook-Pro.local ibtoold[2542] <Error>: CGContextConvertSizeToUserSpace: invalid context 0x0
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection71"Compiling /Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.xib7f2eee4284f2b441^e179154484f2b441^-338"Feb 20 13:38:11 Pauls-MacBook-Pro.local ibtoold[2542] <Error>: CGContextGetBaseCTM: invalid context 0x0Feb 20 13:38:11 Pauls-MacBook-Pro.local ibtoold[2542] <Error>: CGContextConvertSizeToDeviceSpace: invalid context 0x0Feb 20 13:38:11 Pauls-MacBook-Pro.local ibtoold[2542] <Error>: CGContextConvertSizeToUserSpace: invalid context 0x0-0#0#0#-19%DVTDocumentLocation2@81"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/EventTableViewCell.xib0000000000000000^650"CompileXIB "SBS CRM/EventTableViewCell.xib"    cd "/Users/tom.c/Documents/SBS CRM"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Developer/usr/bin/..    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/EventTableViewCell.nib" "/Users/tom.c/Documents/SBS CRM/SBS CRM/EventTableViewCell.xib" --sdk /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk36"5050AA42-AA28-460B-9BA0-6EC79ACFCDEE-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/177-building.png" "SBS CRM/177-building.png"
+s351437891.048501
+e351437891.150869
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/177-building.png
+xSBS CRM/177-building.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/177-building.png" "SBS CRM/177-building.png"b6800c4384f2b441^a19e264384f2b441^---0#0#0#-19%DVTDocumentLocation2@75"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/177-building.png0000000000000000^559"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/177-building.png" "SBS CRM/177-building.png"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/SBS CRM/177-building.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/177-building.png"36"BCC23507-1C3A-4322-8CA1-7AC51E1F6E79-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/233px-Microsoft_Word_Icon.svg.png" "SBS CRM/233px-Microsoft_Word_Icon.svg.png"
+s351437891.157163
+e351437891.388734
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/233px-Microsoft_Word_Icon.svg.png
+xSBS CRM/233px-Microsoft_Word_Icon.svg.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection124"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/233px-Microsoft_Word_Icon.svg.png" "SBS CRM/233px-Microsoft_Word_Icon.svg.png"9352284384f2b441^90a1634384f2b441^---0#0#0#-19%DVTDocumentLocation2@92"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/233px-Microsoft_Word_Icon.svg.png0000000000000000^627"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/233px-Microsoft_Word_Icon.svg.png" "SBS CRM/233px-Microsoft_Word_Icon.svg.png"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/SBS CRM/233px-Microsoft_Word_Icon.svg.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/233px-Microsoft_Word_Icon.svg.png"36"712EC198-3F49-4B87-B5BA-71C03897BCCA-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/83-calendar.png" "SBS CRM/83-calendar.png"
+s351437890.926304
+e351437891.034352
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/83-calendar.png
+xSBS CRM/83-calendar.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/83-calendar.png" "SBS CRM/83-calendar.png"902fed4284f2b441^19cb084384f2b441^---0#0#0#-19%DVTDocumentLocation2@74"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/83-calendar.png0000000000000000^555"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/83-calendar.png" "SBS CRM/83-calendar.png"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/SBS CRM/83-calendar.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/83-calendar.png"36"3A720055-A74A-491F-A171-1700D34AC21D-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default.png" Default.png
+s351437891.559861
+e351437892.004144
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default.png
+xDefault.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Default.png" Default.png88698f4384f2b441^471d014484f2b441^---0#0#0#-19%DVTDocumentLocation2@60"file://localhost/Users/tom.c/Documents/SBS%20CRM/Default.png0000000000000000^521"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Default.png" Default.png    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/Default.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default.png"36"260B861B-E59D-43F5-BBD6-BD2EA0CC05ED-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default@2x.png" Default@2x.png
+s351437891.643319
+e351437892.056238
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default@2x.png
+xDefault@2x.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Default@2x.png" Default@2x.pngebc5a44384f2b441^38650e4484f2b441^---0#0#0#-19%DVTDocumentLocation2@63"file://localhost/Users/tom.c/Documents/SBS%20CRM/Default@2x.png0000000000000000^535"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Default@2x.png" "Default@2x.png"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/Default@2x.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Default@2x.png"36"7BA5D0C3-078A-486E-8338-01764B0E2D8E-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Excel2007.PNG" "SBS CRM/Excel2007.PNG"
+s351437891.155335
+e351437891.440844
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Excel2007.PNG
+xSBS CRM/Excel2007.PNG
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection84"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Excel2007.PNG" "SBS CRM/Excel2007.PNG"ecdd274384f2b441^e4da704384f2b441^---0#0#0#-19%DVTDocumentLocation2@72"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/Excel2007.PNG0000000000000000^547"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Excel2007.PNG" "SBS CRM/Excel2007.PNG"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Excel2007.PNG" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Excel2007.PNG"36"96B36B20-838E-4D5C-B26A-8EA4B2F234A1-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon.png" "SBS CRM/../Icon.png"
+s351437891.442156
+e351437891.558534
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon.png
+xSBS CRM/../Icon.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection77"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Icon.png" "SBS CRM/../Icon.png"494b714384f2b441^8ffb8e4384f2b441^---0#0#0#-19%DVTDocumentLocation2@70"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/../Icon.png0000000000000000^533"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Icon.png" "SBS CRM/../Icon.png"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/SBS CRM/../Icon.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon.png"36"F65101A1-96DA-4A2C-B29A-B60570550B27-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon.png" "SBS CRM/Icon.png"
+s351437891.390030
+e351437891.515434
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon.png
+xSBS CRM/Icon.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Icon.png" "SBS CRM/Icon.png"07ef634384f2b441^8cf3834384f2b441^---0#0#0#-19%DVTDocumentLocation2@67"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/Icon.png0000000000000000^527"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Icon.png" "SBS CRM/Icon.png"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/SBS CRM/Icon.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon.png"36"1F3189E0-7E15-41F0-A8B8-C9BDBBDD37C4-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon@2x.png" "SBS CRM/../Icon@2x.png"
+s351437891.516798
+e351437891.642051
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon@2x.png
+xSBS CRM/../Icon@2x.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection83"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Icon@2x.png" "SBS CRM/../Icon@2x.png"8864844384f2b441^056ba44384f2b441^---0#0#0#-19%DVTDocumentLocation2@73"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/../Icon@2x.png0000000000000000^545"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/Icon@2x.png" "SBS CRM/../Icon@2x.png"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/SBS CRM/../Icon@2x.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Icon@2x.png"36"945B20DE-DB91-43F4-AFAA-973732DBAF06-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrow.png" "SBS CRM/arrow.png"
+s351437890.931392
+e351437891.047185
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrow.png
+xSBS CRM/arrow.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/arrow.png" "SBS CRM/arrow.png"9087ee4284f2b441^62140c4384f2b441^---0#0#0#-19%DVTDocumentLocation2@68"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/arrow.png0000000000000000^531"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/arrow.png" "SBS CRM/arrow.png"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/SBS CRM/arrow.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrow.png"36"3A0548A0-04DB-4365-988B-658DD8BD06FD-
+
+CCopyPNGFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrowwhite.png" "SBS CRM/arrowwhite.png"
+s351437891.035738
+e351437891.154005
+r1
+xCopyPNGFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrowwhite.png
+xSBS CRM/arrowwhite.png
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/arrowwhite.png" "SBS CRM/arrowwhite.png"1041094384f2b441^b073274384f2b441^---0#0#0#-19%DVTDocumentLocation2@73"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/arrowwhite.png0000000000000000^551"CopyPNGFile "build/Debug-iphoneos/SBS CRM.app/arrowwhite.png" "SBS CRM/arrowwhite.png"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    "/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/PrivatePlugIns/iPhoneOS Build System Support.xcplugin/Contents/Resources/copypng" -compress "" "/Users/tom.c/Documents/SBS CRM/SBS CRM/arrowwhite.png" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/arrowwhite.png"36"A8896B3E-D481-4A0E-9B20-EB7C09571F46-
+
+CCopyStringsFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/en.lproj/InfoPlist.strings" "SBS CRM/en.lproj/InfoPlist.strings"
+s351437890.925831
+e351437890.930170
+r1
+xCopyStringsFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/en.lproj/InfoPlist.strings
+xSBS CRM/en.lproj/InfoPlist.strings
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection39"Copy SBS CRM/en.lproj/InfoPlist.strings3b18ed4284f2b441^5c1fee4284f2b441^---0#0#0#-19%DVTDocumentLocation2@85"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/en.lproj/InfoPlist.strings0000000000000000^484"CopyStringsFile "build/Debug-iphoneos/SBS CRM.app/en.lproj/InfoPlist.strings" "SBS CRM/en.lproj/InfoPlist.strings"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/en.lproj" -- "SBS CRM/en.lproj/InfoPlist.strings"36"8F60A9A6-FCD8-4DD8-9B0E-79F171A3246B-
+
+CCopyTiffFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/icon.tiff" "SBS CRM/icon.tiff"
+s351437891.152204
+e351437891.155838
+r1
+xCopyTiffFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/icon.tiff
+xSBS CRM/icon.tiff
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection22"Copy SBS CRM/icon.tiff4510274384f2b441^21e9274384f2b441^---0#0#0#-19%DVTDocumentLocation2@68"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/icon.tiff0000000000000000^361"CopyTiffFile "build/Debug-iphoneos/SBS CRM.app/icon.tiff" "SBS CRM/icon.tiff"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copyTiff --outdir "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app" -- "SBS CRM/icon.tiff"36"EB471513-C79C-49C3-864F-CEF7EFABDD46-
+
+CCpResource "SBS CRM/../TestFlightSDK0-1/README.txt" "build/Debug-iphoneos/SBS CRM.app/README.txt"
+s351437892.005414
+e351437892.013454
+r1
+xCpResource
+xSBS CRM/../TestFlightSDK0-1/README.txt
+xbuild/Debug-iphoneos/SBS CRM.app/README.txt
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"Copy build/Debug-iphoneos/SBS CRM.app/README.txt7078014484f2b441^897c034484f2b441^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/tom.c/Documents/SBS%20CRM/build/Debug-iphoneos/SBS%20CRM.app/README.txt00f4b8a9ddffdf42^512"CpResource "SBS CRM/../TestFlightSDK0-1/README.txt" "build/Debug-iphoneos/SBS CRM.app/README.txt"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/tom.c/Documents/SBS CRM/SBS CRM/../TestFlightSDK0-1/README.txt" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"36"5682BDF0-0021-4A74-8E1E-FE90E9EC1D6F-
+
+CCpResource "SBS CRM/../TestFlightSDK0-1/release_notes.txt" "build/Debug-iphoneos/SBS CRM.app/release_notes.txt"
+s351437892.014731
+e351437892.017384
+r1
+xCpResource
+xSBS CRM/../TestFlightSDK0-1/release_notes.txt
+xbuild/Debug-iphoneos/SBS CRM.app/release_notes.txt
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection55"Copy build/Debug-iphoneos/SBS CRM.app/release_notes.txt48dc034484f2b441^9f72044484f2b441^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/tom.c/Documents/SBS%20CRM/build/Debug-iphoneos/SBS%20CRM.app/release_notes.txt00f4b8a9ddffdf42^533"CpResource "SBS CRM/../TestFlightSDK0-1/release_notes.txt" "build/Debug-iphoneos/SBS CRM.app/release_notes.txt"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/tom.c/Documents/SBS CRM/SBS CRM/../TestFlightSDK0-1/release_notes.txt" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"36"7FE3B01E-5E36-4779-AACC-374DE071A395-
+
+CCpResource "SBS CRM/suttleworth_r1_c2.jpg" "build/Debug-iphoneos/SBS CRM.app/suttleworth_r1_c2.jpg"
+s351437890.925833
+e351437890.928630
+r1
+xCpResource
+xSBS CRM/suttleworth_r1_c2.jpg
+xbuild/Debug-iphoneos/SBS CRM.app/suttleworth_r1_c2.jpg
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection59"Copy build/Debug-iphoneos/SBS CRM.app/suttleworth_r1_c2.jpgd314ed4284f2b441^28bbed4284f2b441^---0#0#0#-19%DVTDocumentLocation2@105"file://localhost/Users/tom.c/Documents/SBS%20CRM/build/Debug-iphoneos/SBS%20CRM.app/suttleworth_r1_c2.jpg00f4b8a9ddffdf42^505"CpResource "SBS CRM/suttleworth_r1_c2.jpg" "build/Debug-iphoneos/SBS CRM.app/suttleworth_r1_c2.jpg"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/tom.c/Documents/SBS CRM/SBS CRM/suttleworth_r1_c2.jpg" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"36"28EAEE34-BE06-41F5-9C19-11FB74231D30-
+
+CCpResource /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/ResourceRules.plist "build/Debug-iphoneos/SBS CRM.app/ResourceRules.plist"
+s351437888.945914
+e351437888.951802
+r1
+xCpResource
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/ResourceRules.plist
+xbuild/Debug-iphoneos/SBS CRM.app/ResourceRules.plist
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection57"Copy build/Debug-iphoneos/SBS CRM.app/ResourceRules.plist0ec0f24084f2b441^1fd6f34084f2b441^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/tom.c/Documents/SBS%20CRM/build/Debug-iphoneos/SBS%20CRM.app/ResourceRules.plist00f4b8a9ddffdf42^588"CpResource /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/ResourceRules.plist "build/Debug-iphoneos/SBS CRM.app/ResourceRules.plist"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/ResourceRules.plist "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"36"338EB7BE-5977-4040-B7A7-C7FD31C3F0CE-
+
+CDataModelVersionCompile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS_CRM.momd" "/Users/tom.c/Documents/SBS CRM/SBS CRM/SBS_CRM.xcdatamodeld"
+s351437888.962274
+e351437889.227067
+r1
+xDataModelVersionCompile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS_CRM.momd
+x/Users/tom.c/Documents/SBS CRM/SBS CRM/SBS_CRM.xcdatamodeld
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"DataModelVersionCompile "build/Debug-iphoneos/SBS CRM.app/SBS_CRM.momd" "SBS CRM/SBS_CRM.xcdatamodeld"7979f64084f2b441^de203a4184f2b441^---0#0#0#-19%DVTDocumentLocation2@80"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/SBS_CRM.xcdatamodeld/0000000000000000^580"DataModelVersionCompile "build/Debug-iphoneos/SBS CRM.app/SBS_CRM.momd" "SBS CRM/SBS_CRM.xcdatamodeld"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc -XD_MOMC_SDKROOT=/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -MOMC_PLATFORMS iphonesimulator -MOMC_PLATFORMS iphoneos "/Users/tom.c/Documents/SBS CRM/SBS CRM/SBS_CRM.xcdatamodeld" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS_CRM.momd"36"89C763A1-E1B9-4087-990B-9A252D008D4A-
+
+CGenerateDSYMFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app.dSYM" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRM"
+s351437890.829590
+e351437890.916850
+r1
+xGenerateDSYMFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app.dSYM
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRM
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Generating /Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app.dSYM5470d44284f2b441^e5b5ea4284f2b441^---0#0#0#-19%DVTDocumentLocation2@88"file://localhost/Users/tom.c/Documents/SBS%20CRM/build/Debug-iphoneos/SBS%20CRM.app.dSYM00f4b8a9ddffdf42^444"GenerateDSYMFile "build/Debug-iphoneos/SBS CRM.app.dSYM" "build/Debug-iphoneos/SBS CRM.app/SBS CRM"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRM" -o "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app.dSYM"36"849B04CC-13EF-4510-BC2E-845170666E87-
+
+CLd "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRM" normal armv7
+s351437890.733209
+e351437890.822774
+r1
+xLd
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRM
+xnormal
+xarmv7
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Link /Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRMe1d0bb4284f2b441^94a1d24284f2b441^---0#0#0#--1096"Ld "build/Debug-iphoneos/SBS CRM.app/SBS CRM" normal armv7    cd "/Users/tom.c/Documents/SBS CRM"    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -arch armv7 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk "-L/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" "-L/Users/tom.c/Documents/SBS CRM/../../Downloads/TestFlightSDK0" "-L/Users/tom.c/Documents/SBS CRM/TestFlightSDK0-1" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -filelist "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/Objects-normal/armv7/SBS CRM.LinkFileList" -dead_strip -lxml2 -lxml2 -lxml2 -fobjc-arc -miphoneos-version-min=5.0 -lz -framework MapKit -framework QuartzCore -framework Security -framework UIKit -framework Foundation -framework CoreGraphics -framework CoreData -lTestFlight -o "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/SBS CRM"36"B0465F57-4C46-40C9-9391-F2F16E6463D4-
+
+CProcessInfoPlistFile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Info.plist" "SBS CRM/SBS CRM-Info.plist"
+s351437888.948135
+e351437888.954054
+r1
+xProcessInfoPlistFile
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Info.plist
+xSBS CRM/SBS CRM-Info.plist
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection34"Process SBS CRM/SBS CRM-Info.plist1020f34084f2b441^b03cf44084f2b441^---0#0#0#-19%DVTDocumentLocation2@79"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/SBS%20CRM-Info.plist0000000000000000^644"ProcessInfoPlistFile "build/Debug-iphoneos/SBS CRM.app/Info.plist" "SBS CRM/SBS CRM-Info.plist"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility "SBS CRM/SBS CRM-Info.plist" -genpkginfo "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/PkgInfo" -expandbuildsettings -format binary -platform iphoneos -resourcerulesfile "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/ResourceRules.plist" -o "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/Info.plist"36"9A2BB58A-8086-4CFC-B1B2-C5145F1D90F0-
+
+CProcessPCH "/Users/tom.c/Library/Developer/Xcode/DerivedData/SBS_CRM-egovosinkmbudecjlqokdtjbmemh/Index/PrecompiledHeaders/SBS CRM-Prefix-bnwpzwwqgklwdmebjerrwptlrhif_ast/SBS CRM-Prefix.pch.pth" "SBS CRM/SBS CRM-Prefix.pch" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch.pth" "SBS CRM/SBS CRM-Prefix.pch" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s351437888.962312
+e351437889.291404
+r1
+xProcessPCH
+x/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch.pth
+xSBS CRM/SBS CRM-Prefix.pch
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Precompile SBS CRM/SBS CRM-Prefix.pch3884f64084f2b441^bb984a4184f2b441^---0#0#0#-19%DVTDocumentLocation2@79"file://localhost/Users/tom.c/Documents/SBS%20CRM/SBS%20CRM/SBS%20CRM-Prefix.pch0000000000000000^2501"ProcessPCH "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch.pth" "SBS CRM/SBS CRM-Prefix.pch" normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/tom.c/Documents/SBS CRM"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/clang -x objective-c-header -arch armv7 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk -gdwarf-2 -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=5.0 -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-generated-files.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-own-target-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-all-target-headers.hmap" -iquote "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM-project-headers.hmap" "-I/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/include" -I/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/usr/include/libxml2 "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources/armv7" "-I/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/DerivedSources" "-F/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos" -c "/Users/tom.c/Documents/SBS CRM/SBS CRM/SBS CRM-Prefix.pch" -o "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch.pth" -MMD -MT dependencies -MF "/var/folders/97/sd2vt6vs3bn7rcbvxw_t5z7m0000gp/C/com.apple.Xcode.502/SharedPrecompiledHeaders/SBS CRM-Prefix-ablaanrwersatcfzefivhnizlugd/SBS CRM-Prefix.pch.d"36"A0DC281A-78CA-444A-B312-6C56489E7662-
+
+CProcessProductPackaging "/Users/tom.c/Library/MobileDevice/Provisioning Profiles/E160A3F9-04C2-42C9-9322-498A8BD7359F.mobileprovision" "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/embedded.mobileprovision"
+s351437893.726055
+e351437893.730024
+r1
+xProcessProductPackaging
+x/Users/tom.c/Library/MobileDevice/Provisioning Profiles/E160A3F9-04C2-42C9-9322-498A8BD7359F.mobileprovision
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/embedded.mobileprovision
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection194"ProcessProductPackaging "/Users/tom.c/Library/MobileDevice/Provisioning Profiles/E160A3F9-04C2-42C9-9322-498A8BD7359F.mobileprovision" "build/Debug-iphoneos/SBS CRM.app/embedded.mobileprovision"31efb94584f2b441^cae2ba4584f2b441^---0#0#0#-19%DVTDocumentLocation2@108"file://localhost/Users/tom.c/Documents/SBS%20CRM/build/Debug-iphoneos/SBS%20CRM.app/embedded.mobileprovision0000000000000000^600"ProcessProductPackaging "/Users/tom.c/Library/MobileDevice/Provisioning Profiles/E160A3F9-04C2-42C9-9322-498A8BD7359F.mobileprovision" "build/Debug-iphoneos/SBS CRM.app/embedded.mobileprovision"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-productPackagingUtility "/Users/tom.c/Library/MobileDevice/Provisioning Profiles/E160A3F9-04C2-42C9-9322-498A8BD7359F.mobileprovision" -o "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app/embedded.mobileprovision"36"1D1BFD73-7F55-4372-B800-205E6684A9B1-
+
+CProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/Entitlements.plist "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM.xcent"
+s351437893.763241
+e351437893.780584
+r1
+xProcessProductPackaging
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/Entitlements.plist
+x/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM.xcent
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection177"ProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/Entitlements.plist "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM.xcent"4774c34584f2b441^5ad4c74584f2b441^---0#0#0#-19%DVTDocumentLocation2@117"file://localhost/Users/tom.c/Documents/SBS%20CRM/build/SBS%20CRM.build/Debug-iphoneos/SBS%20CRM.build/SBS%20CRM.xcent00f4b8a9ddffdf42^592"ProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/Entitlements.plist "build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM.xcent"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-productPackagingUtility /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/Entitlements.plist -entitlements -format xml -o "/Users/tom.c/Documents/SBS CRM/build/SBS CRM.build/Debug-iphoneos/SBS CRM.build/SBS CRM.xcent"36"2C60A3BE-FA37-4A2B-8C94-E09DD0235ECD-
+
+CTouch "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"
+s351437893.739594
+e351437893.754553
+r1
+xTouch
+x/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection69"Touch /Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app2576bd4584f2b441^b72ac14584f2b441^---0#0#0#--293"Touch "build/Debug-iphoneos/SBS CRM.app"    cd "/Users/tom.c/Documents/SBS CRM"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c "/Users/tom.c/Documents/SBS CRM/build/Debug-iphoneos/SBS CRM.app"36"412A2729-1765-4438-A648-F703810CBF3D-
+

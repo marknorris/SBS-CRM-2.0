@@ -7,19 +7,25 @@
 //
 
 #import "eventsListTableViewController.h"
-#import "syncData.h"
 #import "EventTableViewCell.h"
 #import "eventDetailsTableViewController.h"
+#import "fetchXML.h"
+#import "XMLParser.h"
+
+@interface  eventsListTableViewController(){
+        UIActivityIndicatorView *refreshSpinner;
+        BOOL fetchingSearchResults;
+}
+- (void)refreshTableView:(NSArray *)eventsArray;
+@end 
 
 @implementation eventsListTableViewController
 
 @synthesize company;
 @synthesize contact;
+@synthesize advancedURL;
+@synthesize orderByCreatedDate;
 
-//@synthesize companySiteID;
-//@synthesize contactID;
-
-@synthesize viewTitle;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,176 +36,6 @@
     return self;
 }
 
-- (void)getData{
-    //reload data from server asynchronously
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{  
-        
-        BOOL loaded =  [self getDataFromServer];
-        
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if (!loaded)
-            {
-                //alert user the are not connected to the server
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fetch data" message:@"Could not retrieve the data" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-            }
-            // put the data into the table
-            //[self refreshTableView];
-            [self.tableView reloadData];
-        });
-    });
-}
-
-- (BOOL)getDataFromServer{
-    
-    UIApplication *app = [UIApplication sharedApplication];  
-    [app setNetworkActivityIndicatorVisible:YES]; 
-    //get the data from the server
-    NSError* error = nil;    
-    //url will depend on the query
-    NSURL *url;
-    if (contact) // if there is a contact ID perform the search by contact
-    {
-        url = [[NSURL alloc] initWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchEventsByContact?searchContactID=%@",contact.contactID]];
-    }
-    else if (company) // if there is a company site id perform the search by company site
-    {
-        url = [[NSURL alloc] initWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchEventsByCompany?searchCompanySiteID=%@",company.companySiteID]];
-    }
-    else
-    {
-        // a contact id or site id are required to perform the search so return 0 to indicate failure.
-        return 0;
-    }
-    
-    NSString *xmlString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    //remove xmlns from the xml file 
-    xmlString = [xmlString stringByReplacingOccurrencesOfString:@"xmlns" withString:@"noNSxml"];
-    NSLog(@"xml string: %@",xmlString);
-    NSData *xmlData = [xmlString dataUsingEncoding:NSUTF8StringEncoding];
-    DDXMLDocument *eventsDocument = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:&error];
-    
-    [app setNetworkActivityIndicatorVisible:NO];
-    
-    if (error)
-        return NO;
-    
-    NSArray* nodes = nil;
-    nodes = [[eventsDocument rootElement] children];
-    
-    NSMutableArray *eventsArray = [[NSMutableArray alloc] init];
-    
-    for (DDXMLElement *element in nodes)
-    { 
-        eventSearch *currentEvent = [[eventSearch alloc] init];
-        DDXMLElement *eveNumber = [[element nodesForXPath:@"eveNumber" error:nil] objectAtIndex:0];
-        currentEvent.eveNumber = eveNumber.stringValue;
-        DDXMLElement *eveStatus = [[element nodesForXPath:@"eveStatus" error:nil] objectAtIndex:0];
-        currentEvent.eveStatus = eveStatus.stringValue;
-        DDXMLElement *eveTitle = [[element nodesForXPath:@"eveTitle" error:nil] objectAtIndex:0];
-        currentEvent.eveTitle = eveTitle.stringValue;
-        DDXMLElement *ourContactID = [[element nodesForXPath:@"ourContactID" error:nil] objectAtIndex:0];
-        currentEvent.ourContactID = ourContactID.stringValue;
-        DDXMLElement *eventType = [[element nodesForXPath:@"eventType" error:nil] objectAtIndex:0];
-        currentEvent.eventType = eventType.stringValue;
-        DDXMLElement *eventType2 = [[element nodesForXPath:@"eventType2" error:nil] objectAtIndex:0];
-        currentEvent.eventType2 = eventType2.stringValue;
-        DDXMLElement *eventPriority = [[element nodesForXPath:@"eventPriority" error:nil] objectAtIndex:0];
-        currentEvent.eventPriority = eventPriority.stringValue;
-        DDXMLElement *companySiteID = [[element nodesForXPath:@"companySiteID" error:nil] objectAtIndex:0];
-        currentEvent.companySiteID = companySiteID.stringValue;
-        DDXMLElement *eventID = [[element nodesForXPath:@"eventID" error:nil] objectAtIndex:0];
-        currentEvent.eventID = eventID.stringValue;
-        DDXMLElement *contactID = [[element nodesForXPath:@"contactID" error:nil] objectAtIndex:0];
-        currentEvent.contactID = contactID.stringValue;
-        DDXMLElement *eveComments = [[element nodesForXPath:@"eveComments" error:nil] objectAtIndex:0];
-        currentEvent.eveComments = eveComments.stringValue;
-        DDXMLElement *eveCreatedDate = [[element nodesForXPath:@"eveCreatedDate" error:nil] objectAtIndex:0];
-        currentEvent.eveCreatedDate = eveCreatedDate.stringValue;
-        DDXMLElement *eveCreatedTime = [[element nodesForXPath:@"eveCreatedTime" error:nil] objectAtIndex:0];
-        currentEvent.eveCreatedTime = eveCreatedTime.stringValue;        
-        DDXMLElement *eveDueDate = [[element nodesForXPath:@"eveDueDate" error:nil] objectAtIndex:0];
-        
-        NSString *stringDate = eveDueDate.stringValue;
-        if ([stringDate isEqualToString:@""])
-            stringDate = @"01/01/9999 00:00:00";
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"dd/MM/yyyy HH:mm:ss"];
-        currentEvent.eveDueDate = [df dateFromString:stringDate];
-
-        DDXMLElement *eveDueTime = [[element nodesForXPath:@"eveDueTime" error:nil] objectAtIndex:0];
-        currentEvent.eveDueTime = eveDueTime.stringValue;
-        DDXMLElement *eveEndDate = [[element nodesForXPath:@"eveEndDate" error:nil] objectAtIndex:0];
-        currentEvent.eveEndDate = eveEndDate.stringValue;
-        DDXMLElement *eveEndTime = [[element nodesForXPath:@"eveEndTime" error:nil] objectAtIndex:0];
-        currentEvent.eveEndTime = eveEndTime.stringValue;
-        DDXMLElement *eveCreatedBy = [[element nodesForXPath:@"eveCreatedBy" error:nil] objectAtIndex:0];
-        currentEvent.eveCreatedBy = eveCreatedBy.stringValue;
-        
-        [eventsArray addObject:currentEvent];
-    }
-    
-    NSSortDescriptor *dateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"eveDueDate"
-                                                 ascending:YES];
-    NSSortDescriptor *timeSortDescriptor = [[NSSortDescriptor alloc]
-                                            initWithKey:@"eveDueTime" ascending:YES];
-    NSArray *sortedArray = [eventsArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:dateSortDescriptor,timeSortDescriptor,nil]];
-    
-    //initialist the ordered array
-    orderedEventsArray = [[NSMutableArray alloc] init];
-    
-    //TODO make This better:
-    //once the events have been loaded, sort them into an array of dictionaries so they can be grouped on the tableview:
-    eventSearch *event = [sortedArray objectAtIndex:0];
-    NSDate *currentDate = event.eveDueDate;
-    NSMutableArray *tempIDArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [sortedArray count]; i++)
-    {
-        NSLog(@"currentDate:%@", currentDate);
-        event = [sortedArray objectAtIndex:i];
-        if ([event.eveDueDate isEqualToDate:currentDate])
-        {
-            [tempIDArray addObject:event];
-            NSLog(@"array count: %d",[tempIDArray count]);
-        }
-        else
-        {
-            
-            NSDateFormatter *df = [[NSDateFormatter alloc] init];
-            [df setDateStyle:NSDateFormatterMediumStyle];
-            NSString *dateString;
-            dateString = [df stringFromDate:currentDate];
-            if ([dateString isEqualToString:@"Jan 1, 1901"])
-                dateString = @"No Due Date";
-            NSDictionary *dict = [NSDictionary dictionaryWithObject:tempIDArray forKey:dateString];
-            [orderedEventsArray addObject:dict];
-            tempIDArray = [[NSMutableArray alloc] init];
-            [tempIDArray addObject:event];
-            currentDate = event.eveDueDate;
-            NSLog(@"array count: %d",[tempIDArray count]);
-        }
-    }
-    
-    //for last one
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateStyle:NSDateFormatterMediumStyle];
-    NSString *dateString;
-    dateString = [df stringFromDate:currentDate];
-    if ([dateString isEqualToString:@"Jan 1, 9999"])
-        dateString = @"No Due Date";
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:tempIDArray forKey:dateString];
-    [orderedEventsArray addObject:dict];
-    
-    
-    
-    
-    
-    
-    //NSLog(@"array count: %d",[eventsArray count]);
-    //NSLog(@"ordered array count: %d",[orderedEventsArray count]);
-    
-    return YES;
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -215,13 +51,21 @@
 {
     [super viewDidLoad];
     //eventsArray = [[NSMutableArray alloc] init];
-    [self getData];
+    fetchingSearchResults = NO;
+    //set up the activity spinner
+    refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    refreshSpinner.frame = CGRectMake(5, 0, 20, 20);
+    refreshSpinner.hidesWhenStopped = YES;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    orderedEventsArray = [[NSMutableArray alloc] init];
+    
+    //listen for the reloadcoredata notification when the tablview needs to refresh it's data.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getData) 
+                                                 name:@"reloadEventData"
+                                               object:nil];
+    
+    [self getData];
 }
 
 - (void)viewDidUnload
@@ -253,8 +97,60 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
+}
+
+
+
+//###############################################
+//#                                             #
+//#                                             #
+//#                  Get Data                   #
+//#                                             #
+//#                                             #
+//###############################################
+
+- (void)getData{
+    fetchingSearchResults = YES;
+    
+    //download the dom doc file.
+    fetchXML *getContactsDom = [[fetchXML alloc] initWithUrl:nil delegate:self className: @"EventSearch"];
+    
+    UIAlertView *connectionErrorAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    NSLog(@"advanced url: %@",advancedURL);
+    //depending on the dom document, set the appropriate URL
+    if (advancedURL)
+    {
+          NSLog(@"company: %@",company.coaCompanyName);
+        if (![getContactsDom fetchXMLWithURL:advancedURL])
+        {[connectionErrorAlert show]; return;} 
+        
+    }
+    else if (contact) // if there is a contact ID perform the search by contact
+    {
+        if (![getContactsDom fetchXMLWithURL:[appURL stringByAppendingFormat:@"/service1.asmx/searchEventsByContactABL?searchContactID=%@",contact.contactID]])
+        {[connectionErrorAlert show]; return;}
+    }
+    else if (company) // if there is a company site id perform the search by company site
+    {
+        if (![getContactsDom fetchXMLWithURL:[appURL stringByAppendingFormat:@"/service1.asmx/searchEventsByCompanyABL?searchCompanySiteID=%@",company.companySiteID]])
+        {[connectionErrorAlert show]; return;}
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Cannot determine URL" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    }
+
+}
+    
+-(void)docRecieved:(NSDictionary *)docDic:(id)sender{
+    NSString *classKey = [docDic objectForKey:@"ClassName"];
+    NSArray *eventsArray = [[[XMLParser alloc] init]parseXMLDoc:[docDic objectForKey:@"Document"] toClass:NSClassFromString(classKey)];
+    fetchingSearchResults = NO;
+    
+    
+    [self refreshTableView:eventsArray];
 }
 
 
@@ -262,26 +158,112 @@
 
 
 
+
+
+//###############################################
+//#                                             #
+//#                                             #
+//#          Prepare TableView Data             #
+//#                                             #
+//#                                             #
+//###############################################
+
+- (void)refreshTableView:(NSArray *)eventsArray{
+    //declare sort descriptors, order key and setup date formatters.
+    NSSortDescriptor *dateSortDescriptor, *timeSortDescriptor;
+    NSString *orderKey;
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+    NSDateFormatter *dfToDate = [[NSDateFormatter alloc] init];
+    [dfToDate setDateFormat:@"dd/MM/yyyy"];
+    
+    [orderedEventsArray removeAllObjects];
+    
+    if ([eventsArray count] == 0) { // if there are no results then reload the table view data and return;
+        [self.tableView reloadData]; return;
+    }
+    
+    // set the sort descriptors depending on whether the results are to be ordered by eveDueDate or eveCreatedDate.
+    if (!orderByCreatedDate){
+        dateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"eveDueDate" ascending:YES];
+        timeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"eveDueTime" ascending:YES];
+        orderKey = @"eveDueDate";
+    }
+    else {
+        dateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"eveCreatedDate" ascending:YES];
+        timeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"eveCreatedTime" ascending:YES];
+        orderKey = @"eveCreatedDate";
+    }
+    
+    // create an ordered array of the events
+    NSMutableArray *sortedArray = [[NSMutableArray alloc] initWithArray:[eventsArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:dateSortDescriptor,timeSortDescriptor,nil]]];
+    eventsArray = nil; // clear the events array
+    
+    //replace null dates with date to avoid issues with placing values in array, and sorting. NSNull, does not allow sorting using @selector(compare:)
+    for (EventSearch *eve in sortedArray)
+        if ([eve valueForKey:orderKey] == NULL) [eve setValue:[dfToDate dateFromString:@"01/01/9999"] forKey:orderKey];
+    
+    //get an ordered array of the unique dates, by selecting the unique values for orderKey (eveduedate or evecreated date), then resorting.
+    NSArray *uniqueDates = [[sortedArray valueForKeyPath:[NSString stringWithFormat:@"@distinctUnionOfObjects.%@",orderKey]] sortedArrayUsingSelector:@selector(compare:)];
+    
+    //loop through each of the unique dates and use a predicate to create an array of all events that match that date. Place them in to a dictionary, and then the dictionary array.
+    for (NSDate *currentDate in uniqueDates)
+    {
+        //set a predicate and get results. Strange formatting is because predicate with format automatically adds quotation marks when you use variable substitution.
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:[orderKey stringByAppendingString:@" == %@"], currentDate];
+        NSArray *filteredEventsArray = [sortedArray filteredArrayUsingPredicate:predicate];
+        
+        NSString *datestring;
+        NSDate *defaultDate = [dfToDate dateFromString:@"01/01/9999"];
+        NSLog(@"currentDate: %@",currentDate);
+        if ([currentDate isEqualToDate:defaultDate])
+            datestring = @"No Due Date";
+        else
+            datestring = [df stringFromDate:currentDate];
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:filteredEventsArray forKey:datestring];
+        [orderedEventsArray addObject:dict];
+    }
+    [self.tableView reloadData];
+}
+
+
+
+//###############################################
+//#                                             #
+//#                                             #
+//#               Table View                    #
+//#                                             #
+//#                                             #
+//###############################################
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return [orderedEventsArray count];
-    //return 1;
+    if (!fetchingSearchResults)
+    {
+        // Return the number of sections.
+        return [orderedEventsArray count];
+    }
+    else // if the tableview date is being fetched, the just display 1 section.
+        return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    NSDictionary *dict = [orderedEventsArray objectAtIndex:section];
-    NSArray *keys = [dict allKeys];
-    id key = [keys objectAtIndex:0];
-    NSArray *tArr = [dict objectForKey:key];
-    
-    return [tArr count];
-    //return [eventsArray count];
+    if (!fetchingSearchResults)
+    {
+        // Return the number of rows in the section.
+        NSDictionary *dict = [orderedEventsArray objectAtIndex:section];
+        NSArray *keys = [dict allKeys];
+        id key = [keys objectAtIndex:0];
+        NSArray *tArr = [dict objectForKey:key];
+        
+        return [tArr count];
+    }
+    else // if the tableview date is being fetched, the just display 0 cells.
+        return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:
@@ -296,7 +278,6 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    //return [NSString stringWithFormat:@"Events for %@",viewTitle];
     NSDictionary *dict = [orderedEventsArray objectAtIndex:section];
     NSArray *keys = [dict allKeys];
     id key = [keys objectAtIndex:0];
@@ -314,98 +295,86 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"EventTableViewCell" owner:self options:nil] objectAtIndex:0];
     }
 
-
     NSDictionary *dict = [orderedEventsArray objectAtIndex:indexPath.section];
     NSArray *keys = [dict allKeys];
     id key = [keys objectAtIndex:0];
     NSArray *tArr = [dict objectForKey:key];
     
-    eventSearch* event = [tArr objectAtIndex:indexPath.row];
+    EventSearch* event = [tArr objectAtIndex:indexPath.row];
 
-        cell.eventTitle.text = event.eveTitle;
+        cell.eventTitle.text = [@"EN" stringByAppendingFormat:[event.eveNumber stringByAppendingFormat:@" - %@",event.eveTitle]];
         cell.siteNameDesc.text = [company.cosSiteName stringByAppendingFormat:@" - %@",company.cosDescription];
         cell.eventComments.text = event.eveComments;
         cell.eventTypeType2.text = [event.eventType stringByAppendingFormat:@" - %@",event.eventType2];
-        //cell.siteNameDesc.text = [company.cosSiteName stringByAppendingFormat:@" - %@",company.cosDescription];
-        
+    if (orderByCreatedDate){
+        int hours = [event.eveCreatedTime integerValue] / 3600;
+        int minutes = ([event.eveCreatedTime integerValue] / 60) % 60;
+        cell.eventDueTime.text = [NSString stringWithFormat:@"%02d:%02d",hours,minutes];
+    }
+    else{
         int hours = [event.eveDueTime integerValue] / 3600;
         int minutes = ([event.eveDueTime integerValue] / 60) % 60;
         cell.eventDueTime.text = [NSString stringWithFormat:@"%02d:%02d",hours,minutes];
-        
-        /*
-         EventsCellData* currentCell = [[EventsCellData alloc] init];
-         currentCell.eventTitle = event.eveTitle;
-         currentCell.eventComments = event.eveComments;
-         currentCell.eventTypeType2 = cell.eventTypeType2.text;
-         currentCell.siteNameDesc = cell.siteNameDesc.text;
-         currentCell.eventDueTime = cell.eventDueTime.text;
-         [allEventsArray addObject:currentCell];
-         NSLog(@"COUNT OF EVENT CELL DATA: %d", [allEventsArray count]);
-         */
+    }
     
-    
-    
-    
-    
-    
-    // Configure the cell...
+    if ([event.eveStatus isEqualToString:@"9"]) {
+        cell.unreadClosedImage.hidden = false;
+        cell.unreadClosedImage.image = [UIImage imageNamed:@"circlered.png"];
+    }
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+    
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+// when fetching data, display a custom header that contains a refresh spinner.
+    if (fetchingSearchResults)
+    {
+        // create a view
+        UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 20)];
+    
+        [refreshSpinner startAnimating];
+        
+        customView.backgroundColor = [UIColor blackColor];
+        
+        UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        headerLabel.backgroundColor = [UIColor clearColor];
+        headerLabel.opaque = NO;
+        headerLabel.textColor = [UIColor whiteColor];
+        headerLabel.font = [UIFont boldSystemFontOfSize:18];
+        headerLabel.highlightedTextColor = [UIColor whiteColor];
+        headerLabel.frame = CGRectMake(30.0, 0.0, 200.0, 20.0);
+        
+        // If you want to align the header text as centered
+        // headerLabel.frame = CGRectMake(150.0, 0.0, 300.0, 44.0);
+        
+        headerLabel.text = @"Fetching results..."; // i.e. array element
+        [customView addSubview:refreshSpinner];
+        [customView addSubview:headerLabel];
+    	return customView;
+    }
+    
+    return nil;
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
         [self performSegueWithIdentifier:@"toEventDetails" sender:self];
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
+
+//###############################################
+//#                                             #
+//#                                             #
+//#                  Segue                      #
+//#                                             #
+//#                                             #
+//###############################################
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -422,7 +391,7 @@
         NSArray *tArr = [dict objectForKey:key];
         
         //get the event at that row from the event array
-        eventSearch* event = [tArr objectAtIndex:row];
+        EventSearch* event = [tArr objectAtIndex:row];
         
         //put the event into the eventDetails variable in the details view
         eventDetailsTableViewController *detailViewController = segue.destinationViewController;

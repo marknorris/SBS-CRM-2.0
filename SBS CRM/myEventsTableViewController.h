@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "EventsCellData.h"
+#import "fetchXML.h"
 
-@interface myEventsTableViewController : UITableViewController
+@interface myEventsTableViewController : UITableViewController <fetchXMLDelegate>
 {
 UIView *refreshHeaderView;
 UILabel *refreshLabel;
@@ -22,24 +23,12 @@ NSString *textRelease;
 NSString *textLoading;
 NSMutableArray *eventIDArray;
     
-    BOOL isMutatingArray;
-    
-    //Search:
-    IBOutlet UISearchDisplayController *searchDisplayController;
-    IBOutlet UISearchBar *searchBar;
-    NSMutableArray *searchResults;
-    BOOL isSearching;
-    NSMutableArray *allEventsArray;
+BOOL isMutatingArray;
+
 }
 
-
-//search
-@property (nonatomic, retain) IBOutlet UISearchDisplayController *searchDisplayController;
-@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, copy) NSMutableArray *searchResults;
-
-
-
+@property (strong, nonatomic) IBOutlet UISearchBar *_searchBar;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *btnAdd;
 
 @property (nonatomic, retain) NSManagedObjectContext *context;
 
@@ -47,21 +36,17 @@ NSMutableArray *eventIDArray;
 @property (nonatomic, retain) UILabel *refreshLabel;
 @property (nonatomic, retain) UIImageView *refreshArrow;
 @property (nonatomic, retain) UIActivityIndicatorView *refreshSpinner;
+
 @property (nonatomic, copy) NSString *textPull;
 @property (nonatomic, copy) NSString *textRelease;
 @property (nonatomic, copy) NSString *textLoading;
 
-
-//search
-- (void)filterContentForSearchText:(NSString*)searchText 
-                             scope:(NSString*)scope;
+- (IBAction)clickToday:(id)sender;
 
 - (void)setupStrings;
 - (void)addPullToRefreshHeader;
 - (void)startLoading;
 - (void)stopLoading;
-
-
 
 - (void)reloadCoreData;
 - (void)refreshTableView;

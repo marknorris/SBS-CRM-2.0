@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 
-@interface saveToCoreData : NSObject
+@interface saveToCoreData : NSObject 
+
+@property (nonatomic, retain) AppDelegate *appDelegate;
+
+- (BOOL)storeInCoreData:(NSArray *)eventArray:(NSString *)entityName;
 
 @end

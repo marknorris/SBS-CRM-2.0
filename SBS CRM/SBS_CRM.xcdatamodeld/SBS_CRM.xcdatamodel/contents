@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Attachment" representedClassName="Attachment" syncable="YES">
         <attribute name="attachmentID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="attDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attOriginalFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="atyMnemonic" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eventID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -38,16 +39,17 @@
         <attribute name="cosDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cosSiteName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Events" representedClassName="Event" syncable="YES">
+    <entity name="Entity" syncable="YES"/>
+    <entity name="Event" representedClassName="Event" syncable="YES">
         <attribute name="companySiteID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eveComments" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eveCreatedBy" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="eveCreatedDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveCreatedDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="eveCreatedTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="eveDueDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="eveDueDate" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="eveDueTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="eveEndDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveEndDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="eveEndTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eventID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eventPriority" optional="YES" attributeType="String" syncable="YES"/>
@@ -57,12 +59,15 @@
         <attribute name="eveStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eveTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ourContactID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="readEvent" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="watched" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Attachment" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Attachment" positionX="160" positionY="192" width="128" height="120"/>
         <element name="Communication" positionX="160" positionY="192" width="128" height="150"/>
         <element name="Company" positionX="160" positionY="192" width="128" height="210"/>
         <element name="Contact" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Events" positionX="160" positionY="192" width="128" height="315"/>
+        <element name="Entity" positionX="160" positionY="192" width="128" height="45"/>
+        <element name="Event" positionX="160" positionY="192" width="128" height="345"/>
     </elements>
 </model>

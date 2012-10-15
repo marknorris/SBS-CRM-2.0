@@ -10,4 +10,6 @@
 
 @interface loadingSavingView : UIView
 
+- (id)initWithFrame:(CGRect)frame withMessage:(NSString *)message;
+
 @end
