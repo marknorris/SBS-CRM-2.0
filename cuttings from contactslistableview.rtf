@@ -1,0 +1,143 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf320
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab560
+\pard\tx560\pardeftab560\pardirnatural
+
+\f0\fs22 \cf2 \CocoaLigature0 /*   \
+    \
+    //reload data from server asynchronously\
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^\{  \
+        \
+        UIApplication *app = [UIApplication sharedApplication];  \
+        [app setNetworkActivityIndicatorVisible:YES];\
+        \
+        BOOL loaded =  [self fetchDataFromServer];\
+        \
+        fetchingSearchResults = NO;\
+        [refreshSpinner stopAnimating];\
+        [app setNetworkActivityIndicatorVisible:NO];\
+        \
+        dispatch_sync(dispatch_get_main_queue(), ^\{\
+            if (!loaded)\
+            \{\
+                //alert user the are not connected to the server\
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fetch data" message:@"Could not retrieve the data" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];\
+                [alert show];\
+            \}\
+            // put the data into the table\
+            [self.tableView reloadData];\
+        \});\
+    \});\
+\}*/\cf0 \
+\
+\cf2 /*\
+- (BOOL)fetchDataFromServer\{\
+ \
+    \
+    //get the data from the server\
+    NSError* error = nil;    \
+    //url will depend on the query\
+    NSURL *url;\
+    if (company) // if there is a company site id perform the search by company site\
+    \{\
+        url = [[NSURL alloc] initWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsByCompanyABL?searchCompanySiteID=%@",company.companySiteID]];\
+    \}\
+    else\
+    \{\
+        // a site id is required to perform the search so return 0 to indicate failure.\
+        return 0;\
+    \}\
+    \
+    NSString *xmlString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];\
+    //remove xmlns from the xml file \
+    xmlString = [xmlString stringByReplacingOccurrencesOfString:@"xmlns" withString:@"noNSxml"];\
+    NSLog(@"xml string: %@",xmlString);\
+    NSData *xmlData = [xmlString dataUsingEncoding:NSUTF8StringEncoding];\
+    DDXMLDocument *eventsDocument = [[DDXMLDocument alloc] initWithData:xmlData options:0 error:&error];\
+    if (error)\
+        return NO;\
+    \
+    NSArray* nodes = nil;\
+    nodes = [[eventsDocument rootElement] children];\
+    \
+    \
+    for (DDXMLElement *element in nodes)\
+    \{ \
+        contactSearch *contactToSave = [[contactSearch alloc] init];\
+        DDXMLElement *contactID = [[element nodesForXPath:@"contactID" error:nil] objectAtIndex:0];\
+        contactToSave.contactID = contactID.stringValue;\
+        DDXMLElement *conTitle = [[element nodesForXPath:@"conTitle" error:nil] objectAtIndex:0];\
+        contactToSave.conTitle = conTitle.stringValue;\
+        DDXMLElement *conFirstName = [[element nodesForXPath:@"conFirstName" error:nil] objectAtIndex:0];\
+        contactToSave.conFirstName = conFirstName.stringValue;\
+        DDXMLElement *conMiddleName = [[element nodesForXPath:@"conMiddleName" error:nil] objectAtIndex:0];\
+        contactToSave.conMiddleName = conMiddleName.stringValue;\
+        DDXMLElement *conSurname = [[element nodesForXPath:@"conSurname" error:nil] objectAtIndex:0];\
+        contactToSave.conSurname = conSurname.stringValue;\
+        \
+        contactToSave.companySiteID = company.companySiteID;\
+        DDXMLElement *cosDescription = [[element nodesForXPath:@"cosDescription" error:nil] objectAtIndex:0];\
+        contactToSave.cosDescription = cosDescription.stringValue;\
+        DDXMLElement *cosSiteName = [[element nodesForXPath:@"cosSiteName" error:nil] objectAtIndex:0];\
+        contactToSave.cosSiteName = cosSiteName.stringValue;\
+        \
+        [contactsArray addObject:contactToSave];\
+    \}\
+\
+    return YES;\
+\}\
+*/\cf0 \
+\
+\
+    \cf2 /*\
+    cell.eventTitle.text = event.eveTitle;\
+    cell.eventComments.text = event.eveComments;\
+    cell.eventTypeType2.text = [event.eventType stringByAppendingFormat:@" - %@",event.eventType2];\
+    //cell.siteNameDesc.text = [company.cosSiteName stringByAppendingFormat:@" - %@",company.cosDescription];\
+    \
+    int hours = [event.eveDueTime integerValue] / 3600;\
+    int minutes = ([event.eveDueTime integerValue] / 60) % 60;\
+    cell.eventDueTime.text = [NSString stringWithFormat:@"%02d:%02d",hours,minutes];\
+    */\
+\
+\
+/*\
+// Override to support conditional editing of the table view.\
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath\
+\{\
+    // Return NO if you do not want the specified item to be editable.\
+    return YES;\
+\}\
+*/\cf0 \
+\
+\cf2 /*\
+// Override to support editing the table view.\
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath\
+\{\
+    if (editingStyle == UITableViewCellEditingStyleDelete) \{\
+        // Delete the row from the data source\
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];\
+    \}   \
+    else if (editingStyle == UITableViewCellEditingStyleInsert) \{\
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view\
+    \}   \
+\}\
+*/\cf0 \
+\
+\cf2 /*\
+// Override to support rearranging the table view.\
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath\
+\{\
+\}\
+*/\cf0 \
+\
+\cf2 /*\
+// Override to support conditional rearranging of the table view.\
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath\
+\{\
+    // Return NO if you do not want the item to be re-orderable.\
+    return YES;\
+\}\
+*/}

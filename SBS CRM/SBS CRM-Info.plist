@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>en_GB</string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
@@ -12,6 +12,10 @@
 	<array>
 		<string>Icon.png</string>
 		<string>Icon@2x.png</string>
+		<string>Default-Portrait@2x~ipad.png</string>
+		<string>Default-Landscape@2x~ipad.png</string>
+		<string>Default.png</string>
+		<string>Default@2x.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -21,6 +25,10 @@
 			<array>
 				<string>Icon.png</string>
 				<string>Icon@2x.png</string>
+				<string>Default-Portrait@2x~ipad.png</string>
+				<string>Default-Landscape@2x~ipad.png</string>
+				<string>Default.png</string>
+				<string>Default@2x.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>
@@ -38,6 +46,17 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.SBS</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sbs</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -55,6 +74,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 </dict>
 </plist>

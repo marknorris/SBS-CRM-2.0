@@ -1,0 +1,817 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf320
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red100\green56\blue32;\red196\green26\blue22;
+\red170\green13\blue145;\red63\green110\blue116;\red92\green38\blue153;\red46\green13\blue110;\red38\green71\blue75;
+\red28\green0\blue207;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab560
+\pard\tx560\pardeftab560\pardirnatural
+
+\f0\fs22 \cf2 \CocoaLigature0 //\cf0 \
+\cf2 //  syncData.m\cf0 \
+\cf2 //  SBS CRM\cf0 \
+\cf2 //\cf0 \
+\cf2 //  Created by Tom Couchman on 09/02/2012.\cf0 \
+\cf2 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.\cf0 \
+\cf2 //\cf0 \
+\
+\cf3 #import \cf4 "syncData.h"\cf3 \
+\cf0 \
+\cf5 @interface\cf0  \cf6 syncData\cf0 () \{\
+    \cf7 NSInteger\cf0  overDueCount;\
+\}\
+    - (\cf5 void\cf0 )setAlertsAndBadge:(\cf7 NSDate\cf0  *)dueDate:(\cf7 NSString\cf0  *)dueTime:(\cf7 NSString\cf0  *)eveTitle:(\cf7 NSString\cf0  *)eventID;\
+\cf5 @end\cf0 \
+\
+\
+\cf5 @implementation\cf0  syncData\
+\
+\cf5 @synthesize\cf0  appDelegate;\
+\
+\
+\
+- (\cf7 NSArray\cf0  *)parseXMLDoc:(\cf6 DDXMLDocument\cf0  *)Doc:(\cf7 NSString\cf0  *)className\{\
+    \
+    \cf7 NSMutableArray\cf0 * elementArray = [[\cf7 NSMutableArray\cf0  \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+    \
+    \cf2 //create an array of nodes.\cf0 \
+    \cf7 NSArray\cf0 * nodes = \cf5 nil\cf0 ;\
+    \cf2 //fill it with the children of the documents root element.\cf0 \
+    nodes = [[Doc \cf9 rootElement\cf0 ] \cf9 children\cf0 ];\
+    \
+    \cf2 // loop through each element\cf0 \
+    \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *element \cf5 in\cf0  nodes)\
+    \{ \
+        NSObject *currentItem;\
+        currentItem = [[\cf8 NSClassFromString\cf0 (className) \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+        \
+        \
+\
+        \
+        \cf7 NSArray\cf0 * children = [element \cf9 children\cf0 ];\
+        \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *child \cf5 in\cf0  children)\
+        \{\
+\
+            \cf5 if\cf0  (child != \cf5 NULL\cf0  && child!= \cf5 nil\cf0 ) \
+            \{\
+                \cf8 NSLog\cf0 (\cf4 @"Name: %@    Value: %@"\cf0 , child.\cf7 name\cf0 , child.\cf7 stringValue\cf0 );\
+                \
+                \cf5 if\cf0  ([className \cf8 isEqualToString\cf0 :\cf4 @"eventSearch"\cf0 ] && ([child.\cf7 name\cf0  \cf8 isEqualToString\cf0 :\cf4 @"eveCreatedDate"\cf0 ] || [child.\cf7 name\cf0  \cf8 isEqualToString\cf0 :\cf4 @"eveDueDate"\cf0 ]))\
+                         [currentItem \cf8 setValue\cf0 :[\cf5 self\cf0  \cf9 formatDate\cf0 :child.\cf7 stringValue\cf0 ] \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+                \cf5 else\cf0 \
+                    [currentItem \cf8 setValue\cf0 :child.\cf7 stringValue\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ]; \cf2 //if the entity contains a value set that value into the attribute of the same name.\cf0 \
+\
+                \cf2 //NSLog(@"class Value: %@", [currentItem eveCreatedDate]);\cf0 \
+            \}\
+                \cf5 else\cf0  [currentItem \cf8 setValue\cf0 :\cf4 @""\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];  \
+        \}\
+        [elementArray \cf8 addObject\cf0 :currentItem];\
+    \}\
+    \
+    \cf2 /*\
+    NSDate *dattte = [NSDate date];\
+    NSLog(@"%@", dattte);\
+    \
+    for (eventSearch *currentEvent in elementArray)\
+    \{\
+        NSLog(@"Name: eveNumber    Value: %@", currentEvent.eveNumber);\
+        NSLog(@"Name: eveStatus    Value: %@", currentEvent.eveStatus);        \
+        NSLog(@"Name: eveTitle    Value: %@", currentEvent.eveTitle);\
+                NSLog(@"Name: ourContactID    Value: %@", currentEvent.ourContactID);\
+                NSLog(@"Name: eventType    Value: %@", currentEvent.eventType);\
+                NSLog(@"Name: eventType2    Value: %@", currentEvent.eventType2);\
+                NSLog(@"Name: eventPriority    Value: %@", currentEvent.eventPriority);\
+                NSLog(@"Name: companySiteID    Value: %@", currentEvent.companySiteID);\
+                NSLog(@"Name: eventID    Value: %@", currentEvent.eventID);\
+                NSLog(@"Name: eveCreatedDate    Value: %@", currentEvent.eveCreatedDate);\
+                NSLog(@"Name: eveCreatedTime    Value: %@", currentEvent.eveCreatedTime);\
+        NSLog(@"Name: eveDueDate    Value: %@", currentEvent.eveDueDate);\
+        \
+        \
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];\
+        NSDateComponents *components = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:currentEvent.eveCreatedDate];\
+        NSDate *somedate = [gregorian dateFromComponents:components];\
+        NSLog(@"somedate: %@", somedate);\
+    \}\
+    */\cf0 \
+    \
+    \cf5 return\cf0  elementArray;\
+\}\
+\
+\
+\cf2 /* parse with commented out stuff:\
+ - (NSArray *)parseXMLDoc:(DDXMLDocument *)Doc:(id)searchClass\{\
+ \
+ NSMutableArray* elementArray = [[NSMutableArray alloc] init];\
+ \
+ //create an array of nodes.\
+ NSArray* nodes = nil;\
+ //fill it with the children of the documents root element.\
+ nodes = [[Doc rootElement] children];\
+ \
+ \
+ \
+ // loop through each element\
+ for (DDXMLElement *element in nodes)\
+ \{ \
+ //if the current element is an event then set the dates to default values.\
+ //if ([searchClass respondsToSelector:@selector(setEveCreatedDate:)]) \
+ //\{\
+ //[searchClass setEveCreatedDate:[self formatDate:@""]];\
+ //[searchClass setEveDueDate:[self formatDate:@""]];\
+ //\}\
+ \
+ //eventSearch *eveSearch = [[eventSearch alloc] init];\
+ //eveSearch.eveCreatedDate isEqualToDate:\
+ \
+ //if ([searchClass respondsToSelector:@selector(setEveCreatedBy:)])\
+ //NSLog(@"SPARTAAAAAA");\
+ \
+ \
+ \
+ //NSLog(@"class: %@", NSStringFromClass([searchClass class] ));\
+ // get the information regarding the entity that is currently being populated.\
+ //NSEntityDescription *Entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:context];\
+ \
+ id currentItem = searchClass;\
+ \
+ NSArray* children = [element children];\
+ for (DDXMLElement *child in children)\
+ \{\
+ \
+ \
+ //if ([[currentItem valueForKey:child.name] respondsToSelector:@selector(isEqualToDate:)])\
+ //NSLog(@"class: %@", YES);\
+ \
+ //if ([[[searchClass attributesByName] objectForKey:child.name] attributeType] == 900) //if the type is 900 (which means date)\
+ //[searchClass setValue:[self formatDate:child.stringValue] forKey:child.name]; //format the date using the date formatter.\
+ //else\
+ //\{\
+ if (child != NULL && child!= nil) \
+ \{\
+ [currentItem setValue:child.stringValue forKey:child.name]; //if the entity contains a value set that value into the attribute of the same name.\
+ NSLog(@"Name: %@    Value: %@", child.name, child.stringValue);\
+ NSLog(@"class Value: %@", [currentItem eveCreatedDate]);\
+ \}\
+ else [currentItem setValue:@"" forKey:child.name];\
+ //\}\
+ \
+ [elementArray addObject:searchClass];\
+ \
+ \}\
+ \
+ \}\
+ return elementArray;\
+ \}\
+ */\cf0 \
+\
+\
+\
+\
+- (\cf5 BOOL\cf0 )storeInCoreData:(\cf7 NSArray\cf0  *)classArray:(\cf7 NSString\cf0  *)entityName\{\
+    \
+    \cf6 appDelegate\cf0  = [[\cf7 UIApplication\cf0  \cf8 sharedApplication\cf0 ] \cf8 delegate\cf0 ];\
+    \
+    NSError *error;    \
+    \cf7 NSManagedObjectContext\cf0  *context = [\cf6 appDelegate\cf0  \cf9 managedObjectContext\cf0 ];\
+    \
+    \cf2 // fetch saved events from coredata and delete them\cf0 \
+    \cf7 NSEntityDescription\cf0  *entity = [\cf7 NSEntityDescription\cf0  \cf8 entityForName\cf0 :entityName \cf8 inManagedObjectContext\cf0 :context];\
+    \cf7 NSFetchRequest\cf0  *fetchRequest = [[\cf7 NSFetchRequest\cf0  \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+    [fetchRequest \cf8 setEntity\cf0 :entity];\
+    \
+    \
+    \cf7 NSArray\cf0  *items = [context \cf8 executeFetchRequest\cf0 :fetchRequest \cf8 error\cf0 :&error];\
+    \
+    \cf5 for\cf0  (\cf7 NSManagedObject\cf0  *managedObject \cf5 in\cf0  items)\{\
+        [context \cf8 deleteObject\cf0 :managedObject];\
+    \}    \
+    \
+    \cf2 //if fails, return no.\cf0 \
+    \cf5 if\cf0  (![context \cf8 save\cf0 :&error]) \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    \
+    \cf5 for\cf0  (\cf5 int\cf0  i = \cf10 0\cf0 ; i < [classArray \cf8 count\cf0 ]; i++)\
+    \{\
+        NSObject *eve;\
+        \cf2 //eve = [[NSClassFromString(@"eventSearch") alloc] init];\cf0 \
+        eve = [classArray \cf8 objectAtIndex\cf0 :i];\
+        \
+        \cf5 id\cf0  entityToSave = [\cf8 NSClassFromString\cf0 (entityName) \cf8 alloc\cf0 ];\
+        entityToSave = [\cf7 NSEntityDescription\cf0  \cf8 insertNewObjectForEntityForName\cf0 :entityName \cf8 inManagedObjectContext\cf0 :context]; \
+        \
+        \cf7 NSDictionary\cf0  *attributes = [[\cf7 NSEntityDescription\cf0 \
+                                     \cf8 entityForName\cf0 :entityName\
+                                     \cf8 inManagedObjectContext\cf0 :context] \cf8 attributesByName\cf0 ];\
+        \
+        \cf5 for\cf0  (\cf7 NSString\cf0  *attr \cf5 in\cf0  attributes) \{\
+            [entityToSave \cf8 setValue\cf0 :[eve \cf8 valueForKey\cf0 :attr] \cf8 forKey\cf0 :attr];\
+        \}\
+    \}\
+    \cf5 if\cf0  (![context \cf8 save\cf0 :&error]) \cf5 return\cf0  \cf5 NO\cf0 ;\
+\
+    \
+    \cf2 //if successful return yes\cf0 \
+    \cf5 return\cf0  \cf5 YES\cf0 ;\
+\}\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+- (\cf5 BOOL\cf0 )doSync\{\
+    \
+    \
+    \
+    \cf6 appDelegate\cf0  = [[\cf7 UIApplication\cf0  \cf8 sharedApplication\cf0 ] \cf8 delegate\cf0 ];\
+    \
+    \cf7 UIApplication\cf0  *app = [\cf7 UIApplication\cf0  \cf8 sharedApplication\cf0 ];  \
+    [app \cf8 setNetworkActivityIndicatorVisible\cf0 :\cf5 YES\cf0 ]; \
+    \
+    \cf5 BOOL\cf0  retrieved = [\cf5 self\cf0  \cf9 getDom\cf0 ];\
+    \
+    [app \cf8 setNetworkActivityIndicatorVisible\cf0 :\cf5 NO\cf0 ];  \
+    \
+    \cf5 if\cf0  (!retrieved)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    [[\cf7 UIApplication\cf0  \cf8 sharedApplication\cf0 ] \cf8 cancelAllLocalNotifications\cf0 ];\
+    \
+    \cf5 BOOL\cf0  dataSaved = [\cf5 self\cf0  \cf9 reloadEvents\cf0 ];\
+    \
+    \cf5 if\cf0  (!dataSaved)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    dataSaved = [\cf5 self\cf0  \cf9 reloadCompanies\cf0 ];\
+    \
+    \cf5 if\cf0  (!dataSaved)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    dataSaved = [\cf5 self\cf0  \cf9 reloadContacts\cf0 ];\
+    \
+    \cf5 if\cf0  (!dataSaved)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    dataSaved = [\cf5 self\cf0  \cf9 reloadCommunication\cf0 ];\
+    \
+    \cf5 if\cf0  (!dataSaved)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    dataSaved = [\cf5 self\cf0  \cf9 reloadAttachments\cf0 ];\
+    \
+    \cf5 if\cf0  (!dataSaved)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    \cf5 return\cf0  \cf5 YES\cf0 ;\
+\}\
+\
+- (\cf5 BOOL\cf0 )getDom\{\
+    \
+\
+    \cf7 NSError\cf0 * error = \cf5 nil\cf0 ;\
+\
+    \
+    \cf6 url\cf0  = [[\cf7 NSURL\cf0  \cf8 alloc\cf0 ] \cf8 initWithString\cf0 :[\cf6 appURL\cf0  \cf8 stringByAppendingFormat\cf0 :\cf4 @"/service1.asmx/syncEventsABL?userID=%d"\cf0 ,\cf6 appUserID\cf0 ]];\
+    \
+    \cf6 xmlString\cf0  = [[\cf7 NSString\cf0  \cf8 alloc\cf0 ] \cf8 initWithContentsOfURL\cf0 :\cf6 url\cf0  \cf8 encoding\cf0 :\cf8 NSUTF8StringEncoding\cf0  \cf8 error\cf0 :\cf5 nil\cf0 ];\
+    \cf2 //remove xmlns from the xml file \cf0 \
+    \cf6 xmlString\cf0  = [\cf6 xmlString\cf0  \cf8 stringByReplacingOccurrencesOfString\cf0 :\cf4 @"xmlns"\cf0  \cf8 withString\cf0 :\cf4 @"noNSxml"\cf0 ];\
+    \cf6 xmlData\cf0  = [\cf6 xmlString\cf0  \cf8 dataUsingEncoding\cf0 :\cf8 NSUTF8StringEncoding\cf0 ];\
+    \cf6 eventsDocument\cf0  = [[\cf6 DDXMLDocument\cf0  \cf8 alloc\cf0 ] \cf9 initWithData\cf0 :\cf6 xmlData\cf0  \cf9 options\cf0 :\cf10 0\cf0  \cf9 error\cf0 :&error];\
+    \cf5 if\cf0  (error)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+\
+    \cf6 url\cf0  = [[\cf7 NSURL\cf0  \cf8 alloc\cf0 ] \cf8 initWithString\cf0 :[\cf6 appURL\cf0  \cf8 stringByAppendingFormat\cf0 :\cf4 @"/service1.asmx/syncCompaniesABL?userID=%d"\cf0 ,\cf6 appUserID\cf0 ]];\
+    \cf6 xmlString\cf0  = [[\cf7 NSString\cf0  \cf8 alloc\cf0 ] \cf8 initWithContentsOfURL\cf0 :\cf6 url\cf0  \cf8 encoding\cf0 :\cf8 NSUTF8StringEncoding\cf0  \cf8 error\cf0 :\cf5 nil\cf0 ];\
+    \cf2 //remove xmlns from the xml file \cf0 \
+    \cf6 xmlString\cf0  = [\cf6 xmlString\cf0  \cf8 stringByReplacingOccurrencesOfString\cf0 :\cf4 @"xmlns"\cf0  \cf8 withString\cf0 :\cf4 @"noNSxml"\cf0 ];\
+    \cf6 xmlData\cf0  = [\cf6 xmlString\cf0  \cf8 dataUsingEncoding\cf0 :\cf8 NSUTF8StringEncoding\cf0 ];\
+    \cf6 companiesDocument\cf0  = [[\cf6 DDXMLDocument\cf0  \cf8 alloc\cf0 ] \cf9 initWithData\cf0 :\cf6 xmlData\cf0  \cf9 options\cf0 :\cf10 0\cf0  \cf9 error\cf0 :&error];\
+    \cf5 if\cf0  (error)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    \cf6 url\cf0  = [[\cf7 NSURL\cf0  \cf8 alloc\cf0 ] \cf8 initWithString\cf0 :[\cf6 appURL\cf0  \cf8 stringByAppendingFormat\cf0 :\cf4 @"/service1.asmx/syncContactsABL?userID=%d"\cf0 ,\cf6 appUserID\cf0 ]];\
+    \cf6 xmlString\cf0  = [[\cf7 NSString\cf0  \cf8 alloc\cf0 ] \cf8 initWithContentsOfURL\cf0 :\cf6 url\cf0  \cf8 encoding\cf0 :\cf8 NSUTF8StringEncoding\cf0  \cf8 error\cf0 :\cf5 nil\cf0 ];\
+    \cf2 //remove xmlns from the xml file \cf0 \
+    \cf6 xmlString\cf0  = [\cf6 xmlString\cf0  \cf8 stringByReplacingOccurrencesOfString\cf0 :\cf4 @"xmlns"\cf0  \cf8 withString\cf0 :\cf4 @"noNSxml"\cf0 ];\
+    \cf6 xmlData\cf0  = [\cf6 xmlString\cf0  \cf8 dataUsingEncoding\cf0 :\cf8 NSUTF8StringEncoding\cf0 ];\
+    \cf6 contactsDocument\cf0  = [[\cf6 DDXMLDocument\cf0  \cf8 alloc\cf0 ] \cf9 initWithData\cf0 :\cf6 xmlData\cf0  \cf9 options\cf0 :\cf10 0\cf0  \cf9 error\cf0 :&error];\
+    \cf5 if\cf0  (error)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    \cf6 url\cf0  = [[\cf7 NSURL\cf0  \cf8 alloc\cf0 ] \cf8 initWithString\cf0 :[\cf6 appURL\cf0  \cf8 stringByAppendingFormat\cf0 :\cf4 @"/service1.asmx/syncCommunicationABL?userID=%d"\cf0 ,\cf6 appUserID\cf0 ]];\
+    \cf6 xmlString\cf0  = [[\cf7 NSString\cf0  \cf8 alloc\cf0 ] \cf8 initWithContentsOfURL\cf0 :\cf6 url\cf0  \cf8 encoding\cf0 :\cf8 NSUTF8StringEncoding\cf0  \cf8 error\cf0 :\cf5 nil\cf0 ];\
+    \cf2 //remove xmlns from the xml file \cf0 \
+    \cf6 xmlString\cf0  = [\cf6 xmlString\cf0  \cf8 stringByReplacingOccurrencesOfString\cf0 :\cf4 @"xmlns"\cf0  \cf8 withString\cf0 :\cf4 @"noNSxml"\cf0 ];\
+    \cf6 xmlData\cf0  = [\cf6 xmlString\cf0  \cf8 dataUsingEncoding\cf0 :\cf8 NSUTF8StringEncoding\cf0 ];\
+    \cf6 communicationDocument\cf0  = [[\cf6 DDXMLDocument\cf0  \cf8 alloc\cf0 ] \cf9 initWithData\cf0 :\cf6 xmlData\cf0  \cf9 options\cf0 :\cf10 0\cf0  \cf9 error\cf0 :&error];\
+    \cf5 if\cf0  (error)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+\
+    \cf6 url\cf0  = [[\cf7 NSURL\cf0  \cf8 alloc\cf0 ] \cf8 initWithString\cf0 :[\cf6 appURL\cf0  \cf8 stringByAppendingFormat\cf0 :\cf4 @"/service1.asmx/syncAttachmentsABL?userID=%d"\cf0 ,\cf6 appUserID\cf0 ]];\
+    \cf6 xmlString\cf0  = [[\cf7 NSString\cf0  \cf8 alloc\cf0 ] \cf8 initWithContentsOfURL\cf0 :\cf6 url\cf0  \cf8 encoding\cf0 :\cf8 NSUTF8StringEncoding\cf0  \cf8 error\cf0 :\cf5 nil\cf0 ];\
+    \cf2 //remove xmlns from the xml file \cf0 \
+    \cf6 xmlString\cf0  = [\cf6 xmlString\cf0  \cf8 stringByReplacingOccurrencesOfString\cf0 :\cf4 @"xmlns"\cf0  \cf8 withString\cf0 :\cf4 @"noNSxml"\cf0 ];\
+    \cf6 xmlData\cf0  = [\cf6 xmlString\cf0  \cf8 dataUsingEncoding\cf0 :\cf8 NSUTF8StringEncoding\cf0 ];\
+    \cf6 attachmentsDocument\cf0  = [[\cf6 DDXMLDocument\cf0  \cf8 alloc\cf0 ] \cf9 initWithData\cf0 :\cf6 xmlData\cf0  \cf9 options\cf0 :\cf10 0\cf0  \cf9 error\cf0 :&error];\
+    \cf5 if\cf0  (error)\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \
+    \cf5 return\cf0  \cf5 YES\cf0 ;\
+    \cf2 /*\
+    NSLog(@"%@", [xmlDoc XMLStringWithOptions:DDXMLNodePrettyPrint]);\
+    if (error) \{\
+        NSLog(@"%@",[error localizedDescription]);\
+    \}\
+    else\
+    \{\
+        DDXMLElement* element = nil;\
+        element = [xmlDoc rootElement];\
+        NSLog(@"userid: %@",element.stringValue);\
+        userID = element.stringValue;\
+    \}*/\cf0 \
+    \
+    \
+\}\
+\
+- (\cf5 BOOL\cf0 )reloadEvents\{\
+    \
+    \
+    NSError *error;\
+    \cf2 //alloc/init local notification to set the application badge number\cf0 \
+    \cf6 overDueCount\cf0  = \cf10 0\cf0 ;\
+    \
+    \
+    \cf7 NSManagedObjectContext\cf0  *context = [\cf6 appDelegate\cf0  \cf9 managedObjectContext\cf0 ];\
+    \
+    \cf2 // fetch saved events from coredata and delete them\cf0 \
+    \cf7 NSEntityDescription\cf0  *entity = [\cf7 NSEntityDescription\cf0  \cf8 entityForName\cf0 :\cf4 @"Event"\cf0  \cf8 inManagedObjectContext\cf0 :context];\
+    \cf7 NSFetchRequest\cf0  * fetchRequest = [[\cf7 NSFetchRequest\cf0  \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+    [fetchRequest \cf8 setEntity\cf0 :entity];\
+    \
+   \
+    \cf7 NSArray\cf0  *items = [context \cf8 executeFetchRequest\cf0 :fetchRequest \cf8 error\cf0 :&error];\
+    \
+    \cf5 for\cf0  (\cf7 NSManagedObject\cf0  *managedObject \cf5 in\cf0  items)\{\
+        [context \cf8 deleteObject\cf0 :managedObject];\
+    \}\
+    \cf5 if\cf0  (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \
+    \
+    \cf2 // save newly retrieved events to coredata\cf0 \
+    \cf7 NSArray\cf0 * nodes = \cf5 nil\cf0 ;\
+    nodes = [[\cf6 eventsDocument\cf0  \cf9 rootElement\cf0 ] \cf9 children\cf0 ];\
+    \
+    \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *element \cf5 in\cf0  nodes)\
+    \{ \
+    \
+\
+        \
+        \cf6 Event\cf0  *eventToSave = (\cf6 Event\cf0  *)[\cf7 NSEntityDescription\cf0  \cf8 insertNewObjectForEntityForName\cf0 :\cf4 @"Event"\cf0  \cf8 inManagedObjectContext\cf0 :context]; \
+        \cf2 //NSString *name = [[element attributeForName:@"Event"]stringValue];\cf0 \
+        \
+    \
+        \
+        \cf2 //null values are causing errors.\cf0 \
+        \cf5 if\cf0  (!eventToSave.\cf6 eveCreatedDate\cf0 ) eventToSave.\cf6 eveCreatedDate\cf0  = [\cf5 self\cf0  \cf9 formatDate\cf0 :\cf4 @""\cf0 ];\
+        \cf5 if\cf0  (!eventToSave.\cf6 eveDueDate\cf0 ) eventToSave.\cf6 eveDueDate\cf0  = [\cf5 self\cf0  \cf9 formatDate\cf0 :\cf4 @""\cf0 ];\
+        \
+        \cf2 // get the information regarding the entity that is currently being populated.\cf0 \
+        \cf7 NSEntityDescription\cf0  *Entity = [\cf7 NSEntityDescription\cf0  \cf8 entityForName\cf0 :\cf4 @"Event"\cf0  \cf8 inManagedObjectContext\cf0 :context];\
+        \
+        \cf7 NSArray\cf0 * children = [element \cf9 children\cf0 ];\
+        \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *child \cf5 in\cf0  children)\
+        \{\
+            \cf5 if\cf0 ([child.\cf7 name\cf0  \cf8 isEqualToString\cf0 :\cf4 @"eveDueTime"\cf0 ])\
+            \{\
+                \cf5 if\cf0  ([child.\cf7 stringValue\cf0  \cf8 isEqualToString\cf0 :\cf4 @"0"\cf0 ] || !child || child == \cf5 NULL\cf0  || child.\cf7 stringValue\cf0  == \cf5 NULL\cf0  || [child.\cf7 stringValue\cf0  \cf8 isEqualToString\cf0 :\cf4 @""\cf0 ])\
+                \{\
+                    eventToSave.\cf6 eveDueTime\cf0  = [\cf5 self\cf0  \cf9 setDefaultTime\cf0 :child.\cf7 stringValue\cf0 ];\
+                \}\
+                \cf5 else\cf0 \
+                    eventToSave.\cf6 eveDueTime\cf0  = child.\cf7 stringValue\cf0  ;\
+            \}\
+            \cf5 else\cf0  \cf5 if\cf0  ([[Entity.\cf7 attributesByName\cf0  \cf8 objectForKey\cf0 :child.\cf7 name\cf0 ] \cf8 attributeType\cf0 ] == \cf10 900\cf0 ) \cf2 //if the type is 900 (which means date) //([child.name isEqualToString:@"eveCreatedDate"] || [child.name isEqualToString:@"eveDueDate"])\cf0 \
+                [eventToSave \cf8 setValue\cf0 :[\cf5 self\cf0  \cf9 formatDate\cf0 :child.\cf7 stringValue\cf0 ] \cf8 forKey\cf0 :child.\cf7 name\cf0 ]; \cf2 //format the date using the date formatter.\cf0 \
+            \cf5 else\cf0 \
+            \{\
+                \cf5 if\cf0  (child != \cf5 NULL\cf0 ) [eventToSave \cf8 setValue\cf0 :child.\cf7 stringValue\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ]; \cf2 //if the entity contains a value set that value into the attribute of the same name..\cf0 \
+                \cf5 else\cf0  [eventToSave \cf8 setValue\cf0 :\cf4 @""\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+            \}\
+           \
+        \}\
+        \
+\
+\
+        \cf2 //eventToSave.eveCreatedDate = [NSDate date];\cf0 \
+        \cf2 //eventToSave.eveDueDate = [NSDate date];\cf0 \
+        \cf2 //[self setValue: forKeyPath:returnedSourceCellIdentifier];\cf0 \
+        \
+        \cf2 //if (element.name)\cf0 \
+        \cf2 //\{\cf0 \
+           \cf2 // NSLog(@"NAME OF ELEMENT:%@",name);\cf0 \
+             \cf2 //setObject:_elementText forKey:elementName\cf0 \
+        \cf2 //\}\cf0 \
+        \
+        \
+        \cf2 /*\
+        Event *eventToSave = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context]; \
+        DDXMLElement *eveNumber = [[element nodesForXPath:@"eveNumber" error:nil] objectAtIndex:0];\
+        if (eveNumber) eventToSave.eveNumber = eveNumber.stringValue;\
+        DDXMLElement *eveStatus = [[element nodesForXPath:@"eveStatus" error:nil] objectAtIndex:0];\
+        if (eveStatus) eventToSave.eveStatus = eveStatus.stringValue;\
+        DDXMLElement *eveTitle = [[element nodesForXPath:@"eveTitle" error:nil] objectAtIndex:0];\
+        if (eveTitle) eventToSave.eveTitle = eveTitle.stringValue;\
+        DDXMLElement *ourContactID = [[element nodesForXPath:@"ourContactID" error:nil] objectAtIndex:0];\
+        if (ourContactID) eventToSave.ourContactID = ourContactID.stringValue;\
+        DDXMLElement *eventType = [[element nodesForXPath:@"eventType" error:nil] objectAtIndex:0];\
+        if (eventType) eventToSave.eventType = eventType.stringValue;\
+        DDXMLElement *eventType2 = [[element nodesForXPath:@"eventType2" error:nil] objectAtIndex:0];\
+        if (eventType2) eventToSave.eventType2 = eventType2.stringValue;\
+        DDXMLElement *eventPriority = [[element nodesForXPath:@"eventPriority" error:nil] objectAtIndex:0];\
+        if (eventPriority) eventToSave.eventPriority = eventPriority.stringValue;\
+        DDXMLElement *companySiteID = [[element nodesForXPath:@"companySiteID" error:nil] objectAtIndex:0];\
+        if (companySiteID) eventToSave.companySiteID = companySiteID.stringValue;\
+        DDXMLElement *eventID = [[element nodesForXPath:@"eventID" error:nil] objectAtIndex:0];\
+        if (eventID) eventToSave.eventID = eventID.stringValue;\
+        DDXMLElement *contactID = [[element nodesForXPath:@"contactID" error:nil] objectAtIndex:0];\
+        if (contactID) eventToSave.contactID = contactID.stringValue;\
+        DDXMLElement *eveComments = [[element nodesForXPath:@"eveComments" error:nil] objectAtIndex:0];\
+        if (eveComments) eventToSave.eveComments = eveComments.stringValue;\
+        \
+        DDXMLElement *eveCreatedDate = [[element nodesForXPath:@"eveCreatedDate" error:nil] objectAtIndex:0];\
+        if (eveCreatedDate) eventToSave.eveCreatedDate = [self formatDate:eveCreatedDate.stringValue];\
+        \
+        DDXMLElement *eveCreatedTime = [[element nodesForXPath:@"eveCreatedTime" error:nil] objectAtIndex:0];\
+        if (eveCreatedTime) eventToSave.eveCreatedTime = eveCreatedTime.stringValue;        \
+        DDXMLElement *eveDueDate = [[element nodesForXPath:@"eveDueDate" error:nil] objectAtIndex:0];\
+        if (eveDueDate) eventToSave.eveDueDate = [self formatDate:eveDueDate.stringValue];\
+        DDXMLElement *eveDueTime = [[element nodesForXPath:@"eveDueTime" error:nil] objectAtIndex:0];\
+        //NSLog(@"due time before format: %@", eveDueTime.stringValue);\
+        if ([eveDueTime.stringValue isEqualToString:@"0"] || !eveDueTime || [eveDueTime.stringValue isEqualToString:@""])\
+        \{\
+            eventToSave.eveDueTime = [self setDefaultTime:eveDueTime.stringValue];\
+        \}\
+        else\
+            eventToSave.eveDueTime = eveDueTime.stringValue;\
+        NSLog(@"due time before format: %@", eveDueTime.stringValue);\
+        \
+        DDXMLElement *eveEndDate = [[element nodesForXPath:@"eveEndDate" error:nil] objectAtIndex:0];\
+        if (eveEndDate) eventToSave.eveEndDate = eveEndDate.stringValue;\
+        \
+        DDXMLElement *eveEndTime = [[element nodesForXPath:@"eveEndTime" error:nil] objectAtIndex:0];\
+        if (eveEndTime) eventToSave.eveEndTime = eveEndTime.stringValue;\
+        DDXMLElement *eveCreatedBy = [[element nodesForXPath:@"eveCreatedBy" error:nil] objectAtIndex:0];\
+        if (eveCreatedBy) eventToSave.eveCreatedBy = eveCreatedBy.stringValue;\
+        */\cf0 \
+        \
+        \cf2 //check if this event is due in the past, if so increment the badge\cf0 \
+        [\cf5 self\cf0  \cf9 setAlertsAndBadge\cf0 :eventToSave.\cf6 eveDueDate\cf0 :eventToSave.\cf6 eveDueTime\cf0 :eventToSave.\cf6 eveTitle\cf0 :eventToSave.\cf6 eventID\cf0 ];\
+    \}\
+\
+\
+    \cf5 if\cf0 (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \cf5 return\cf0  \cf5 YES\cf0 ;\
+\}\
+\
+- (\cf5 BOOL\cf0 )reloadCompanies\{\
+    \
+    NSError *error;\
+    \
+    \cf7 NSManagedObjectContext\cf0  *context = [\cf6 appDelegate\cf0  \cf9 managedObjectContext\cf0 ];\
+    \
+    \cf2 // fetch saved events from coredata and delete them\cf0 \
+    \cf7 NSEntityDescription\cf0  *entity = [\cf7 NSEntityDescription\cf0  \cf8 entityForName\cf0 :\cf4 @"Company"\cf0  \cf8 inManagedObjectContext\cf0 :context];\
+    \cf7 NSFetchRequest\cf0  * fetchRequest = [[\cf7 NSFetchRequest\cf0  \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+    [fetchRequest \cf8 setEntity\cf0 :entity];\
+    \
+    \
+    \cf7 NSArray\cf0  *items = [context \cf8 executeFetchRequest\cf0 :fetchRequest \cf8 error\cf0 :&error];\
+    \
+    \cf5 for\cf0  (\cf7 NSManagedObject\cf0  *managedObject \cf5 in\cf0  items)\{\
+        [context \cf8 deleteObject\cf0 :managedObject];\
+    \}\
+    \cf5 if\cf0  (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \
+    \
+    \cf2 // save newly retrieved events to coredata\cf0 \
+    \cf7 NSArray\cf0 * nodes = \cf5 nil\cf0 ;\
+    nodes = [[\cf6 companiesDocument\cf0  \cf9 rootElement\cf0 ] \cf9 children\cf0 ];\
+    \
+    \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *element \cf5 in\cf0  nodes)\
+    \{ \
+        \cf6 Company\cf0  *companyToSave = (\cf6 Company\cf0  *)[\cf7 NSEntityDescription\cf0  \cf8 insertNewObjectForEntityForName\cf0 :\cf4 @"Company"\cf0  \cf8 inManagedObjectContext\cf0 :context]; \
+        \cf7 NSArray\cf0 * children = [element \cf9 children\cf0 ];\
+        \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *child \cf5 in\cf0  children)\
+        \{\
+                \cf5 if\cf0  (child != \cf5 NULL\cf0 ) [companyToSave \cf8 setValue\cf0 :child.\cf7 stringValue\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+                \cf5 else\cf0  [companyToSave \cf8 setValue\cf0 :\cf4 @""\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+        \}\
+        \cf2 /*\
+        DDXMLElement *companySiteID = [[element nodesForXPath:@"companySiteID" error:nil] objectAtIndex:0];\
+        companyToSave.companySiteID = companySiteID.stringValue;\
+        DDXMLElement *coaCompanyName = [[element nodesForXPath:@"coaCompanyName" error:nil] objectAtIndex:0];\
+        companyToSave.coaCompanyName = coaCompanyName.stringValue;\
+        DDXMLElement *cosSiteName = [[element nodesForXPath:@"cosSiteName" error:nil] objectAtIndex:0];\
+        companyToSave.cosSiteName = cosSiteName.stringValue;     \
+        DDXMLElement *cosDescription = [[element nodesForXPath:@"cosDescription" error:nil] objectAtIndex:0];\
+        companyToSave.cosDescription = cosDescription.stringValue;  \
+        DDXMLElement *addStreetAddress = [[element nodesForXPath:@"addStreetAddress" error:nil] objectAtIndex:0];\
+        companyToSave.addStreetAddress = addStreetAddress.stringValue; \
+        DDXMLElement *addStreetAddress2 = [[element nodesForXPath:@"addStreetAddress2" error:nil] objectAtIndex:0];\
+        companyToSave.addStreetAddress2 = addStreetAddress2.stringValue; \
+        DDXMLElement *addStreetAddress3 = [[element nodesForXPath:@"addStreetAddress3" error:nil] objectAtIndex:0];\
+        companyToSave.addStreetAddress3 = addStreetAddress3.stringValue; \
+        DDXMLElement *addTown = [[element nodesForXPath:@"addTown" error:nil] objectAtIndex:0];\
+        companyToSave.addTown = addTown.stringValue;  \
+        DDXMLElement *addCounty = [[element nodesForXPath:@"addCounty" error:nil] objectAtIndex:0];\
+        companyToSave.addCounty = addCounty.stringValue; \
+        DDXMLElement *addPostCode = [[element nodesForXPath:@"addPostCode" error:nil] objectAtIndex:0];\
+        companyToSave.addPostCode = addPostCode.stringValue; \
+        DDXMLElement *couCountryName = [[element nodesForXPath:@"couCountryName" error:nil] objectAtIndex:0];\
+        companyToSave.couCountryName = couCountryName.stringValue; */\cf0 \
+    \}\
+    \
+    \cf5 if\cf0 (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \cf5 return\cf0  \cf5 YES\cf0 ;\
+\}\
+\
+- (\cf5 BOOL\cf0 )reloadContacts\{\
+    \
+    NSError *error;\
+    \
+    \cf7 NSManagedObjectContext\cf0  *context = [\cf6 appDelegate\cf0  \cf9 managedObjectContext\cf0 ];\
+    \
+    \cf2 // fetch saved events from coredata and delete them\cf0 \
+    \cf7 NSEntityDescription\cf0  *entity = [\cf7 NSEntityDescription\cf0  \cf8 entityForName\cf0 :\cf4 @"Contact"\cf0  \cf8 inManagedObjectContext\cf0 :context];\
+    \cf7 NSFetchRequest\cf0  * fetchRequest = [[\cf7 NSFetchRequest\cf0  \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+    [fetchRequest \cf8 setEntity\cf0 :entity];\
+    \
+    \
+    \cf7 NSArray\cf0  *items = [context \cf8 executeFetchRequest\cf0 :fetchRequest \cf8 error\cf0 :&error];\
+    \
+    \cf5 for\cf0  (\cf7 NSManagedObject\cf0  *managedObject \cf5 in\cf0  items)\{\
+        [context \cf8 deleteObject\cf0 :managedObject];\
+    \}\
+    \cf5 if\cf0  (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \
+    \
+    \cf2 // save newly retrieved events to coredata\cf0 \
+    \cf7 NSArray\cf0 * nodes = \cf5 nil\cf0 ;\
+    nodes = [[\cf6 contactsDocument\cf0  \cf9 rootElement\cf0 ] \cf9 children\cf0 ];\
+    \
+    \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *element \cf5 in\cf0  nodes)\
+    \{ \
+        \cf6 Contact\cf0  *contactToSave = (\cf6 Contact\cf0  *)[\cf7 NSEntityDescription\cf0  \cf8 insertNewObjectForEntityForName\cf0 :\cf4 @"Contact"\cf0  \cf8 inManagedObjectContext\cf0 :context]; \
+        \cf7 NSArray\cf0 * children = [element \cf9 children\cf0 ];\
+        \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *child \cf5 in\cf0  children)\
+        \{\
+            \cf5 if\cf0  (child != \cf5 NULL\cf0 ) [contactToSave \cf8 setValue\cf0 :child.\cf7 stringValue\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+            \cf5 else\cf0  [contactToSave \cf8 setValue\cf0 :\cf4 @""\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+        \}\
+        \cf2 /*\
+        Contact *contactToSave = (Contact *)[NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:context]; \
+        DDXMLElement *contactID = [[element nodesForXPath:@"contactID" error:nil] objectAtIndex:0];\
+        contactToSave.contactID = contactID.stringValue;\
+        DDXMLElement *conTitle = [[element nodesForXPath:@"conTitle" error:nil] objectAtIndex:0];\
+        contactToSave.conTitle = conTitle.stringValue;\
+        DDXMLElement *conFirstName = [[element nodesForXPath:@"conFirstName" error:nil] objectAtIndex:0];\
+        contactToSave.conFirstName = conFirstName.stringValue;\
+        DDXMLElement *conMiddleName = [[element nodesForXPath:@"conMiddleName" error:nil] objectAtIndex:0];\
+        contactToSave.conMiddleName = conMiddleName.stringValue;\
+        DDXMLElement *conSurname = [[element nodesForXPath:@"conSurname" error:nil] objectAtIndex:0];\
+        contactToSave.conSurname = conSurname.stringValue;\
+        \
+        DDXMLElement *companySiteID = [[element nodesForXPath:@"companySiteID" error:nil] objectAtIndex:0];\
+        contactToSave.companySiteID = companySiteID.stringValue;\
+        DDXMLElement *cosDescription = [[element nodesForXPath:@"cosDescription" error:nil] objectAtIndex:0];\
+        contactToSave.cosDescription = cosDescription.stringValue;\
+        DDXMLElement *cosSiteName = [[element nodesForXPath:@"cosSiteName" error:nil] objectAtIndex:0];\
+        contactToSave.cosSiteName = cosSiteName.stringValue;\
+         */\cf0 \
+    \}\
+    \
+    \cf5 if\cf0 (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \cf5 return\cf0  \cf5 YES\cf0 ;\
+\}\
+\
+- (\cf5 BOOL\cf0 )reloadCommunication\{\
+    \
+    NSError *error;\
+    \
+    \cf7 NSManagedObjectContext\cf0  *context = [\cf6 appDelegate\cf0  \cf9 managedObjectContext\cf0 ];\
+    \
+    \cf2 // fetch saved events from coredata and delete them\cf0 \
+    \cf7 NSEntityDescription\cf0  *entity = [\cf7 NSEntityDescription\cf0  \cf8 entityForName\cf0 :\cf4 @"Communication"\cf0  \cf8 inManagedObjectContext\cf0 :context];\
+    \cf7 NSFetchRequest\cf0  * fetchRequest = [[\cf7 NSFetchRequest\cf0  \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+    [fetchRequest \cf8 setEntity\cf0 :entity];\
+    \
+    \
+    \cf7 NSArray\cf0  *items = [context \cf8 executeFetchRequest\cf0 :fetchRequest \cf8 error\cf0 :&error];\
+    \
+    \cf5 for\cf0  (\cf7 NSManagedObject\cf0  *managedObject \cf5 in\cf0  items)\{\
+        [context \cf8 deleteObject\cf0 :managedObject];\
+    \}\
+    \cf5 if\cf0  (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \
+    \
+    \cf2 // save newly retrieved events to coredata\cf0 \
+    \cf7 NSArray\cf0 * nodes = \cf5 nil\cf0 ;\
+    nodes = [[\cf6 communicationDocument\cf0  \cf9 rootElement\cf0 ] \cf9 children\cf0 ];\
+    \
+    \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *element \cf5 in\cf0  nodes)\
+    \{ \
+        \cf6 Communication\cf0  *communicationToSave = (\cf6 Communication\cf0  *)[\cf7 NSEntityDescription\cf0  \cf8 insertNewObjectForEntityForName\cf0 :\cf4 @"Communication"\cf0  \cf8 inManagedObjectContext\cf0 :context]; \
+        \
+        \
+        \cf7 NSArray\cf0 * children = [element \cf9 children\cf0 ];\
+        \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *child \cf5 in\cf0  children)\
+        \{\
+            \cf5 if\cf0  (child != \cf5 NULL\cf0 ) [communicationToSave \cf8 setValue\cf0 :child.\cf7 stringValue\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+            \cf5 else\cf0  [communicationToSave \cf8 setValue\cf0 :\cf4 @""\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+        \}\
+        \
+        \cf2 /*\
+        DDXMLElement *contactID = [[element nodesForXPath:@"contactID" error:nil] objectAtIndex:0];\
+        communicationToSave.contactID = contactID.stringValue;\
+        DDXMLElement *communicationNumberID = [[element nodesForXPath:@"communicationNumberID" error:nil] objectAtIndex:0];\
+        communicationToSave.communicationNumberID = communicationNumberID.stringValue;\
+        DDXMLElement *cmnEmail = [[element nodesForXPath:@"cmnEmail" error:nil] objectAtIndex:0];\
+        communicationToSave.cmnEmail = cmnEmail.stringValue;\
+        DDXMLElement *cmnInternationalCode = [[element nodesForXPath:@"cmnInternationalCode" error:nil] objectAtIndex:0];\
+        communicationToSave.cmnInternationalCode = cmnInternationalCode.stringValue;\
+        DDXMLElement *cmnAreaCode = [[element nodesForXPath:@"cmnAreaCode" error:nil] objectAtIndex:0];\
+        communicationToSave.cmnAreaCode = cmnAreaCode.stringValue;\
+        DDXMLElement *cmnNumber = [[element nodesForXPath:@"cmnNumber" error:nil] objectAtIndex:0];\
+        communicationToSave.cmnNumber = cmnNumber.stringValue;\
+        DDXMLElement *cotDescription = [[element nodesForXPath:@"cotDescription" error:nil] objectAtIndex:0];\
+        communicationToSave.cotDescription = cotDescription.stringValue;*/\cf0 \
+    \}\
+    \
+    \cf5 if\cf0 (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \cf5 return\cf0  \cf5 YES\cf0 ;\
+\}\
+\
+- (\cf5 BOOL\cf0 )reloadAttachments\{\
+    \
+    NSError *error;\
+    \
+    \cf7 NSManagedObjectContext\cf0  *context = [\cf6 appDelegate\cf0  \cf9 managedObjectContext\cf0 ];\
+    \
+    \cf2 // fetch saved events from coredata and delete them\cf0 \
+    \cf7 NSEntityDescription\cf0  *entity = [\cf7 NSEntityDescription\cf0  \cf8 entityForName\cf0 :\cf4 @"Attachment"\cf0  \cf8 inManagedObjectContext\cf0 :context];\
+    \cf7 NSFetchRequest\cf0  * fetchRequest = [[\cf7 NSFetchRequest\cf0  \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+    [fetchRequest \cf8 setEntity\cf0 :entity];\
+    \
+    \
+    \cf7 NSArray\cf0  *items = [context \cf8 executeFetchRequest\cf0 :fetchRequest \cf8 error\cf0 :&error];\
+    \
+    \cf5 for\cf0  (\cf7 NSManagedObject\cf0  *managedObject \cf5 in\cf0  items)\{\
+        [context \cf8 deleteObject\cf0 :managedObject];\
+    \}\
+    \cf5 if\cf0  (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \
+    \
+    \cf2 // save newly retrieved events to coredata\cf0 \
+    \cf7 NSArray\cf0 * nodes = \cf5 nil\cf0 ;\
+    nodes = [[\cf6 attachmentsDocument\cf0  \cf9 rootElement\cf0 ] \cf9 children\cf0 ];\
+    \
+    \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *element \cf5 in\cf0  nodes)\
+    \{ \
+        \cf6 Attachment\cf0  *attachmentToSave = (\cf6 Attachment\cf0  *)[\cf7 NSEntityDescription\cf0  \cf8 insertNewObjectForEntityForName\cf0 :\cf4 @"Attachment"\cf0  \cf8 inManagedObjectContext\cf0 :context]; \
+        \cf7 NSArray\cf0 * children = [element \cf9 children\cf0 ];\
+        \cf5 for\cf0  (\cf6 DDXMLElement\cf0  *child \cf5 in\cf0  children)\
+        \{\
+            \cf5 if\cf0  (child != \cf5 NULL\cf0 ) [attachmentToSave \cf8 setValue\cf0 :child.\cf7 stringValue\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+            \cf5 else\cf0  [attachmentToSave \cf8 setValue\cf0 :\cf4 @""\cf0  \cf8 forKey\cf0 :child.\cf7 name\cf0 ];\
+        \}\
+        \cf2 /*\
+        DDXMLElement *eventID = [[element nodesForXPath:@"eventID" error:nil] objectAtIndex:0];\
+        attachmentToSave.eventID = eventID.stringValue;\
+        DDXMLElement *attachmentID = [[element nodesForXPath:@"attachmentID" error:nil] objectAtIndex:0];\
+        attachmentToSave.attachmentID = attachmentID.stringValue;\
+        DDXMLElement *attDescription = [[element nodesForXPath:@"attDescription" error:nil] objectAtIndex:0];\
+        attachmentToSave.attDescription = attDescription.stringValue;\
+        DDXMLElement *atyMnemonic = [[element nodesForXPath:@"atyMnemonic" error:nil] objectAtIndex:0];\
+        attachmentToSave.atyMnemonic = atyMnemonic.stringValue;\
+        DDXMLElement *attOriginalFilename = [[element nodesForXPath:@"attOriginalFilename" error:nil] objectAtIndex:0];\
+        attachmentToSave.attOriginalFilename = attOriginalFilename.stringValue;*/\cf0 \
+    \}\
+    \
+    \cf5 if\cf0 (![context \cf8 save\cf0 :&error])\{\
+        \cf5 return\cf0  \cf5 NO\cf0 ;\
+    \}\
+    \cf5 return\cf0  \cf5 YES\cf0 ;\
+\}\
+\
+\
+\
+- (\cf5 void\cf0 )setAlertsAndBadge:(\cf7 NSDate\cf0  *)dueDate:(\cf7 NSString\cf0  *)dueTime:(\cf7 NSString\cf0  *)eveTitle:(\cf7 NSString\cf0  *)eventID\{\
+\
+    \cf7 NSCalendar\cf0  *gregorian = [[\cf7 NSCalendar\cf0  \cf8 alloc\cf0 ] \cf8 initWithCalendarIdentifier\cf0 :\cf7 NSGregorianCalendar\cf0 ];\
+    \cf2 //get the date components from due date\cf0 \
+    \cf7 NSDateComponents\cf0  *components = [gregorian \cf8 components\cf0 :(\cf8 NSDayCalendarUnit\cf0  | \cf8 NSMonthCalendarUnit\cf0  | \cf8 NSYearCalendarUnit\cf0 ) \cf8 fromDate\cf0 :dueDate];\
+    \cf2 // convert the due time into the correct format and add as components.\cf0 \
+    [components \cf8 setHour\cf0 :([dueTime \cf8 integerValue\cf0 ]  / \cf10 3600\cf0 )]; \
+    [components \cf8 setMinute\cf0 :(([dueTime \cf8 integerValue\cf0 ] / \cf10 60\cf0 ) % \cf10 60\cf0 )];\
+    \cf2 //create a date from the components\cf0 \
+    \cf7 NSDate\cf0  *dueDateTime = [gregorian \cf8 dateFromComponents\cf0 :components];\
+\
+    \cf2 /*\
+    //if the time is set to midnight:\
+    if (components.hour == 0 && components.minute == 0)\
+    \{\
+        NSLog(@"No due time - %@",dueDateTime);\
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];\
+        NSDateComponents *defaultComponents = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:appDefaultAlertTime];\
+        NSLog(@"default hours: %d", defaultComponents.hour);\
+        //NSDateFormatter *hourFormat = [[NSDateFormatter alloc] init];\
+        //[hourFormat setDateFormat:@"HH"];\
+        [components setHour:defaultComponents.hour]; // TODO! this is done using 12 hour format so isnt working\
+        [components setMinute:defaultComponents.minute];\
+        dueDateTime = [gregorian dateFromComponents:components];\
+        NSLog(@"default due time - %@",dueDateTime);\
+    \}*/\cf0 \
+    \
+    \cf2 // check to see if the date is before now, if yes increase the overdue count on the application badge\cf0 \
+    \cf5 if\cf0 ([dueDateTime \cf8 compare\cf0 :[\cf7 NSDate\cf0  \cf8 date\cf0 ]] == \cf8 NSOrderedAscending\cf0 )\
+    \{\
+            \cf6 overDueCount\cf0 ++;\
+    \}\
+    \cf5 else\cf0  \cf2 //if the event is not yet overdue, create an alert for that event.\cf0 \
+    \{\
+        \cf7 UILocalNotification\cf0  *localNotif = [[\cf7 UILocalNotification\cf0  \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+        \cf5 if\cf0  (localNotif == \cf5 nil\cf0 ) \cf5 return\cf0 ;\
+        localNotif.\cf7 fireDate\cf0  = dueDateTime; \cf2 //set date for the alert to fire\cf0 \
+        localNotif.\cf7 alertBody\cf0  = eveTitle; \cf2 // use event title as the message for the alert.\cf0 \
+        \cf7 NSDictionary\cf0  *userinfo = [\cf7 NSDictionary\cf0  \cf8 dictionaryWithObject\cf0 :eventID \cf8 forKey\cf0 :eveTitle]; \cf2 //store the eventID in userinfo.\cf0 \
+        localNotif.\cf7 userInfo\cf0  = userinfo;\
+        [[\cf7 UIApplication\cf0  \cf8 sharedApplication\cf0 ] \cf8 scheduleLocalNotification\cf0 :localNotif];\
+    \}\
+    \cf2 //set the badge number to the calculated count of overdue events.\cf0 \
+    [[\cf7 UIApplication\cf0  \cf8 sharedApplication\cf0 ] \cf8 setApplicationIconBadgeNumber\cf0 :\cf6 overDueCount\cf0 ];\
+\}\
+\
+\
+\
+- (\cf7 NSDate\cf0  *)formatDate:(\cf7 NSString\cf0  *)date\{\
+    \cf2 //if no date is set, set it to 01/01/9999, so that it can be interpretted as 'no due date' later\cf0 \
+    \cf5 if\cf0  ([date \cf8 isEqualToString\cf0 :\cf4 @""\cf0 ])\
+        date = \cf4 @"01/01/9999 00:00:00"\cf0 ;\
+    \cf2 //set up date formatter\cf0 \
+    \cf7 NSDateFormatter\cf0  *df = [[\cf7 NSDateFormatter\cf0  \cf8 alloc\cf0 ] \cf8 init\cf0 ];\
+    [df \cf8 setDateFormat\cf0 :\cf4 @"dd/MM/yyyy HH:mm:ss"\cf0 ];\
+    \cf2 //return the foratted date.\cf0 \
+    \cf5 return\cf0  [df \cf8 dateFromString\cf0 :date];\
+\}\
+\
+\
+- (\cf7 NSString\cf0  *)setDefaultTime:(\cf7 NSString\cf0  *)dueTime\{\
+    \cf2 //the time is set to zero, or not set at all and so needs to be changed to the default time\cf0 \
+    \cf2 //create components for the hour and minute of default time\cf0 \
+    \cf7 NSCalendar\cf0  *gregorian = [[\cf7 NSCalendar\cf0  \cf8 alloc\cf0 ] \cf8 initWithCalendarIdentifier\cf0 :\cf7 NSGregorianCalendar\cf0 ];\
+    \cf7 NSDateComponents\cf0  *defaultComponents = [gregorian \cf8 components\cf0 :(\cf8 NSHourCalendarUnit\cf0  | \cf8 NSMinuteCalendarUnit\cf0 ) \cf8 fromDate\cf0 :\cf6 appDefaultAlertTime\cf0 ];\
+    \
+    \cf2 //convert the hours and minutes to seconds since midnight and return it\cf0 \
+    \cf5 return\cf0  [\cf7 NSString\cf0  \cf8 stringWithFormat\cf0 :\cf4 @"%d"\cf0 ,((defaultComponents.\cf7 hour\cf0  * \cf10 3600\cf0 ) + (defaultComponents.\cf7 minute\cf0  * \cf10 60\cf0 ))];\
+\}\
+\
+\
+\
+\cf5 @end\cf0 \
+}
