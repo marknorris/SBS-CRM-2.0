@@ -13,7 +13,7 @@
 #import "EventSearch.h"
 #import "ContactSearch.h"
 
-@protocol editEventDelegate <NSObject> 
+@protocol editTableViewControllerDelegate <NSObject> 
 @required
 -(void)getCoreData;
 @end
@@ -33,7 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCancel;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnSave;
 
-@property (nonatomic, strong) id delegate;
+@property (nonatomic, strong) id <editTableViewControllerDelegate> delegate;
 
 // EventSearch proerty to hold event to be edited
 @property (nonatomic, strong) EventSearch *eventToEdit;

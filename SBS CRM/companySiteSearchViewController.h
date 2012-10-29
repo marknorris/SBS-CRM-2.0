@@ -12,7 +12,7 @@
 
 @class companySiteSearchViewController;
 
-@protocol companySiteSearchDelegate <NSObject>
+@protocol companySiteSearchViewControllerDelegate <NSObject>
 -(void)companySiteSearchViewController:(companySiteSearchViewController *)controller
                   didSelectCompany: (CompanySearch *)selectedCompany;
 @end
@@ -22,6 +22,6 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBarOutlet;
 
 
-@property (nonatomic, weak) id <companySiteSearchDelegate> delegate;
+@property (nonatomic, weak) id <companySiteSearchViewControllerDelegate> delegate;
 
 @end

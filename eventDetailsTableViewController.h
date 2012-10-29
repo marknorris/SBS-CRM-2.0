@@ -15,7 +15,7 @@
 
 @class Reachability;
 
-@interface eventDetailsTableViewController : UITableViewController <UIActionSheetDelegate, fetchXMLDelegate, editEventDelegate> {
+@interface eventDetailsTableViewController : UITableViewController <UIActionSheetDelegate, fetchXMLDelegate, editTableViewControllerDelegate> {
     NSMutableArray *attachmentArray;
     Reachability* internetReachable;
     Reachability* hostReachable;

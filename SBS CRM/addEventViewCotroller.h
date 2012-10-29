@@ -12,7 +12,7 @@
 #import "fetchXML.h"
 #import "companySiteSearchViewController.h"
 
-@interface addEventViewCotroller : UITableViewController <lookUpTableViewControllerDelegate, fetchXMLDelegate, companySiteSearchDelegate, dateTimePickerViewControllerDelegate>
+@interface addEventViewCotroller : UITableViewController <lookUpTableViewControllerDelegate, fetchXMLDelegate, companySiteSearchViewControllerDelegate, dateTimePickerViewControllerDelegate>
 
 - (IBAction)btnCancel_Click:(id)sender;
 - (IBAction)btnSave_Click:(id)sender;

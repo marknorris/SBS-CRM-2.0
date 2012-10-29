@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "addCommentViewController.h"
 
-@interface textViewController : UIViewController <addCommentDelegate>
+@interface textViewController : UIViewController <addCommentViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnAdd;
 @property (strong, nonatomic) NSString *text;

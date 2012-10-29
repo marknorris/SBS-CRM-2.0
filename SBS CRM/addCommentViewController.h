@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "fetchXML.h"
 
-@protocol addCommentDelegate <NSObject>
+@protocol addCommentViewControllerDelegate <NSObject>
 @required
 -(void)commentUpdated:(NSString *)comment;
 @end
@@ -26,7 +26,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *txtComment;
 
-@property (nonatomic, retain) id delegate;
+@property (nonatomic, retain) id <addCommentViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *eventId;
 
 @end
