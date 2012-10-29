@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07C08E63162C6E0200CB9CB5 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C08E57162C6C3700CB9CB5 /* libRestKit.a */; };
+		07C08E64162C6E3A00CB9CB5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D92D124158B3C6100FCF5AA /* MobileCoreServices.framework */; };
+		07C08E67162C6E3A00CB9CB5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C08E65162C6E3A00CB9CB5 /* CFNetwork.framework */; };
+		07C08E68162C6E3A00CB9CB5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C08E66162C6E3A00CB9CB5 /* libxml2.dylib */; };
 		07CCC4C0162C1A33009556C5 /* arrowblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 07CCC4BF162C1A33009556C5 /* arrowblack.png */; };
 		07CCC4C2162C1A89009556C5 /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07CCC4C1162C1A89009556C5 /* Default~ipad.png */; };
 		4D064591158B418B000E1170 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D064590158B418B000E1170 /* Reachability.m */; };
@@ -123,7 +127,55 @@
 		4DEFB3D514E56467004BA468 /* EventsCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEFB3D414E56467004BA468 /* EventsCellData.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		07C08E56162C6C3700CB9CB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D1614564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		07C08E58162C6C3700CB9CB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D2614564E820060A5C5;
+			remoteInfo = RestKitTests;
+		};
+		07C08E5A162C6C3700CB9CB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E62145651060060A5C5;
+			remoteInfo = RestKitFramework;
+		};
+		07C08E5C162C6C3700CB9CB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E78145651060060A5C5;
+			remoteInfo = RestKitFrameworkTests;
+		};
+		07C08E5E162C6C3700CB9CB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 259C301615128079003066A2;
+			remoteInfo = RestKitResources;
+		};
+		07C08E61162C6DE100CB9CB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		07C08E65162C6E3A00CB9CB5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		07C08E66162C6E3A00CB9CB5 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		07CCC4BF162C1A33009556C5 /* arrowblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowblack.png; sourceTree = "<group>"; };
 		07CCC4C1162C1A89009556C5 /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~ipad.png"; sourceTree = SOURCE_ROOT; };
 		4D06458F158B418B000E1170 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -309,16 +361,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07C08E67162C6E3A00CB9CB5 /* CFNetwork.framework in Frameworks */,
+				07C08E68162C6E3A00CB9CB5 /* libxml2.dylib in Frameworks */,
+				4D78CFF014E2C9F8008B65A6 /* CoreData.framework in Frameworks */,
+				07C08E64162C6E3A00CB9CB5 /* MobileCoreServices.framework in Frameworks */,
+				4DEFB3D114E52436004BA468 /* QuartzCore.framework in Frameworks */,
+				4D78D01614E2CCC4008B65A6 /* Security.framework in Frameworks */,
 				4D92D11F158B395D00FCF5AA /* SystemConfiguration.framework in Frameworks */,
+				07C08E63162C6E0200CB9CB5 /* libRestKit.a in Frameworks */,
 				4D4C5B7A15090391005B2E73 /* CoreLocation.framework in Frameworks */,
 				4D68B6A514F27A4C008DA148 /* libz.dylib in Frameworks */,
 				4D892E8E14EA870A000B300B /* MapKit.framework in Frameworks */,
-				4DEFB3D114E52436004BA468 /* QuartzCore.framework in Frameworks */,
-				4D78D01614E2CCC4008B65A6 /* Security.framework in Frameworks */,
 				4D78CFEA14E2C9F8008B65A6 /* UIKit.framework in Frameworks */,
 				4D78CFEC14E2C9F8008B65A6 /* Foundation.framework in Frameworks */,
 				4D78CFEE14E2C9F8008B65A6 /* CoreGraphics.framework in Frameworks */,
-				4D78CFF014E2C9F8008B65A6 /* CoreData.framework in Frameworks */,
 				4D68B6A114F27A08008DA148 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +382,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07C08E4C162C6C3600CB9CB5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07C08E57162C6C3700CB9CB5 /* libRestKit.a */,
+				07C08E59162C6C3700CB9CB5 /* RestKitTests.octest */,
+				07C08E5B162C6C3700CB9CB5 /* RestKit.framework */,
+				07C08E5D162C6C3700CB9CB5 /* RestKitFrameworkTests.octest */,
+				07C08E5F162C6C3700CB9CB5 /* RestKitResources.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4D68B69C14F27A08008DA148 /* TestFlightSDK0-1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +409,9 @@
 		4D78CFDA14E2C9F7008B65A6 = {
 			isa = PBXGroup;
 			children = (
+				07C08E65162C6E3A00CB9CB5 /* CFNetwork.framework */,
+				07C08E66162C6E3A00CB9CB5 /* libxml2.dylib */,
+				07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */,
 				4D92D124158B3C6100FCF5AA /* MobileCoreServices.framework */,
 				4D89A5AE158A315900023D12 /* Icon@2x144.png */,
 				4D68B6A414F27A4C008DA148 /* libz.dylib */,
@@ -750,6 +821,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				07C08E62162C6DE100CB9CB5 /* PBXTargetDependency */,
 			);
 			name = "SBS CRM 2.0";
 			productName = "SBS CRM";
@@ -763,6 +835,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Shuttleworth Business Systems Limited";
 			};
 			buildConfigurationList = 4D78CFDF14E2C9F7008B65A6 /* Build configuration list for PBXProject "SBS CRM 2.0" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -774,12 +847,56 @@
 			mainGroup = 4D78CFDA14E2C9F7008B65A6;
 			productRefGroup = 4D78CFE614E2C9F8008B65A6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 07C08E4C162C6C3600CB9CB5 /* Products */;
+					ProjectRef = 07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4D78CFE414E2C9F8008B65A6 /* SBS CRM 2.0 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		07C08E57162C6C3700CB9CB5 /* libRestKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKit.a;
+			remoteRef = 07C08E56162C6C3700CB9CB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07C08E59162C6C3700CB9CB5 /* RestKitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitTests.octest;
+			remoteRef = 07C08E58162C6C3700CB9CB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07C08E5B162C6C3700CB9CB5 /* RestKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RestKit.framework;
+			remoteRef = 07C08E5A162C6C3700CB9CB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07C08E5D162C6C3700CB9CB5 /* RestKitFrameworkTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitFrameworkTests.octest;
+			remoteRef = 07C08E5C162C6C3700CB9CB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07C08E5F162C6C3700CB9CB5 /* RestKitResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitResources.bundle;
+			remoteRef = 07C08E5E162C6C3700CB9CB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4D78CFE314E2C9F8008B65A6 /* Resources */ = {
@@ -904,6 +1021,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		07C08E62162C6DE100CB9CB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = 07C08E61162C6DE100CB9CB5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		4D78CFF414E2C9F8008B65A6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -937,7 +1062,9 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "E495DF1F-61FA-4A0C-BC10-B267C998429B";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -957,8 +1084,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				VALIDATE_PRODUCT = YES;
@@ -972,7 +1101,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SBS CRM/SBS CRM 2.0-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				INFOPLIST_FILE = "SBS CRM/SBS CRM 2.0-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -980,7 +1112,11 @@
 					"\"$(SRCROOT)/../../Downloads/TestFlightSDK0\"",
 					"\"$(SRCROOT)/TestFlightSDK0-1\"",
 				);
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "SBS CRM 2.0";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -996,7 +1132,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shuttleworth Business Systems Limited";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SBS CRM/SBS CRM 2.0-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				INFOPLIST_FILE = "SBS CRM/SBS CRM 2.0-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1004,7 +1143,11 @@
 					"\"$(SRCROOT)/../../Downloads/TestFlightSDK0\"",
 					"\"$(SRCROOT)/TestFlightSDK0-1\"",
 				);
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "SBS CRM 2.0";
 				PROVISIONING_PROFILE = "7810C2F2-CB53-4D9D-948B-0A55E63A4FD4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7810C2F2-CB53-4D9D-948B-0A55E63A4FD4";
@@ -1027,8 +1170,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "E495DF1F-61FA-4A0C-BC10-B267C998429B";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1043,7 +1188,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shuttleworth Business Systems Limited";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SBS CRM/SBS CRM 2.0-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				INFOPLIST_FILE = "SBS CRM/SBS CRM 2.0-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1051,7 +1199,11 @@
 					"\"$(SRCROOT)/../../Downloads/TestFlightSDK0\"",
 					"\"$(SRCROOT)/TestFlightSDK0-1\"",
 				);
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "SBS CRM 2.0";
 				PROVISIONING_PROFILE = "7810C2F2-CB53-4D9D-948B-0A55E63A4FD4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7810C2F2-CB53-4D9D-948B-0A55E63A4FD4";

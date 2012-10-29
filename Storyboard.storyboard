@@ -314,7 +314,7 @@
                                         <rect key="frame" x="0.0" y="453" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Advanced Event Search" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H1E-gE-WPc">
@@ -855,7 +855,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2355" y="682"/>
+            <point key="canvasLocation" x="2355" y="689"/>
         </scene>
         <!--More Table View Controller - More-->
         <scene sceneID="Rcg-dR-Kz0">
@@ -1379,7 +1379,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
                                         <rect key="frame" x="0.0" y="802" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YmL-mk-ReZ">
@@ -1398,7 +1398,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
                                         <rect key="frame" x="0.0" y="846" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EQ5-dq-3EY">
@@ -1417,7 +1417,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
                                         <rect key="frame" x="0.0" y="890" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ul3-jx-Py4">
@@ -1436,7 +1436,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
                                         <rect key="frame" x="0.0" y="934" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LLT-aJ-hKh">
@@ -1455,7 +1455,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
                                         <rect key="frame" x="0.0" y="978" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P6q-q9-t4k">
@@ -1474,7 +1474,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
                                         <rect key="frame" x="0.0" y="1022" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fQ2-1T-Wdo">
@@ -1493,7 +1493,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
                                         <rect key="frame" x="0.0" y="1066" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aY0-Rk-Am3">
@@ -1512,7 +1512,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
                                         <rect key="frame" x="0.0" y="1110" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Ox-2s-AG5">
@@ -1559,7 +1559,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2355" y="-539"/>
+            <point key="canvasLocation" x="2355" y="-529"/>
         </scene>
         <!--Add Event View Cotroller - Add Event View-->
         <scene sceneID="Guo-aW-lP8">
@@ -3164,13 +3164,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UXS-Ft-xZv"/>
-        <segue reference="uKv-xD-m8Y"/>
+        <segue reference="rAO-kb-2N1"/>
+        <segue reference="SEI-xh-i33"/>
+        <segue reference="JNk-IT-fcv"/>
+        <segue reference="rXf-NO-Wg4"/>
         <segue reference="z0R-Jg-hD9"/>
         <segue reference="u4u-ud-MAC"/>
-        <segue reference="rXf-NO-Wg4"/>
-        <segue reference="rAO-kb-2N1"/>
-        <segue reference="Wm0-OC-eJH"/>
-        <segue reference="vIy-1r-CpJ"/>
+        <segue reference="73D-wr-iPz"/>
+        <segue reference="Du5-O7-xUH"/>
     </inferredMetricsTieBreakers>
 </document>

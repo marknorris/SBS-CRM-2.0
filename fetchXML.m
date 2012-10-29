@@ -3,7 +3,7 @@
 //  SBS CRM 2.0
 //
 //  Created by Tom Couchman on 26/03/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
 #import "fetchXML.h"

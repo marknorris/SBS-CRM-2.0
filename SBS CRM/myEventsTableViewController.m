@@ -3,7 +3,7 @@
 //  SBS CRM
 //
 //  Created by Tom Couchman on 09/02/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
 #import "myEventsTableViewController.h"
@@ -261,6 +261,8 @@
 
 
 -(void)docRecieved:(NSDictionary *)docDic:(id)sender{
+    NSLog(@"Class Name: %@", [docDic objectForKey:@"ClassName"]);
+    NSLog(@"Document: %@", [docDic objectForKey:@"Document"]);
     
     //if (sender == getEventsDom)
         //NSLog(@"THIS IS YOUR SENDER");
