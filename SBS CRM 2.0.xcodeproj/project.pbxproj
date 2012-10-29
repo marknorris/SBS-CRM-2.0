@@ -403,10 +403,6 @@
 		4D78CFDA14E2C9F7008B65A6 = {
 			isa = PBXGroup;
 			children = (
-				07C08E65162C6E3A00CB9CB5 /* CFNetwork.framework */,
-				07C08E66162C6E3A00CB9CB5 /* libxml2.dylib */,
-				4D92D124158B3C6100FCF5AA /* MobileCoreServices.framework */,
-				4D68B6A414F27A4C008DA148 /* libz.dylib */,
 				4D78CFF114E2C9F8008B65A6 /* SBS CRM */,
 				4D78CFE814E2C9F8008B65A6 /* Frameworks */,
 				4D78CFE614E2C9F8008B65A6 /* Products */,
@@ -424,6 +420,10 @@
 		4D78CFE814E2C9F8008B65A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07C08E65162C6E3A00CB9CB5 /* CFNetwork.framework */,
+				4D92D124158B3C6100FCF5AA /* MobileCoreServices.framework */,
+				4D68B6A414F27A4C008DA148 /* libz.dylib */,
+				07C08E66162C6E3A00CB9CB5 /* libxml2.dylib */,
 				07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */,
 				4D92D11E158B395D00FCF5AA /* SystemConfiguration.framework */,
 				4D4C5B7915090391005B2E73 /* CoreLocation.framework */,
