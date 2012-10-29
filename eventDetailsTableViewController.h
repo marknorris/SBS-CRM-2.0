@@ -11,7 +11,7 @@
 #import "CompanySearch.h"
 #import "ContactSearch.h"
 #import "fetchXML.h"
-#import "editTableViewConrtoller.h"
+#import "editTableViewController.h"
 
 @class Reachability;
 

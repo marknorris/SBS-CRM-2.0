@@ -888,7 +888,7 @@
     }
     else if([segue.identifier isEqualToString:@"toEdit"])
     {   
-        editTableViewConrtoller *etvc = segue.destinationViewController;
+        editTableViewController *etvc = segue.destinationViewController;
         etvc.delegate = self;
         
         etvc.eventToEdit = [eventDetails copy];

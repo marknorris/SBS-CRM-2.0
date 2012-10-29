@@ -59,7 +59,7 @@
 		4D8647BD14E417A100967A9E /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8647BC14E417A000967A9E /* EventTableViewCell.m */; };
 		4D867BBF152081600027288D /* fetchXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D867BBE1520815F0027288D /* fetchXML.m */; };
 		4D86D99015220BEB00AB5D7E /* AttachmentSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D86D98F15220BEB00AB5D7E /* AttachmentSearch.m */; };
-		4D8806AC1564FA8C00BB8C3E /* editTableViewConrtoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8806AB1564FA8C00BB8C3E /* editTableViewConrtoller.m */; };
+		4D8806AC1564FA8C00BB8C3E /* editTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8806AB1564FA8C00BB8C3E /* editTableViewController.m */; };
 		4D887B081564454F000AFA66 /* refresh5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D887B061564454F000AFA66 /* refresh5.png */; };
 		4D887B091564454F000AFA66 /* refresh6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D887B071564454F000AFA66 /* refresh6.png */; };
 		4D892E7F14EA6CA9000B300B /* companyDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D892E7E14EA6CA9000B300B /* companyDetailsTableViewController.m */; };
@@ -254,8 +254,8 @@
 		4D867BBE1520815F0027288D /* fetchXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = fetchXML.m; path = ../fetchXML.m; sourceTree = "<group>"; };
 		4D86D98E15220BEB00AB5D7E /* AttachmentSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentSearch.h; sourceTree = "<group>"; };
 		4D86D98F15220BEB00AB5D7E /* AttachmentSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentSearch.m; sourceTree = "<group>"; };
-		4D8806AA1564FA8C00BB8C3E /* editTableViewConrtoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editTableViewConrtoller.h; sourceTree = "<group>"; };
-		4D8806AB1564FA8C00BB8C3E /* editTableViewConrtoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editTableViewConrtoller.m; sourceTree = "<group>"; };
+		4D8806AA1564FA8C00BB8C3E /* editTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = editTableViewController.h; sourceTree = "<group>"; };
+		4D8806AB1564FA8C00BB8C3E /* editTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editTableViewController.m; sourceTree = "<group>"; };
 		4D887B061564454F000AFA66 /* refresh5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh5.png; sourceTree = "<group>"; };
 		4D887B071564454F000AFA66 /* refresh6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh6.png; sourceTree = "<group>"; };
 		4D892E7D14EA6CA9000B300B /* companyDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = companyDetailsTableViewController.h; sourceTree = "<group>"; };
@@ -612,8 +612,8 @@
 				4DEC90B1155BEB3200038581 /* addCommentViewController.m */,
 				4D8FB3C115761170008143A3 /* addEventViewCotroller.h */,
 				4D8FB3C215761170008143A3 /* addEventViewCotroller.m */,
-				4D8806AA1564FA8C00BB8C3E /* editTableViewConrtoller.h */,
-				4D8806AB1564FA8C00BB8C3E /* editTableViewConrtoller.m */,
+				4D8806AA1564FA8C00BB8C3E /* editTableViewController.h */,
+				4D8806AB1564FA8C00BB8C3E /* editTableViewController.m */,
 			);
 			name = Edit;
 			sourceTree = "<group>";
@@ -1006,7 +1006,7 @@
 				4D8A428015230BEC0019E565 /* saveToCoreData.m in Sources */,
 				4D8A428315230CA60019E565 /* format.m in Sources */,
 				4DEC90B2155BEB3200038581 /* addCommentViewController.m in Sources */,
-				4D8806AC1564FA8C00BB8C3E /* editTableViewConrtoller.m in Sources */,
+				4D8806AC1564FA8C00BB8C3E /* editTableViewController.m in Sources */,
 				4D8FB3C315761170008143A3 /* addEventViewCotroller.m in Sources */,
 				4D7FE4EF1576DF47008CA61F /* CoreDataManager.m in Sources */,
 				4D8D0A5A1579076D000A6FA6 /* companySiteSearchViewController.m in Sources */,

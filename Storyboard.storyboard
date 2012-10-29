@@ -1960,11 +1960,11 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
             </objects>
             <point key="canvasLocation" x="3900" y="-1176"/>
         </scene>
-        <!--Edit Table View Conrtoller-->
+        <!--Edit Table View Controller-->
         <scene sceneID="NhK-Pc-I2Q">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDP-2e-jhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController modalTransitionStyle="flipHorizontal" id="38P-dG-2gE" customClass="editTableViewConrtoller" sceneMemberID="viewController">
+                <tableViewController modalTransitionStyle="flipHorizontal" id="38P-dG-2gE" customClass="editTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Td2-f1-W2P">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
