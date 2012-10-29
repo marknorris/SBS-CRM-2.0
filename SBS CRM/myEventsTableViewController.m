@@ -20,7 +20,7 @@
 
 #import "format.h"
 
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 
 #import "alertsAndBadges.h"
 

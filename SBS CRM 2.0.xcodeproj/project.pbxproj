@@ -46,7 +46,7 @@
 		4D78D05714E2EAA4008B65A6 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78D04E14E2EAA4008B65A6 /* DDXMLDocument.m */; };
 		4D78D05814E2EAA4008B65A6 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78D05014E2EAA4008B65A6 /* DDXMLElement.m */; };
 		4D78D05914E2EAA4008B65A6 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D78D05214E2EAA4008B65A6 /* DDXMLNode.m */; };
-		4D7FE4EF1576DF47008CA61F /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7FE4EE1576DF47008CA61F /* CoreDataManager.m */; };
+		4D7FE4EF1576DF47008CA61F /* NSManagedObject+CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7FE4EE1576DF47008CA61F /* NSManagedObject+CoreDataManager.m */; };
 		4D86478F14E3D4AB00967A9E /* suttleworth_r1_c2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D86478E14E3D4AB00967A9E /* suttleworth_r1_c2.jpg */; };
 		4D86479714E3FBF700967A9E /* moreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D86479614E3FBF700967A9E /* moreTableViewController.m */; };
 		4D8647A114E40CC900967A9E /* 83-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8647A014E40CC900967A9E /* 83-calendar.png */; };
@@ -231,8 +231,8 @@
 		4D78D05114E2EAA4008B65A6 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
 		4D78D05214E2EAA4008B65A6 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
 		4D78D05414E2EAA4008B65A6 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
-		4D7FE4ED1576DF47008CA61F /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
-		4D7FE4EE1576DF47008CA61F /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		4D7FE4ED1576DF47008CA61F /* NSManagedObject+CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSManagedObject+CoreDataManager.h"; sourceTree = "<group>"; };
+		4D7FE4EE1576DF47008CA61F /* NSManagedObject+CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+CoreDataManager.m"; sourceTree = "<group>"; };
 		4D86478E14E3D4AB00967A9E /* suttleworth_r1_c2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = suttleworth_r1_c2.jpg; sourceTree = "<group>"; };
 		4D86479514E3FBF700967A9E /* moreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moreTableViewController.h; sourceTree = "<group>"; };
 		4D86479614E3FBF700967A9E /* moreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = moreTableViewController.m; sourceTree = "<group>"; };
@@ -574,8 +574,8 @@
 		4D8647B814E411E100967A9E /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				4D7FE4ED1576DF47008CA61F /* CoreDataManager.h */,
-				4D7FE4EE1576DF47008CA61F /* CoreDataManager.m */,
+				4D7FE4ED1576DF47008CA61F /* NSManagedObject+CoreDataManager.h */,
+				4D7FE4EE1576DF47008CA61F /* NSManagedObject+CoreDataManager.m */,
 				4D78CFFD14E2C9F8008B65A6 /* SBS_CRM.xcdatamodeld */,
 				4DB68C00150A23BD00C369DB /* Event.h */,
 				4DB68C01150A23BD00C369DB /* Event.m */,
@@ -1008,7 +1008,7 @@
 				4DEC90B2155BEB3200038581 /* addCommentViewController.m in Sources */,
 				4D8806AC1564FA8C00BB8C3E /* editTableViewController.m in Sources */,
 				4D8FB3C315761170008143A3 /* addEventViewCotroller.m in Sources */,
-				4D7FE4EF1576DF47008CA61F /* CoreDataManager.m in Sources */,
+				4D7FE4EF1576DF47008CA61F /* NSManagedObject+CoreDataManager.m in Sources */,
 				4D8D0A5A1579076D000A6FA6 /* companySiteSearchViewController.m in Sources */,
 				4D8CD1771581F5DD0055E07E /* convert.m in Sources */,
 				4D99CFEE1586248C00E8BD6A /* UserDetails.m in Sources */,

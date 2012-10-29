@@ -13,7 +13,7 @@
 
 #import "XMLParser.h"
 
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 
 @interface contactsTableViewController()
     @property (nonatomic, retain) fetchXML *getContactsDom;

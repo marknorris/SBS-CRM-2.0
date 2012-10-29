@@ -13,7 +13,7 @@
 
 #import "loadingSavingView.h"
 
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 
 @interface addCommentViewController ()
 @property (strong, nonatomic) fetchXML *saveComment;

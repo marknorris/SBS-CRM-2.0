@@ -18,7 +18,7 @@
 #import "fetchXML.h"
 #import "XMLParser.h"
 
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 
 #import "Reachability.h"
 

@@ -12,7 +12,7 @@
 #import "XMLParser.h"
 #import "ContactSearch.h"
 #import "CompanySearch.h"
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 
 #import "loadingSavingView.h"
 

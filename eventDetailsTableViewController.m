@@ -19,7 +19,7 @@
 #import "Event.h"
 
 #import "format.h"
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 #import "convert.h"
 
 #import "Reachability.h"

@@ -13,7 +13,7 @@
 #import "Company.h"
 #import "Attachment.h"
 #import "myEventsTableViewController.h"
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 
 NSInteger appUserID = 0;
 NSInteger appContactID = 0;

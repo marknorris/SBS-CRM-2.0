@@ -25,7 +25,7 @@
 
 #import "UserDetails.h"
 
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 
 #import "AppDelegate.h"
 

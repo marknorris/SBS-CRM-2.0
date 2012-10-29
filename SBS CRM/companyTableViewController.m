@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "CompanySearch.h"
 #import "XMLParser.h"
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 
 @interface companyTableViewController()
     @property (nonatomic, retain) fetchXML *getCompaniesDom;

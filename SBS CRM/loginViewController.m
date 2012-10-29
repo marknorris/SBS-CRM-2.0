@@ -21,7 +21,7 @@
 #import "Communication.h"
 #import "Company.h"
 #import "Attachment.h"
-#import "CoreDataManager.h"
+#import "NSManagedObject+CoreDataManager.h"
 
 #import "myEventsTableViewController.h"
 
