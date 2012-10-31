@@ -10,12 +10,12 @@
 
 @implementation CommunicationSearch
 
-@synthesize contactID;
-@synthesize communicationNumberID;
-@synthesize cmnEmail;
-@synthesize cmnInternationalCode;
-@synthesize cmnAreaCode;
-@synthesize cmnNumber;
-@synthesize cotDescription;
+@synthesize contactID = _contactID;
+@synthesize communicationNumberID = _communicationNumberID;
+@synthesize cmnEmail = _cmnEmail;
+@synthesize cmnInternationalCode = _cmnInternationalCode;
+@synthesize cmnAreaCode = _cmnAreaCode;
+@synthesize cmnNumber = _cmnNumber;
+@synthesize cotDescription = _cotDescription;
 
 @end

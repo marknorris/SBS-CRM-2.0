@@ -10,8 +10,8 @@
 
 @implementation UserDetails
 
-@synthesize contactID;
-@synthesize userID;
-@synthesize companySiteID;
+@synthesize contactID = _contactID;
+@synthesize userID = _userID;
+@synthesize companySiteID = _companySiteID;
 
 @end

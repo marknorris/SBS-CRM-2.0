@@ -10,7 +10,7 @@
         <scene sceneID="EOF-A5-tB7">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPA-oH-z1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="7sG-oD-TMb" customClass="loginViewController" sceneMemberID="viewController">
+                <viewController id="7sG-oD-TMb" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W0d-YP-KXz">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -135,7 +135,7 @@
         <scene sceneID="S50-7y-13H">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6CA-cG-3fT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Xbv-Ld-pIF" customClass="companyTableViewController" sceneMemberID="viewController">
+                <tableViewController id="Xbv-Ld-pIF" customClass="CompanyTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6ry-UZ-XPC">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,7 +356,7 @@
         <scene sceneID="J5c-Wx-WfH">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rDO-SG-6nw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Jsh-BK-ZIb" customClass="mapViewController" sceneMemberID="viewController">
+                <viewController id="Jsh-BK-ZIb" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i6k-eq-J7M">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -415,7 +415,7 @@
         <scene sceneID="uau-hu-9eK">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDM-eN-CxO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Guf-Jh-7YN" customClass="contactsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="Guf-Jh-7YN" customClass="ContactsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iSn-0L-B6k">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -469,7 +469,7 @@
         <scene sceneID="CuN-qg-hqf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPr-Na-bRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="wbJ-w7-3NA" customClass="contactDetailsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="wbJ-w7-3NA" customClass="ContactDetailsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Bnj-4M-3Nr">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -861,7 +861,7 @@
         <scene sceneID="Rcg-dR-Kz0">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbc-tM-iur" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="05h-bs-NbV" customClass="moreTableViewController" sceneMemberID="viewController">
+                <tableViewController id="05h-bs-NbV" customClass="MoreTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="K8f-h9-Evf">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -949,11 +949,11 @@
             </objects>
             <point key="canvasLocation" x="1800" y="1287"/>
         </scene>
-        <!--My Events Table View Controller - My Events-->
+        <!--Events Table View Controller - My Events-->
         <scene sceneID="wyx-fx-RRG">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUg-ca-aSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="E5o-V9-Amy" customClass="myEventsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="E5o-V9-Amy" customClass="EventsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XRz-X3-hwN">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1020,7 +1020,7 @@
         <scene sceneID="JmB-RC-Zh9">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqE-E6-x8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Flq-uB-2I7" customClass="eventDetailsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="Flq-uB-2I7" customClass="EventDetailsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ak4-a9-i2Q">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1561,11 +1561,11 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
             </objects>
             <point key="canvasLocation" x="2355" y="-529"/>
         </scene>
-        <!--Add Event View Cotroller - Add Event View-->
+        <!--Add Event View Controller - Add Event View-->
         <scene sceneID="Guo-aW-lP8">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzx-J1-yaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController title="Add Event View" id="AR0-3w-lRO" customClass="addEventViewCotroller" sceneMemberID="viewController">
+                <tableViewController title="Add Event View" id="AR0-3w-lRO" customClass="AddEventViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="f8V-D5-vZG">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1895,7 +1895,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="sH9-vH-LR0">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0j-G8-C6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="nqX-uG-FB5" customClass="companySiteSearchViewController" sceneMemberID="viewController">
+                <tableViewController id="nqX-uG-FB5" customClass="CompanySiteSearchViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pyt-EU-qPx">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1964,7 +1964,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="NhK-Pc-I2Q">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDP-2e-jhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController modalTransitionStyle="flipHorizontal" id="38P-dG-2gE" customClass="editTableViewController" sceneMemberID="viewController">
+                <tableViewController modalTransitionStyle="flipHorizontal" id="38P-dG-2gE" customClass="EditTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Td2-f1-W2P">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2212,7 +2212,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="8df-Vy-PD5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qar-4W-fXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Add Comment" modalTransitionStyle="flipHorizontal" id="sk2-1O-EfO" customClass="addCommentViewController" sceneMemberID="viewController">
+                <viewController title="Add Comment" modalTransitionStyle="flipHorizontal" id="sk2-1O-EfO" customClass="AddCommentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mw9-GC-Kzv">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2269,7 +2269,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="Dgr-da-T04">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HvO-dj-YI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="eS6-HH-2ao" customClass="textViewController" sceneMemberID="viewController">
+                <viewController id="eS6-HH-2ao" customClass="TextViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bvu-hz-oxK">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2316,7 +2316,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="qtx-Mh-ONu">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EeA-yj-BAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController title="Events List" id="lKf-Ib-h7g" customClass="eventsListTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Events List" id="lKf-Ib-h7g" customClass="EventsListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Iet-sT-t6d">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2349,7 +2349,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="lW8-gD-4di">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aag-9b-LP8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="q53-Jh-Bh2" customClass="contactListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="q53-Jh-Bh2" customClass="ContactListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aPj-dc-c4X">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2398,7 +2398,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="K2B-Uj-26G">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuF-Q9-cNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="rv5-Bg-wDq" customClass="advancedSearchTableViewController" sceneMemberID="viewController">
+                <tableViewController id="rv5-Bg-wDq" customClass="AdvancedSearchTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="X6C-2q-GbN">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2856,7 +2856,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="y2J-VB-RD4">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fRQ-Lh-6kU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="KC9-nu-npL" customClass="documentViewController" sceneMemberID="viewController">
+                <viewController id="KC9-nu-npL" customClass="DocumentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M5y-Kf-h9j">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2914,7 +2914,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="Eqj-T9-Mlh">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poc-yC-BZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="yvI-CG-JjQ" customClass="lookUpTableViewController" sceneMemberID="viewController">
+                <tableViewController id="yvI-CG-JjQ" customClass="LookUpTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8Ma-FI-sjt">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3044,7 +3044,7 @@ Aj0CQgAAAAAAAAIBAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAJEA
         <scene sceneID="FqU-Tg-sCn">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0I-HG-H8H" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="reusable date time picker" id="jUB-Ht-ZEV" customClass="dateTimePickerViewController" sceneMemberID="viewController">
+                <viewController title="reusable date time picker" id="jUB-Ht-ZEV" customClass="DateTimePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dXo-l8-4zH">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3111,7 +3111,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <scene sceneID="3gG-Ya-SRe">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12c-Du-eIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="reusable picker" id="8pi-Xx-A2k" customClass="pickerViewController" sceneMemberID="viewController">
+                <viewController title="reusable picker" id="8pi-Xx-A2k" customClass="PickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dnh-ut-wT1">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3146,7 +3146,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="picker" destination="Y3g-KP-YWB" id="WbT-Ne-Q7y"/>
+                        <outlet property="picker" destination="Y3g-KP-YWB" id="U6J-DB-og7"/>
                     </connections>
                 </viewController>
             </objects>

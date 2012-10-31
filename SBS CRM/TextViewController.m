@@ -6,26 +6,30 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "textViewController.h"
-#import "addCommentViewController.h"
-@implementation textViewController
-@synthesize btnAdd;
-@synthesize text;
-@synthesize txtText;
-@synthesize eventId;
+#import "TextViewController.h"
+#import "AddCommentViewController.h"
 
-@synthesize editable;
+@implementation TextViewController
 
-- (IBAction)clickDone:(id)sender {
+@synthesize btnAdd = _btnAdd;
+@synthesize text = _text;
+@synthesize txtText = _txtText;
+@synthesize eventId = _eventId;
+@synthesize editable = _editable;
+
+- (IBAction)clickDone:(id)sender
+{
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         // Custom initialization
     }
+    
     return self;
 }
 
@@ -40,23 +44,19 @@
 #pragma mark - View lifecycle
 
 /*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView
+ {
+ }
+ */
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    txtText.text = text;
-    if (editable == NO) // if comments cannot be added to, remove the add button.
-        btnAdd.enabled = false;
-        
-    
+    self.txtText.text = self.text;
+    if (self.editable == NO) // if comments cannot be added to, remove the add button.
+        self.btnAdd.enabled = false;
 }
-
 
 - (void)viewDidUnload
 {
@@ -76,16 +76,16 @@
 
 -(void)commentUpdated:(NSString *)comment
 {
-    txtText.text = comment;
+    self.txtText.text = comment;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     
-    if ([segue.identifier isEqualToString:@"toAddComment"])
-    {
-        addCommentViewController *acvc = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"toAddComment"]) {
+        AddCommentViewController *acvc = segue.destinationViewController;
         acvc.delegate = self;
-        acvc.eventId = eventId; // pass through the eventId to the add comment view controller.
+        acvc.eventId = self.eventId; // pass through the eventId to the add comment view controller.
     }
     
 }

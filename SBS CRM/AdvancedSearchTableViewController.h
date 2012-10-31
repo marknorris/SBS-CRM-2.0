@@ -7,16 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "lookUpTableViewController.h"
-#import "dateTimePickerViewController.h"
-#import "pickerViewController.h"
+#import "LookUpTableViewController.h"
+#import "DateTimePickerViewController.h"
+#import "PickerViewController.h"
 #import "CompanySearch.h"
 #import "ContactSearch.h"
 
-@interface advancedSearchTableViewController : UITableViewController <lookUpTableViewControllerDelegate, dateTimePickerViewControllerDelegate, pickerViewControllerDelegate>
-
-- (IBAction)btnCancelClick:(id)sender;
-
+@interface AdvancedSearchTableViewController : UITableViewController <LookUpTableViewControllerDelegate, DateTimePickerViewControllerDelegate, PickerViewControllerDelegate>
 
 // passed from the previous view.
 @property (strong, nonatomic) NSString *companySiteID;
@@ -45,7 +42,6 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segOrderBy;
 
 - (IBAction)clickSearch:(id)sender;
-
 - (IBAction) textFieldDoneEditing:(id)sender;
 
 @end

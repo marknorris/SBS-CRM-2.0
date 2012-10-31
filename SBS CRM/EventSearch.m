@@ -11,56 +11,57 @@
 
 @implementation EventSearch
 
-@synthesize eveNumber;
-@synthesize eveStatus;
-@synthesize eveTitle;
-@synthesize ourContactID;
-@synthesize eventType;
-@synthesize eventType2;
-@synthesize eventPriority;
-@synthesize companySiteID;
-@synthesize eventID;
-@synthesize contactID;
-@synthesize eveComments;
-@synthesize eveCreatedDate;
-@synthesize eveCreatedTime;
-@synthesize eveDueDate;
-@synthesize eveDueTime;
-@synthesize eveEndDate;
-@synthesize eveEndTime;
-@synthesize eveCreatedBy;
-@synthesize readEvent;
-@synthesize watched;
+@synthesize eveNumber = _eveNumber;
+@synthesize eveStatus = _eveStatus;
+@synthesize eveTitle = _eveTitle;
+@synthesize ourContactID = _ourContactID;
+@synthesize eventType = _eventType;
+@synthesize eventType2 = _eventType2;
+@synthesize eventPriority = _eventPriority;
+@synthesize companySiteID = _companySiteID;
+@synthesize eventID = _eventID;
+@synthesize contactID = _contactID;
+@synthesize eveComments = _eveComments;
+@synthesize eveCreatedDate = _eveCreatedDate;
+@synthesize eveCreatedTime = _eveCreatedTime;
+@synthesize eveDueDate = _eveDueDate;
+@synthesize eveDueTime = _eveDueTime;
+@synthesize eveEndDate = _eveEndDate;
+@synthesize eveEndTime = _eveEndTime;
+@synthesize eveCreatedBy = _eveCreatedBy;
+@synthesize readEvent = _readEvent;
+@synthesize watched = _watched;
 
--(id)copy{    
+- (id)copy
+{    
     return [self copyWithZone:nil];
 }
 
--(id)copyWithZone:(NSZone *)zone
+- (id)copyWithZone:(NSZone *)zone
 {
     // We'll ignore the zone for now
     EventSearch *copiedEvent = [[EventSearch alloc] init];
     
-    copiedEvent.eventID = [eventID copyWithZone:zone];
-    copiedEvent.eveDueDate = [eveDueDate copyWithZone: zone];
-    copiedEvent.eveDueTime = [eveDueTime copyWithZone: zone];
-    copiedEvent.eveEndDate = [eveEndDate copyWithZone: zone];
-    copiedEvent.eveEndTime = [eveEndTime copyWithZone: zone];
-    copiedEvent.eveTitle = [eveTitle copyWithZone: zone];
-    copiedEvent.companySiteID = [companySiteID copyWithZone: zone];
-    copiedEvent.ourContactID = [ourContactID copyWithZone: zone];
-    copiedEvent.contactID = [contactID copyWithZone: zone];
-    copiedEvent.eveNumber = [eveNumber copyWithZone: zone];
-    copiedEvent.eveStatus = [eveStatus copyWithZone: zone];
-    copiedEvent.eventType = [eventType copyWithZone: zone];
-    copiedEvent.eventType2 = [eventType2 copyWithZone: zone];
-    copiedEvent.eventPriority = [eventPriority copyWithZone: zone];
-    copiedEvent.eveComments = [eveComments copyWithZone: zone];
-    copiedEvent.eveCreatedDate = [eveCreatedDate copyWithZone: zone];
-    copiedEvent.eveCreatedTime = [eveCreatedTime copyWithZone: zone];
-    copiedEvent.eveCreatedBy = [eveCreatedBy copyWithZone: zone];
-    copiedEvent.readEvent = readEvent; // value type
-    copiedEvent.watched = watched; // value type
+    copiedEvent.eventID = [self.eventID copyWithZone:zone];
+    copiedEvent.eveDueDate = [self.eveDueDate copyWithZone: zone];
+    copiedEvent.eveDueTime = [self.eveDueTime copyWithZone: zone];
+    copiedEvent.eveEndDate = [self.eveEndDate copyWithZone: zone];
+    copiedEvent.eveEndTime = [self.eveEndTime copyWithZone: zone];
+    copiedEvent.eveTitle = [self.eveTitle copyWithZone: zone];
+    copiedEvent.companySiteID = [self.companySiteID copyWithZone: zone];
+    copiedEvent.ourContactID = [self.ourContactID copyWithZone: zone];
+    copiedEvent.contactID = [self.contactID copyWithZone: zone];
+    copiedEvent.eveNumber = [self.eveNumber copyWithZone: zone];
+    copiedEvent.eveStatus = [self.eveStatus copyWithZone: zone];
+    copiedEvent.eventType = [self.eventType copyWithZone: zone];
+    copiedEvent.eventType2 = [self.eventType2 copyWithZone: zone];
+    copiedEvent.eventPriority = [self.eventPriority copyWithZone: zone];
+    copiedEvent.eveComments = [self.eveComments copyWithZone: zone];
+    copiedEvent.eveCreatedDate = [self.eveCreatedDate copyWithZone: zone];
+    copiedEvent.eveCreatedTime = [self.eveCreatedTime copyWithZone: zone];
+    copiedEvent.eveCreatedBy = [self.eveCreatedBy copyWithZone: zone];
+    copiedEvent.readEvent = self.readEvent; // value type
+    copiedEvent.watched = self.watched; // value type
     
     return copiedEvent;
 }

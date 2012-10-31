@@ -7,26 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "fetchXML.h"
+#import "FetchXML.h"
 
 @protocol addCommentViewControllerDelegate <NSObject>
+
 @required
--(void)commentUpdated:(NSString *)comment;
+- (void)commentUpdated:(NSString *)comment;
+
 @end
 
-@interface addCommentViewController : UIViewController <fetchXMLDelegate, UITextViewDelegate>
-
-
+@interface AddCommentViewController : UIViewController <FetchXMLDelegate, UITextViewDelegate>
 
 - (IBAction)btnCancelClick:(id)sender;
 - (IBAction)btnDoneClick:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnDone;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCancel;
-
 @property (strong, nonatomic) IBOutlet UITextView *txtComment;
-
-@property (nonatomic, retain) id <addCommentViewControllerDelegate> delegate;
+@property (nonatomic, retain) id<addCommentViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *eventId;
 
 @end

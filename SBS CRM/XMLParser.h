@@ -11,6 +11,6 @@
 
 @interface XMLParser : NSObject
 
-- (NSArray *)parseXMLDoc:(DDXMLDocument *)Doc toClass:(Class)outputClass;
+- (NSArray *)parseXMLDoc:(DDXMLDocument *)doc toClass:(Class)outputClass;
 
 @end

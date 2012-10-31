@@ -12,7 +12,7 @@
 #import "Contact.h"
 #import "Company.h"
 #import "Attachment.h"
-#import "myEventsTableViewController.h"
+#import "EventsTableViewController.h"
 #import "NSManagedObject+CoreDataManager.h"
 
 NSInteger appUserID = 0;
@@ -293,6 +293,69 @@ didReceiveLocalNotification:(UILocalNotification *)notification
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - Custom methods
 
+//- (void)configureRestKit
+//{
+//    // Initialize RestKit
+////    if ([[Settings settingsManager] baseURL] == nil) {
+////        return;
+////    }
+//
+//    
+////    NSLog(@"baseURL = %@", [[Settings settingsManager] baseURL]);
+////    RKURL *baseURL = [RKURL URLWithBaseURLString:[@"http://" stringByAppendingString:[[Settings settingsManager] baseURL]]];
+////    RKURL *baseURL = [RKURL URLWithBaseURLString:[@"http://" stringByAppendingString:[[Settings settingsManager] baseURL]]];
+//    RKURL *baseURL = [RKURL URLWithString:@"http://192.168.0.3/crm"];
+//    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:baseURL];
+//    RKLogInfo(@"I am your RKClient singleton %@", [objectManager client]);
+//    RKLogInfo(@"Base URL: %@", [baseURL debugDescription]);
+//    [objectManager setSerializationMIMEType:RKMIMETypeJSON];
+//    
+//    // Send this string with each request
+//    [[objectManager client] setValue:@"123-456-789" forHTTPHeaderField:@"X-UDID"];
+//    
+//    // User Basic HTTP Authentication
+//    [[objectManager client] setAuthenticationType:RKRequestAuthenticationTypeOAuth1];
+//    
+//    // Use cached data if offline
+//    [[objectManager client] setCachePolicy:RKRequestCachePolicyLoadIfOffline];
+//    
+//    // Enable automatic network activity indicator management
+//    [[[objectManager client] requestQueue] setShowsNetworkActivityIndicatorWhenBusy:YES];
+//    
+//    // Grab the reference to the router from the manager
+//    RKObjectRouter *router = [objectManager router];
+//    
+//    // Define a default resource path for all unspecified HTTP verbs
+//    [router routeClass:[ttEvent class] toResourcePath:@"/dataset/:EventID" forMethod:RKRequestMethodDELETE];
+//    [router routeClass:[ttEvent class] toResourcePath:@"/dataset/:EventID" forMethod:RKRequestMethodPUT];
+//    [router routeClass:[ttEvent class] toResourcePath:@"/dataset"];
+//    
+//    // ttEvent mapping
+//    RKObjectMapping* ttEventMapping = [RKObjectMapping mappingForClass:[ttEvent class]];
+//    // Automatic mapping of attributes
+//    NSDictionary *ttEventDictionary = [[RKObjectPropertyInspector sharedInspector] propertyNamesAndTypesForClass:[ttEvent class]];
+//    [ttEventMapping mapAttributesFromSet:[NSSet setWithArray:[ttEventDictionary allKeys]]];
+//    [[objectManager mappingProvider] setSerializationMapping:ttEventMapping forClass:[ttEvent class]];
+//    
+//    // ttComments mapping
+//    RKObjectMapping* ttCommentsMapping = [RKObjectMapping mappingForClass:[ttComments class]];
+//    // Automatic mapping of attributes
+//    NSDictionary *ttCommentsDictionary = [[RKObjectPropertyInspector sharedInspector] propertyNamesAndTypesForClass:[ttComments class]];
+//    [ttCommentsMapping mapAttributesFromSet:[NSSet setWithArray:[ttCommentsDictionary allKeys]]];
+//    
+//    // dsEventDetails mapping
+//    RKObjectMapping* dsEventDetailsMapping = [RKObjectMapping mappingForClass:[dsEventDetails class]];
+//    // KeyPath is the object in the JSON. Relationship is the attribute in dsEventDetails to map to
+//    [dsEventDetailsMapping mapKeyPath:@"ttEvent" 
+//                       toRelationship:@"Event" 
+//                          withMapping:ttEventMapping];
+//    [dsEventDetailsMapping mapKeyPath:@"ttComments" 
+//                       toRelationship:@"Comments" 
+//                          withMapping:ttEventMapping];
+//    [[objectManager mappingProvider] setMapping:dsEventDetailsMapping 
+//                                     forKeyPath:@""];
+//}
 
 @end

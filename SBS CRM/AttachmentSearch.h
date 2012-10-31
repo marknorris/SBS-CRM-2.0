@@ -10,10 +10,10 @@
 
 @interface AttachmentSearch : NSObject
 
-@property (nonatomic, retain) NSString * eventID;
-@property (nonatomic, retain) NSString * attachmentID;
-@property (nonatomic, retain) NSString * attDescription;
-@property (nonatomic, retain) NSString * atyMnemonic;
-@property (nonatomic, retain) NSString * attOriginalFilename;
+@property (nonatomic, retain) NSString *eventID;
+@property (nonatomic, retain) NSString *attachmentID;
+@property (nonatomic, retain) NSString *attDescription;
+@property (nonatomic, retain) NSString *atyMnemonic;
+@property (nonatomic, retain) NSString *attOriginalFilename;
 
 @end

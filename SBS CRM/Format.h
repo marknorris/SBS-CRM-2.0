@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface format : NSObject
+@interface Format : NSObject
 
 + (NSString *)nameFromComponents:(NSMutableArray *)nameArray;
 + (NSString *)secondsSinceMidnightFromDate:(NSDate *)date;

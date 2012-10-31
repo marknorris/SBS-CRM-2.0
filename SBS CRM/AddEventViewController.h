@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "dateTimePickerViewController.h"
-#import "lookUpTableViewController.h"
-#import "fetchXML.h"
-#import "companySiteSearchViewController.h"
+#import "DateTimePickerViewController.h"
+#import "LookUpTableViewController.h"
+#import "FetchXML.h"
+#import "CompanySiteSearchViewController.h"
 
-@interface addEventViewCotroller : UITableViewController <lookUpTableViewControllerDelegate, fetchXMLDelegate, companySiteSearchViewControllerDelegate, dateTimePickerViewControllerDelegate>
+@interface AddEventViewController : UITableViewController <LookUpTableViewControllerDelegate, FetchXMLDelegate, CompanySiteSearchViewControllerDelegate, DateTimePickerViewControllerDelegate>
 
 - (IBAction)btnCancel_Click:(id)sender;
 - (IBAction)btnSave_Click:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCancel_Outlet;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnSave_Outlet;
 
@@ -31,6 +32,5 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellEndDate;
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellEndTime;
 @property (strong, nonatomic) IBOutlet UITextView *txtComment;
-
 
 @end

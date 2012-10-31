@@ -6,22 +6,30 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "companyDetailsTableViewController.h"
-#import "mapViewController.h"
-#import "eventsListTableViewController.h"
-#import "contactListTableViewController.h"
-#import "advancedSearchTableViewController.h"
-
+#import "CompanyDetailsTableViewController.h"
+#import "MapViewController.h"
+#import "EventsListTableViewController.h"
+#import "ContactListTableViewController.h"
+#import "AdvancedSearchTableViewController.h"
 #import "Reachability.h"
 
-@implementation companyDetailsTableViewController
+@interface CompanyDetailsTableViewController() {
+    NSString *fullAddress;
+    Reachability* internetReachable;
+    Reachability* hostReachable;
+    BOOL internetActive;
+    BOOL hostActive;
+}
 
-@synthesize txtAddress;
-@synthesize lblSiteName;
-@synthesize lblDescription;
-@synthesize cellAddress;
+@end
 
-@synthesize companyDetail;
+@implementation CompanyDetailsTableViewController
+
+@synthesize txtAddress = _txtAddress;
+@synthesize lblSiteName = _lblSiteName;
+@synthesize lblDescription = _lblDescription;
+@synthesize cellAddress = _cellAddress;
+@synthesize companyDetail = _companyDetail;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,16 +54,14 @@
 {
     [super viewDidLoad];
     
-    lblSiteName.text = companyDetail.cosSiteName;
-    lblDescription.text = companyDetail.cosDescription;
+    self.lblSiteName.text = self.companyDetail.cosSiteName;
+    self.lblDescription.text = self.companyDetail.cosDescription;
     
     //create an array of address components, remove blanks, put in string with newlines between them.
-    NSMutableArray *addressArray = [NSMutableArray arrayWithObjects:companyDetail.addStreetAddress, companyDetail.addStreetAddress2, companyDetail.addStreetAddress3, companyDetail.addTown,companyDetail.addCounty, companyDetail.couCountryName, companyDetail.addPostCode, nil];
+    NSMutableArray *addressArray = [NSMutableArray arrayWithObjects:self.companyDetail.addStreetAddress, self.companyDetail.addStreetAddress2, self.companyDetail.addStreetAddress3, self.companyDetail.addTown, self.companyDetail.addCounty, self.companyDetail.couCountryName, self.companyDetail.addPostCode, nil];
     [addressArray removeObject:@""];
     fullAddress = [addressArray componentsJoinedByString:@"\n"];
-
-    txtAddress.text = fullAddress;
-        
+    self.txtAddress.text = fullAddress;
 }
 
 - (void)viewDidUnload
@@ -109,11 +115,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
-    {
+    if (indexPath.section == 0) {
+        
         //check internet connection
-        if (internetActive)
-        {
+        if (internetActive) {
+            
             if (hostActive)
                 [self performSegueWithIdentifier:@"toMap" sender:self];
             else {
@@ -132,98 +138,85 @@
     }
 }
 
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     //if the segue is to the details screen
-    if ([segue.identifier isEqualToString:@"toMap"])
-    {
+    if ([segue.identifier isEqualToString:@"toMap"]) {
         //set up the required data in the Map View controller        
-        mapViewController *mapController = segue.destinationViewController;
+        MapViewController *mapController = segue.destinationViewController;
         mapController.address = [fullAddress stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
-        mapController.companyName = companyDetail.cosSiteName;
-        
+        mapController.companyName = self.companyDetail.cosSiteName;
     }
-    else if ([segue.identifier isEqualToString:@"toEventsList"])
-    {
+    else if ([segue.identifier isEqualToString:@"toEventsList"]) {
         // create list view controller, set the required variables.     
-        eventsListTableViewController *listViewController = segue.destinationViewController;
-        listViewController.company = companyDetail;
+        EventsListTableViewController *listViewController = segue.destinationViewController;
+        listViewController.company = self.companyDetail;
     }
-    else if([segue.identifier isEqualToString:@"toAdvancedSearch"])
-    {
-        advancedSearchTableViewController *_advancedSearchTableViewController = segue.destinationViewController;
-        _advancedSearchTableViewController.companySiteID = companyDetail.companySiteID;
-        _advancedSearchTableViewController.cosSiteName = companyDetail.cosSiteName;
-        _advancedSearchTableViewController.company = companyDetail;
-        
+    else if([segue.identifier isEqualToString:@"toAdvancedSearch"]) {
+        AdvancedSearchTableViewController *_advancedSearchTableViewController = segue.destinationViewController;
+        _advancedSearchTableViewController.companySiteID = self.companyDetail.companySiteID;
+        _advancedSearchTableViewController.cosSiteName = self.companyDetail.cosSiteName;
+        _advancedSearchTableViewController.company = self.companyDetail;
     }
-    else if ([segue.identifier isEqualToString:@"toContactList"])
-    {
+    else if ([segue.identifier isEqualToString:@"toContactList"]) {
         // create list view controller, set the required variables.     
-        contactListTableViewController *listViewController = segue.destinationViewController;
+        ContactListTableViewController *listViewController = segue.destinationViewController;
         listViewController.company = [[CompanySearch alloc] init];
-        listViewController.company = companyDetail;
+        listViewController.company = self.companyDetail;
     }
 }
-
-
 
 -(void) checkNetworkStatus:(NSNotification *)notice
 {
     // called after network status changes
     NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
+    
     switch (internetStatus)
     {
         case NotReachable:
         {
             NSLog(@"The internet is down.");
             internetActive = NO;
-            
             break;
         }
         case ReachableViaWiFi:
         {
             NSLog(@"The internet is working via WIFI.");
             internetActive = YES;
-            
             break;
         }
         case ReachableViaWWAN:
         {
             NSLog(@"The internet is working via WWAN.");
             internetActive = YES;
-            
             break;
         }
     }
     
     NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
+    
     switch (hostStatus)
     {
         case NotReachable:
         {
             NSLog(@"A gateway to the host server is down.");
             hostActive = NO;
-            
             break;
         }
         case ReachableViaWiFi:
         {
             NSLog(@"A gateway to the host server is working via WIFI.");
             hostActive = YES;
-            
             break;
         }
         case ReachableViaWWAN:
         {
             NSLog(@"A gateway to the host server is working via WWAN.");
             hostActive = YES;
-            
             break;
         }
     }
+    
 }
-
 
 @end

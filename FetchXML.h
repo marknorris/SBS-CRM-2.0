@@ -9,25 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "DDXML.h"
 
-@protocol fetchXMLDelegate <NSObject>
+@protocol FetchXMLDelegate <NSObject>
+
 @required
--(void)fetchXMLError:(NSString *)errorResponse:(id)sender;
--(void)docRecieved:(NSDictionary *)doc:(id)sender;
+- (void)fetchXMLError:(NSString *)errorResponse:(id)sender;
+- (void)docRecieved:(NSDictionary *)doc:(id)sender;
+
 @end
 
-@interface fetchXML : NSObject{
-    id <fetchXMLDelegate> delegate;
-    
-}
+@interface FetchXML : NSObject
 
-
-- (id) initWithUrl:(NSURL *)url delegate:(id)Delegate className:(NSString *)ClassName;
-- (BOOL)fetchXML;
-
-@property (nonatomic, strong) id delegate;
-@property (nonatomic, strong) NSString* className;
 @property (nonatomic, strong) NSURL *url;
 
-- (BOOL)fetchXMLWithURL:(NSString *)URLString;
+- (id)initWithUrl:(NSURL *)url delegate:(id)delegate className:(NSString *)className;
+- (BOOL)fetchXML;
+- (BOOL)fetchXMLWithURL:(NSString *)urlString;
 - (void)cancel;
+
 @end

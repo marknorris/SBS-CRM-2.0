@@ -7,18 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "dateTimePickerViewController.h"
-#import "lookUpTableViewController.h"
-#import "fetchXML.h"
+#import "DateTimePickerViewController.h"
+#import "LookUpTableViewController.h"
+#import "FetchXML.h"
 #import "EventSearch.h"
 #import "ContactSearch.h"
 
-@protocol editTableViewControllerDelegate <NSObject> 
+@protocol EditTableViewControllerDelegate <NSObject> 
+
 @required
--(void)getCoreData;
+- (void)getCoreData;
+
 @end
 
-@interface editTableViewController : UITableViewController <lookUpTableViewControllerDelegate, dateTimePickerViewControllerDelegate, fetchXMLDelegate, UITextFieldDelegate>
+@interface EditTableViewController : UITableViewController <LookUpTableViewControllerDelegate, DateTimePickerViewControllerDelegate, FetchXMLDelegate, UITextFieldDelegate>
+
 - (IBAction)btnCancel_Click:(id)sender;
 - (IBAction)btnSave_Click:(id)sender;
 
@@ -33,7 +36,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnCancel;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnSave;
 
-@property (nonatomic, strong) id <editTableViewControllerDelegate> delegate;
+@property (nonatomic, strong) id <EditTableViewControllerDelegate> delegate;
 
 // EventSearch proerty to hold event to be edited
 @property (nonatomic, strong) EventSearch *eventToEdit;

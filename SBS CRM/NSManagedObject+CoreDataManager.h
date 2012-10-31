@@ -21,8 +21,7 @@
 //------------------------------------------------------------------------
 // Request objects by entity name - with predicate and sort descriptors
 //------------------------------------------------------------------------
-+ (NSArray *)fetchObjectsForEntityName:(NSString *)entityName
-                       withPredicate:(NSPredicate *)predicate withSortDescriptors:(NSArray *)SortDescriptors;
++ (NSArray *)fetchObjectsForEntityName:(NSString *)entityName withPredicate:(NSPredicate *)predicate withSortDescriptors:(NSArray *)SortDescriptors;
 
 //------------------------------------------------------------------------
 // Request _all_ objects with entity name 
@@ -32,8 +31,7 @@
 //------------------------------------------------------------------------
 // delete objects for entityName With predicate
 //------------------------------------------------------------------------
-+ (BOOL)deleteObjectsForEntityName:(NSString *)entityName
-                     withPredicate:(NSPredicate *)predicate;
++ (BOOL)deleteObjectsForEntityName:(NSString *)entityName withPredicate:(NSPredicate *)predicate;
 
 //------------------------------------------------------------------------
 // delete _all_ objects with entity name 
@@ -50,5 +48,4 @@
 //------------------------------------------------------------------------
 + (BOOL)updateCoreDataObject:(NSObject *)object forEntityName:(NSString *)entityName withPredicate:(NSPredicate *)predicate;
     
-
 @end

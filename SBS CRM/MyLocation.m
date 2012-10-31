@@ -6,10 +6,17 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "myLocation.h"
+#import "MyLocation.h"
 
+@interface MyLocation() {
+    NSString *_name;
+    NSString *_address;
+    CLLocationCoordinate2D _coordinate;
+}
 
-@implementation myLocation 
+@end
+
+@implementation MyLocation 
 
 @synthesize name = _name;
 @synthesize address = _address;
@@ -18,32 +25,30 @@
 -(id)initWithName:(NSString *)name address:(NSString *)address coordinate:(CLLocationCoordinate2D)coordinate
 {
     
-    
-    if ((self = [super init])){
+    if ((self = [super init])) {
         _name = [name copy];
         _address = [address copy];
         _coordinate = coordinate;
     }
     
-    
     return self;
-    
 }
 
-
--(NSString *)title{
+-(NSString *)title
+{
     return _name;
 }
 
 
--(NSString *)subtitle{
+-(NSString *)subtitle
+{
     return _address;
 }
 
--(void)dealloc{
+-(void)dealloc
+{
     _name = nil;
     _address = nil;
 }
-
 
 @end

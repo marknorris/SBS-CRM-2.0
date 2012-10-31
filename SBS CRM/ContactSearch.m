@@ -10,13 +10,13 @@
 
 @implementation ContactSearch
 
-@synthesize conFirstName;
-@synthesize conMiddleName;
-@synthesize conSurname;
-@synthesize contactID;
-@synthesize conTitle;
-@synthesize companySiteID;
-@synthesize cosDescription;
-@synthesize cosSiteName;
+@synthesize conFirstName = _conFirstName;
+@synthesize conMiddleName = _conMiddleName;
+@synthesize conSurname = _conSurname;
+@synthesize contactID = _contactID;
+@synthesize conTitle = _conTitle;
+@synthesize companySiteID = _companySiteID;
+@synthesize cosDescription = _cosDescription;
+@synthesize cosSiteName = _cosSiteName;
 
 @end

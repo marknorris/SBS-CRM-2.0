@@ -14,14 +14,11 @@
 #import "EventsCellData.h"
 #import "AppDelegate.h"
 
-@interface eventsListTableViewController : UITableViewController{
-    NSMutableArray *orderedEventsArray;
-}
+@interface EventsListTableViewController : UITableViewController
 
 @property (strong, nonatomic) CompanySearch *company;
 @property (strong, nonatomic) ContactSearch *contact;
 @property (nonatomic) BOOL orderByCreatedDate;
-
 @property (strong, nonatomic) NSString *advancedURL;
 
 @end

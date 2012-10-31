@@ -10,10 +10,10 @@
 
 @implementation AttachmentSearch
 
-@synthesize eventID;
-@synthesize attachmentID;
-@synthesize attDescription;
-@synthesize atyMnemonic;
-@synthesize attOriginalFilename;
+@synthesize eventID = _eventID;
+@synthesize attachmentID = _attachmentID;
+@synthesize attDescription = _attDescription;
+@synthesize atyMnemonic = _atyMnemonic;
+@synthesize attOriginalFilename = _attOriginalFilename;
 
 @end

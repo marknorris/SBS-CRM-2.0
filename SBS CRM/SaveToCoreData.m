@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "saveToCoreData.h"
+#import "SaveToCoreData.h"
 
 //import the search classes and core data managed object clases
 #import "Event.h"

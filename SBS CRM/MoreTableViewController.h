@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "dateTimePickerViewController.h"
+#import "DateTimePickerViewController.h"
 
-@interface moreTableViewController : UITableViewController <dateTimePickerViewControllerDelegate>
+@interface MoreTableViewController : UITableViewController <DateTimePickerViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *logOut;
 @property (strong, nonatomic) IBOutlet UITableViewCell *logOutCell;

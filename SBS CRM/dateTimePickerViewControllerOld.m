@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "dateTimePickerViewControllerOld.h"
+#import "DateTimePickerViewControllerOld.h"
 #import "AppDelegate.h"
 
 @implementation dateTimePickerViewControllerOld

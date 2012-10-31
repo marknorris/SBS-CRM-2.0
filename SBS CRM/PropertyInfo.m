@@ -6,18 +6,20 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "propertyInfo.h"
+#import "PropertyInfo.h"
 
-@implementation propertyInfo
+@implementation PropertyInfo
 
-
-+(NSString *) getPropertyType:(objc_property_t) property {
++ (NSString *) getPropertyType:(objc_property_t) property
+{
     const char *attributes = property_getAttributes(property);
     printf("attributes=%s\n", attributes);
     char buffer[1 + strlen(attributes)];
     strcpy(buffer, attributes);
     char *state = buffer, *attribute;
+
     while ((attribute = strsep(&state, ",")) != NULL) {
+    
         if (attribute[0] == 'T' && attribute[1] != '@') {
             // it's a C primitive type:
             /* 
@@ -35,7 +37,9 @@
             // it's another ObjC object type:
             return [NSString stringWithCString:(const char *)[[NSData dataWithBytes:(attribute + 3) length:strlen(attribute) - 4] bytes] encoding:NSUTF8StringEncoding];
         }
+        
     }
+    
     return @"";
 }
 

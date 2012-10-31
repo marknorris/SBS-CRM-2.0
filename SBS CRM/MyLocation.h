@@ -9,17 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface myLocation : NSObject <MKAnnotation>{
-    NSString *_name;
-    NSString *_address;
-    CLLocationCoordinate2D _coordinate;
-}
+@interface MyLocation : NSObject <MKAnnotation>
 
 @property (copy) NSString *name;
 @property (copy) NSString *address;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 -(id)initWithName:(NSString *)name address:(NSString *)address coordinate:(CLLocationCoordinate2D)coordinate;
-
 
 @end

@@ -9,13 +9,14 @@
 #import "EventTableViewCell.h"
 
 @implementation EventTableViewCell
-@synthesize eventTitle;
-@synthesize siteNameDesc;
-@synthesize eventTypeType2;
-@synthesize eventComments;
-@synthesize eventDueTime;
-@synthesize unreadClosedImage;
-@synthesize watchedImage;
+
+@synthesize eventTitle = _eventTitle;
+@synthesize siteNameDesc = _siteNameDesc;
+@synthesize eventTypeType2 = _eventTypeType2;
+@synthesize eventComments = _eventComments;
+@synthesize eventDueTime = _eventDueTime;
+@synthesize unreadClosedImage = _unreadClosedImage;
+@synthesize watchedImage = _watchedImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

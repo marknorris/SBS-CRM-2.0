@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface loadingSavingView : UIView
+@interface LoadingSavingView : UIView
 
 - (id)initWithFrame:(CGRect)frame withMessage:(NSString *)message;
 

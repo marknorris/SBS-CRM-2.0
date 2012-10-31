@@ -6,16 +6,15 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "loadingSavingView.h"
+#import "LoadingSavingView.h"
 
-@implementation loadingSavingView
+@implementation LoadingSavingView
 
 - (id)initWithFrame:(CGRect)frame withMessage:(NSString *)message
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        
         UIActivityIndicatorView *refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         refreshSpinner.frame = CGRectMake(0, 0, 30, 30);
         refreshSpinner.hidesWhenStopped = YES;
@@ -26,7 +25,7 @@
         savingLabel.frame = CGRectMake(30, 0, 90, 30);
         savingLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
         
-       [self addSubview:refreshSpinner ]; 
+        [self addSubview:refreshSpinner]; 
         [self addSubview:savingLabel];
         
     }
@@ -34,12 +33,12 @@
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 @end

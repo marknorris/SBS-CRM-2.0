@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CompanySearch.h"
 
-@interface contactListTableViewController : UITableViewController
+@interface ContactListTableViewController : UITableViewController
 
 @property (strong, nonatomic) CompanySearch *company;
 

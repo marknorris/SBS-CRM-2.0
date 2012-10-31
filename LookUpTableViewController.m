@@ -6,10 +6,9 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "lookUpTableViewController.h"
+#import "LookUpTableViewController.h"
 
-
-@implementation lookUpTableViewController
+@implementation LookUpTableViewController
 
 @synthesize delegate;
 @synthesize item;

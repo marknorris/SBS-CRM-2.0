@@ -6,17 +6,16 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "contactListTableViewController.h"
+#import "ContactListTableViewController.h"
 #import "DDXML.h"
 #import "ContactSearch.h"
 #import "AppDelegate.h"
-#import "contactDetailsTableViewController.h"
-#import "fetchXML.h"
+#import "ContactDetailsTableViewController.h"
+#import "FetchXML.h"
 #import "XMLParser.h"
 
-@interface contactListTableViewController(){
+@interface ContactListTableViewController() {
     NSArray *contactsArray;
-    
     UIActivityIndicatorView *refreshSpinner;
     BOOL fetchingSearchResults;
 }
@@ -25,9 +24,9 @@
 
 @end
 
-@implementation contactListTableViewController
+@implementation ContactListTableViewController
 
-@synthesize company;
+@synthesize company = _company;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -52,7 +51,6 @@
 {
     [super viewDidLoad];
     //contactsArray = [[NSMutableArray alloc] init];
-    
     fetchingSearchResults = NO;
     //set up the activity spinner
     refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
@@ -62,7 +60,7 @@
     [self loadData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -101,7 +99,6 @@
     return YES;
 }
 
-
 //###############################################
 //#                                             #
 //#                                             #
@@ -110,19 +107,24 @@
 //#                                             #
 //###############################################
 
-- (void)loadData{
+- (void)loadData
+{
     fetchingSearchResults = YES;
     [self.tableView reloadData];
     
     //download the dom doc file.
-    NSURL *url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsByCompanyABL?searchCompanySiteID=%@",company.companySiteID] ];
-    fetchXML *getContactsDom = [[fetchXML alloc] initWithUrl:url delegate:self className:@"ContactSearch"];
+    NSURL *url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsByCompanyABL?searchCompanySiteID=%@", self.company.companySiteID] ];
+    FetchXML *getContactsDom = [[FetchXML alloc] initWithUrl:url delegate:self className:@"ContactSearch"];
     
-    if (![getContactsDom fetchXML])
-    {[[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show]; return;}
+    if (![getContactsDom fetchXML]) {
+        [[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+        return;
+    }
+    
 }
 
--(void)docRecieved:(NSDictionary *)docDic:(id)sender{
+- (void)docRecieved:(NSDictionary *)docDic:(id)sender
+{
     NSString *classKey = [docDic objectForKey:@"ClassName"];
     contactsArray = [[[XMLParser alloc] init]parseXMLDoc:[docDic objectForKey:@"Document"] toClass:NSClassFromString(classKey)];
     
@@ -133,12 +135,10 @@
     lastNameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"conSurname" ascending:YES];
     // create an ordered array of the contacts
     contactsArray = [contactsArray sortedArrayUsingDescriptors:[NSArray arrayWithObjects:firstNameSortDescriptor,middleNameSortDescriptor, lastNameSortDescriptor,nil]];
-
+    
     fetchingSearchResults = NO;
     [self.tableView reloadData];
 }
-    
-
 
 //###############################################
 //#                                             #
@@ -167,9 +167,11 @@
     static NSString *CellIdentifier = @"ContactCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    
     //get the contact to be displayed.
     ContactSearch* contact = [contactsArray objectAtIndex:indexPath.row];
     
@@ -178,18 +180,14 @@
     [nameArray removeObject:@""];
     fullName = [nameArray componentsJoinedByString:@"\n"];
     cell.textLabel.text = fullName;
-    
     cell.detailTextLabel.text = [contact.cosSiteName stringByAppendingFormat:@" - %@", contact.cosDescription];
-    
-    
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
-    if (fetchingSearchResults)
-    {
+    if (fetchingSearchResults) {
         // create a view
         UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 20)];
         
@@ -218,8 +216,6 @@
     return nil;
 }
 
-
-
 //###############################################
 //#                                             #
 //#                                             #
@@ -231,20 +227,17 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     //if the segue is to the details screen
-    if ([segue.identifier isEqualToString:@"toContactDetails"])
-    {
+    if ([segue.identifier isEqualToString:@"toContactDetails"]) {
         //get the clicked cell's row
         NSInteger row = [[self tableView].indexPathForSelectedRow row];
         //set up the details view controller
-        contactDetailsTableViewController *detailViewController = segue.destinationViewController;
+        ContactDetailsTableViewController *detailViewController = segue.destinationViewController;
         //send the object at index row.
         detailViewController.contactDetail = [contactsArray objectAtIndex:row];
         detailViewController.company = [[CompanySearch alloc] init];
-        detailViewController.company = company;
+        detailViewController.company = self.company;
         detailViewController.isCoreData = NO;
     }
-
 }
-
 
 @end

@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "addCommentViewController.h"
+#import "AddCommentViewController.h"
 
-@interface textViewController : UIViewController <addCommentViewControllerDelegate>
+@interface TextViewController : UIViewController <addCommentViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnAdd;
 @property (strong, nonatomic) NSString *text;
 @property (strong, nonatomic) IBOutlet UITextView *txtText;
-
 @property (strong, nonatomic) NSString *eventId;
-
 @property (nonatomic) BOOL editable;
 
 @end

@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@class lookUpTableViewController;
+@class LookUpTableViewController;
 
-@protocol lookUpTableViewControllerDelegate <NSObject>
--(void)lookUpTableViewController:(lookUpTableViewController *)controller
+@protocol LookUpTableViewControllerDelegate <NSObject>
+-(void)lookUpTableViewController:(LookUpTableViewController *)controller
                    didSelectItem: (NSInteger *)row withSourceCellIdentifier:(NSString *)sourceCellIdentifier;
 @end
 
-@interface lookUpTableViewController : UITableViewController
+@interface LookUpTableViewController : UITableViewController
 {
     NSInteger selectedIndex;
 }
 
-@property (nonatomic, weak) id <lookUpTableViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <LookUpTableViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSString *item;
 @property (nonatomic, strong) NSArray *itemArray;
 @property (nonatomic, strong) NSString *sourceCellIdentifier;

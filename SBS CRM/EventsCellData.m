@@ -10,11 +10,11 @@
 
 @implementation EventsCellData
 
-@synthesize eventID;
-@synthesize eventTitle;
-@synthesize siteNameDesc;
-@synthesize eventTypeType2;
-@synthesize eventComments;
-@synthesize eventDueTime;
+@synthesize eventID = _eventID;
+@synthesize eventTitle = _eventTitle;
+@synthesize siteNameDesc = _siteNameDesc;
+@synthesize eventTypeType2 = _eventTypeType2;
+@synthesize eventComments = _eventComments;
+@synthesize eventDueTime = _eventDueTime;
 
 @end

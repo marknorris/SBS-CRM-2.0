@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface EventTableViewCell : UITableViewCell
+
 @property (strong, nonatomic) IBOutlet UILabel *eventTitle;
 @property (strong, nonatomic) IBOutlet UILabel *siteNameDesc;
 @property (strong, nonatomic) IBOutlet UILabel *eventTypeType2;

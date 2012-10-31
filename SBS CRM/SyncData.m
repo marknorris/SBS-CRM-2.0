@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 /*
-#import "syncData.h"
+#import "SyncData.h"
 
-@interface syncData() {
+@interface SyncData() {
     NSInteger overDueCount;
 }
     - (void)setAlertAndBadge:(NSDate *)dueDate:(NSString *)dueTime:(NSString *)eveTitle:(NSString *)eventID;
 @end
 
-@implementation syncData
+@implementation SyncData
 
 @synthesize appDelegate;
 

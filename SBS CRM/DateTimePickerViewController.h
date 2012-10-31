@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class dateTimePickerViewController;
+@class DateTimePickerViewController;
 
-@protocol dateTimePickerViewControllerDelegate <NSObject>
--(void)dateTimePickerViewController:(dateTimePickerViewController *)controller
+@protocol DateTimePickerViewControllerDelegate <NSObject>
+-(void)dateTimePickerViewController:(DateTimePickerViewController *)controller
                   didSelectDateTime: (NSDate *)date withSourceCellIdentifier:(NSString *)sourceCellIdentifier withSender:(id)sender;
 @end
 
-@interface dateTimePickerViewController : UIViewController
+@interface DateTimePickerViewController : UIViewController
 
 
-@property (nonatomic, weak) id <dateTimePickerViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <DateTimePickerViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) NSString *sourceCellIdentifier;
 @property (strong, nonatomic) id sender;

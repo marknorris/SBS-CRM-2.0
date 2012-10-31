@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface documentViewController : UIViewController{
-
-}
+@interface DocumentViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
-
 @property (strong, nonatomic) NSString *eventID;
 @property (strong, nonatomic) NSString *attOriginalFilename;
 @property (strong, nonatomic) NSString *attachmentID;

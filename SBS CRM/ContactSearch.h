@@ -10,13 +10,13 @@
 
 @interface ContactSearch : NSObject
 
-@property (nonatomic, strong) NSString * conFirstName;
-@property (nonatomic, strong) NSString * conMiddleName;
-@property (nonatomic, strong) NSString * conSurname;
-@property (nonatomic, strong) NSString * contactID;
-@property (nonatomic, strong) NSString * conTitle;
-@property (nonatomic, strong) NSString * companySiteID;
-@property (nonatomic, strong) NSString * cosDescription;
-@property (nonatomic, strong) NSString * cosSiteName;
+@property (nonatomic, strong) NSString *conFirstName;
+@property (nonatomic, strong) NSString *conMiddleName;
+@property (nonatomic, strong) NSString *conSurname;
+@property (nonatomic, strong) NSString *contactID;
+@property (nonatomic, strong) NSString *conTitle;
+@property (nonatomic, strong) NSString *companySiteID;
+@property (nonatomic, strong) NSString *cosDescription;
+@property (nonatomic, strong) NSString *cosSiteName;
 
 @end

@@ -22,7 +22,7 @@
 #import "CommunicationSearch.h"
 #import "AttachmentSearch.h"
 
-@interface syncData : NSObject <UIApplicationDelegate>
+@interface SyncData : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain) AppDelegate *appDelegate;
 

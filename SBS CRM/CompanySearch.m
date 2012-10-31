@@ -10,16 +10,16 @@
 
 @implementation CompanySearch
 
-@synthesize companySiteID;
-@synthesize coaCompanyName;
-@synthesize cosDescription;
-@synthesize cosSiteName;
-@synthesize addStreetAddress;
-@synthesize addStreetAddress2;
-@synthesize addStreetAddress3;
-@synthesize addTown;
-@synthesize addCounty;
-@synthesize addPostCode;
-@synthesize couCountryName;
+@synthesize companySiteID = _companySiteID;
+@synthesize coaCompanyName = _coaCompanyName;
+@synthesize cosDescription = _cosDescription;
+@synthesize cosSiteName = _cosSiteName;
+@synthesize addStreetAddress = _addStreetAddress;
+@synthesize addStreetAddress2 = _addStreetAddress2;
+@synthesize addStreetAddress3 = _addStreetAddress3;
+@synthesize addTown = _addTown;
+@synthesize addCounty = _addCounty;
+@synthesize addPostCode = _addPostCode;
+@synthesize couCountryName = _couCountryName;
 
 @end

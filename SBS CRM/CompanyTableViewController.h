@@ -7,18 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "companyDetailsTableViewController.h"
-#import "fetchXML.h"
+#import "CompanyDetailsTableViewController.h"
+#import "FetchXML.h"
 
-@interface companyTableViewController : UITableViewController <fetchXMLDelegate>
-{
-    NSMutableArray *companyArray;
-    
-    //Search:
-    NSMutableArray *allEventsArray;
-    UIActivityIndicatorView *refreshSpinner;
-    
-}
+@interface CompanyTableViewController : UITableViewController <FetchXMLDelegate>
 
 //search
 @property (nonatomic, retain) IBOutlet UISearchDisplayController *searchDisplayController;
@@ -28,9 +20,7 @@
 @property (nonatomic) BOOL fetchingSearchResults;
 
 - (void)refreshTableView;
-
 //search
-- (void)filterContentForSearchText:(NSString*)searchText 
-                             scope:(NSString*)scope;
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope;
 
 @end

@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-@interface propertyInfo : NSObject
+@interface PropertyInfo : NSObject
 
 +(NSString *) getPropertyType:(objc_property_t) property;
 

@@ -7,18 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "contactDetailsTableViewController.h"
-#import "fetchXML.h"
+#import "ContactDetailsTableViewController.h"
+#import "FetchXML.h"
 
-@interface contactsTableViewController : UITableViewController <fetchXMLDelegate>
-{
-    NSMutableArray *contactsArray;
-    
-    //Search:
-    NSMutableArray *allEventsArray;
-    UIActivityIndicatorView *refreshSpinner;
-    
-}
+@interface ContactsTableViewController : UITableViewController <FetchXMLDelegate>
 
 //search
 @property (nonatomic, retain) IBOutlet UISearchDisplayController *searchDisplayController;
@@ -27,12 +19,8 @@
 @property (nonatomic) BOOL isSearching;
 @property (nonatomic) BOOL fetchingSearchResults;
 
-
 - (void)refreshTableView;
-
 //search
-- (void)filterContentForSearchText:(NSString*)searchText 
-                             scope:(NSString*)scope;
-
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope;
 
 @end

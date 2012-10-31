@@ -6,62 +6,77 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "myEventsTableViewController.h"
-//#import "syncData.h"
+#import "EventsTableViewController.h"
 #import "AppDelegate.h"
 #import "Event.h"
 #import <QuartzCore/QuartzCore.h>
 #import "EventTableViewCell.h"
-#import "eventDetailsTableViewController.h"
-
+#import "EventDetailsTableViewController.h"
 //data sync headers
-#import "fetchXML.h"
+#import "FetchXML.h"
 #import "XMLParser.h"
-
-#import "format.h"
-
+#import "Format.h"
 #import "NSManagedObject+CoreDataManager.h"
-
-#import "alertsAndBadges.h"
+#import "AlertsAndBadges.h"
 
 #define REFRESH_HEADER_HEIGHT 52.0f
 
-@interface myEventsTableViewController(){
+@interface EventsTableViewController() {
     NSUserDefaults *defaults;
     NSDictionary *eventForSegue;
-    fetchXML *eventsXmlFetcher;
-    fetchXML *companiesXmlFetcher;
-    fetchXML *contactsXmlFetcher;
-    fetchXML *attachmentsXmlFetcher;
-    fetchXML *communicationsXmlFetcher;
-    fetchXML *searchXmlFetcher;
+    FetchXML *eventsXmlFetcher;
+    FetchXML *companiesXmlFetcher;
+    FetchXML *contactsXmlFetcher;
+    FetchXML *attachmentsXmlFetcher;
+    FetchXML *communicationsXmlFetcher;
+    FetchXML *searchXmlFetcher;
     NSInteger refreshState;
+    UIView *refreshHeaderView;
+    UILabel *refreshLabel;
+    UIImageView *refreshArrow;
+    UIActivityIndicatorView *refreshSpinner;
+    BOOL isDragging;
+    BOOL isLoading;
+    NSString *textPull;
+    NSString *textRelease;
+    NSString *textLoading;
+    NSMutableArray *eventIDArray;
+    
+    BOOL isMutatingArray;
 }
 
 @property (strong, nonatomic) NSMutableArray *searchResults;
-
 @property (nonatomic, strong) UIToolbar *keyboardToolBar;
 
 - (void)scrollToToday;
 - (void)openEventFromNotification:(NSNotification *)notification;
+
 @end
 
 @interface CustomSearchBar : UISearchBar
+
 @property (readwrite, retain) UIView *inputAccessoryView;
+
 @end
 
-@implementation myEventsTableViewController
+@implementation EventsTableViewController
 
 //core data
-@synthesize btnAdd;
-@synthesize _searchBar;
-@synthesize context;
+@synthesize btnAdd = _btnAdd;
+@synthesize searchBar = _searchBar;
+@synthesize context = _context;
 //pull to refresh
-@synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshArrow, refreshSpinner;
+@synthesize textPull = _textPull;
+@synthesize textRelease = _textRelease;
+@synthesize textLoading = _textLoading;
+@synthesize refreshHeaderView = _refreshHeaderView;
+@synthesize refreshLabel = _refreshLabel;
+@synthesize refreshArrow = _refreshArrow;
+@synthesize refreshSpinner = _refreshSpinner;
 
-@synthesize searchResults;
+@synthesize searchResults = _searchResults;
 
-@synthesize keyboardToolBar;
+@synthesize keyboardToolBar = _keyboardToolBar;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -86,18 +101,17 @@
 {
     [super viewDidLoad];
 
-    if (keyboardToolBar == nil)
-    {
-        keyboardToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,-44,self.view.bounds.size.width, 44)];
-        keyboardToolBar.tintColor = [UIColor blackColor];
+    if (self.keyboardToolBar == nil) {
+        self.keyboardToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,-44,self.view.bounds.size.width, 44)];
+        self.keyboardToolBar.tintColor = [UIColor blackColor];
         UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
         doneButton.style = UIBarButtonItemStyleDone;
         
-        [keyboardToolBar setItems:[[NSArray alloc] initWithObjects:extraSpace,doneButton,nil]];
-        keyboardToolBar.alpha = 0.0;
-        CGRect aFrame = keyboardToolBar.frame;
-        keyboardToolBar.frame = aFrame;
+        [self.keyboardToolBar setItems:[[NSArray alloc] initWithObjects:extraSpace,doneButton,nil]];
+        self.keyboardToolBar.alpha = 0.0;
+        CGRect aFrame = self.keyboardToolBar.frame;
+        self.keyboardToolBar.frame = aFrame;
     }
     
     eventIDArray = [[NSMutableArray alloc] init];
@@ -108,8 +122,8 @@
     //get the default alert time from userdefaults.
     defaults = [NSUserDefaults standardUserDefaults];
     appDefaultAlertTime = [defaults objectForKey:@"defaultAlertTime"];
-    if (!appDefaultAlertTime)
-    {
+    
+    if (!appDefaultAlertTime) {
         NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         NSDateComponents *components;
         // set the time to midnight
@@ -127,7 +141,6 @@
     else
         [self refreshTableView]; //populate the tableview.
 
-    
     //listen for the openEventFromNotification command when an event needs to be loaded due to  notfication (alert)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openEventFromNotification:) name:@"openEventFromNotification" object:nil];
     //listen for the reloadcoredata notification when the tablview needs to refresh it's data.
@@ -142,15 +155,16 @@
     // Listen for Notifications regarding the display of the keyboard
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];       
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];  
-
 }
 
-- (void)removeEventsDataFromMemory{
+- (void)removeEventsDataFromMemory
+{
     [eventIDArray removeAllObjects];
     [self.tableView reloadData];
 }
 
-- (void)openEventFromNotification:(NSNotification *)notification{
+- (void)openEventFromNotification:(NSNotification *)notification
+{
     //NSString *notificationEventID = [notification.userInfo objectForKey:@"id"];
     [self.navigationController popToRootViewControllerAnimated:NO];
     self.tabBarController.selectedIndex = 0;
@@ -158,12 +172,9 @@
     [self performSegueWithIdentifier:@"pushDetails" sender:nil];
 }
 
-
-
-
 - (void)viewDidUnload
 {
-    [self set_searchBar:nil];
+    [self setSearchBar:nil];
     [self setBtnAdd:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -179,11 +190,11 @@
 {
     [super viewDidAppear:animated];
     
-    if ([[defaults objectForKey:@"initialID"] length])
-    {
+    if ([[defaults objectForKey:@"initialID"] length]) {
         eventForSegue = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[defaults objectForKey:@"initialID"],[defaults objectForKey:@"initialCore"],nil] forKeys:[NSArray arrayWithObjects:@"id",@"core",nil]];
         [self performSegueWithIdentifier:@"pushDetails" sender:nil];
     }
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -203,14 +214,15 @@
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
+    
 }
 
 //------------------------------------------------------------------
 //  Reaload Core Data
 //------------------------------------------------------------------
 
-- (void)reloadCoreData{
-    
+- (void)reloadCoreData
+{    
     UIAlertView *domGetFailed = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     
     //keep track of the number of core data entities that have been refreshed.
@@ -219,38 +231,53 @@
     
     NSURL *url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/syncEventsABL?userID=%d",appUserID]];
     
-    eventsXmlFetcher = [[fetchXML alloc] initWithUrl:url delegate:self className:@"EventSearch"];
-    if (![eventsXmlFetcher fetchXML])
-        {[domGetFailed show]; return;}
+    eventsXmlFetcher = [[FetchXML alloc] initWithUrl:url delegate:self className:@"EventSearch"];
+    
+    if (![eventsXmlFetcher fetchXML]) {
+        [domGetFailed show]; 
+        return;
+    }
     
     url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/syncContactsABL?userID=%d",appUserID]];    
     
-    contactsXmlFetcher = [[fetchXML alloc] initWithUrl:url delegate:self className:@"ContactSearch"];
+    contactsXmlFetcher = [[FetchXML alloc] initWithUrl:url delegate:self className:@"ContactSearch"];
 
-    if (![contactsXmlFetcher fetchXML])
-        {[domGetFailed show]; return;}
+    if (![contactsXmlFetcher fetchXML]) {
+        [domGetFailed show]; 
+        return;
+    }
     
     url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/syncCompaniesABL?userID=%d",appUserID]];
     
-    companiesXmlFetcher = [[fetchXML alloc] initWithUrl:url delegate:self className:@"CompanySearch"];
-    if (![companiesXmlFetcher fetchXML])
-        {[domGetFailed show]; return;}
+    companiesXmlFetcher = [[FetchXML alloc] initWithUrl:url delegate:self className:@"CompanySearch"];
+    
+    if (![companiesXmlFetcher fetchXML]) {
+        [domGetFailed show]; 
+        return;
+    }
 
     url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/syncCommunicationABL?userID=%d",appUserID]];
     
-    communicationsXmlFetcher = [[fetchXML alloc] initWithUrl:url delegate:self className:@"CommunicationSearch"];
-    if (![communicationsXmlFetcher fetchXML])
-        {[domGetFailed show]; return;}
+    communicationsXmlFetcher = [[FetchXML alloc] initWithUrl:url delegate:self className:@"CommunicationSearch"];
+    
+    if (![communicationsXmlFetcher fetchXML]) {
+        [domGetFailed show]; 
+        return;
+    }
     
     url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/syncAttachmentsABL?userID=%d",appUserID]];
     
-    attachmentsXmlFetcher = [[fetchXML alloc] initWithUrl:url delegate:self className:@"AttachmentSearch"];
-    if (![attachmentsXmlFetcher fetchXML])
-         {[domGetFailed show]; return;}
+    attachmentsXmlFetcher = [[FetchXML alloc] initWithUrl:url delegate:self className:@"AttachmentSearch"];
+    
+    if (![attachmentsXmlFetcher fetchXML]) {
+        [domGetFailed show]; 
+        return;
+    }
 
 }
 
--(void)fetchXMLError:(NSString *)errorResponse:(id)sender{
+-(void)fetchXMLError:(NSString *)errorResponse:(id)sender
+{
     if (self.view.window) // don't display if this view is not active. TODO:make sure this method is never even called!
     {
         // If error recieved, display alert.
@@ -259,8 +286,8 @@
     [self stopLoading];
 }
 
-
--(void)docRecieved:(NSDictionary *)docDic:(id)sender{
+-(void)docRecieved:(NSDictionary *)docDic:(id)sender
+{
     NSLog(@"Class Name: %@", [docDic objectForKey:@"ClassName"]);
     NSLog(@"Document: %@", [docDic objectForKey:@"Document"]);
     
@@ -271,38 +298,39 @@
     NSArray *Array = [[[XMLParser alloc] init]parseXMLDoc:[docDic objectForKey:@"Document"] toClass:NSClassFromString(classKey)];
     
     //Fill the array's correspoding core data entity and reduce the refreshed state for each store that takes place.
-    if (sender == eventsXmlFetcher)
-    { 
+    if (sender == eventsXmlFetcher) { 
         refreshState--;
         
         //set the alerts and badges for events in array
-        [alertsAndBadges setAlertsAndBadges:Array];
+        [AlertsAndBadges setAlertsAndBadges:Array];
         
-
         [NSManagedObject storeInCoreData:Array forEntityName:@"Event"]; 
 
         eventsXmlFetcher = nil;
     }
-    else if (sender == companiesXmlFetcher) {[NSManagedObject storeInCoreData:Array forEntityName:@"Company"]; refreshState--;}
-    else if (sender == contactsXmlFetcher) {[NSManagedObject storeInCoreData:Array forEntityName:@"Contact"]; refreshState--;}
-    else if (sender == communicationsXmlFetcher) {[NSManagedObject storeInCoreData:Array forEntityName:@"Communication"]; refreshState--;}
-    else if (sender == attachmentsXmlFetcher) {[NSManagedObject storeInCoreData:[Array count] > 0 ? Array : nil forEntityName:@"Attachment"]; refreshState--;}
+    else if (sender == companiesXmlFetcher) {
+        [NSManagedObject storeInCoreData:Array forEntityName:@"Company"]; refreshState--;
+    }
+    else if (sender == contactsXmlFetcher) {
+        [NSManagedObject storeInCoreData:Array forEntityName:@"Contact"]; refreshState--;
+    }
+    else if (sender == communicationsXmlFetcher) {
+        [NSManagedObject storeInCoreData:Array forEntityName:@"Communication"]; refreshState--;
+    }
+    else if (sender == attachmentsXmlFetcher) {
+        [NSManagedObject storeInCoreData:[Array count] > 0 ? Array : nil forEntityName:@"Attachment"]; refreshState--;
+    }
     
     //when all are refreshed;
-    if (refreshState == 0)
-    {
+    if (refreshState == 0) {
         //inform the other views that the data is ready to be displayed.
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCoreData" object:self];
         
         [self refreshTableView];
         [self performSelector:@selector(scrollToToday) withObject:nil afterDelay:0.5];
     }
+    
 }
-
-
-
-
-
 
 //------------------------------------------------------------------
 //  Prepare TableView Data
@@ -313,8 +341,11 @@
     //remove all current event ID stored in eventIDArray
     [eventIDArray removeAllObjects];
 
-    if (context == nil) { context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; }
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:context];
+    if (self.context == nil) {
+        self.context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    }
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.context];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entity];
@@ -331,10 +362,9 @@
     [request setPropertiesToFetch:[NSArray arrayWithObject:@"eveDueDate"]];
     [request setReturnsDistinctResults:YES];
     //get results of predicate
-    NSArray *dueDateArray = [context executeFetchRequest:request error:&error];
+    NSArray *dueDateArray = [self.context executeFetchRequest:request error:&error];
     
-    if ([dueDateArray count] == 0) // if there are no results then return;
-    {
+    if ([dueDateArray count] == 0) { // if there are no results then return;
         isMutatingArray = NO;
 
         [self.tableView reloadData];
@@ -352,37 +382,36 @@
     
     BOOL nullField;
     
-    for (NSDictionary *currentDateDictionary in dueDateArray)
-    {
+    for (NSDictionary *currentDateDictionary in dueDateArray) {
         //get the current date from the current date dictionary.
         NSDate *currentDate = [currentDateDictionary objectForKey:@"eveDueDate"];
         NSMutableArray *tempIDArray = [[NSMutableArray alloc]init];
         //set a predicate and get results.
         [request setPredicate:[NSPredicate predicateWithFormat:@"eveDueDate == %@", currentDate]];
         error = nil;
-        NSArray *tempIDDictionaryArray = [context executeFetchRequest:request error:&error];
+        NSArray *tempIDDictionaryArray = [self.context executeFetchRequest:request error:&error];
         NSLog(@"temp array count: %d", [tempIDDictionaryArray count]);
-        for (NSDictionary *eventDic in tempIDDictionaryArray)
-        {
+        
+        for (NSDictionary *eventDic in tempIDDictionaryArray) {
             if ([eventDic objectForKey:@"eventID"] != nil)
             [tempIDArray addObject:[eventDic objectForKey:@"eventID"]];
         }
 
         NSString *datestring;
-        if (currentDate == NULL)
-        {
+        
+        if (currentDate == NULL) {
             nullField = true;
             datestring = @"No Due Date";
         }
         else
             datestring = [df stringFromDate:currentDate];
+        
         NSDictionary *dict = [NSDictionary dictionaryWithObject:tempIDArray forKey:datestring];
         [eventIDArray addObject:dict];
     }
     
     //if there are items with no date, move them to the end of the array.
-    if (nullField == true)
-    {
+    if (nullField == true) {
         [eventIDArray insertObject:[eventIDArray objectAtIndex:0] atIndex:[eventIDArray count]];
         [eventIDArray removeObjectAtIndex:0];
     }
@@ -393,15 +422,6 @@
         [self stopLoading];
 
 }
-
-
-
-
-
-
-
-
-
 
 //------------------------------------------------------------------
 //  Table View
@@ -426,8 +446,8 @@
     return [tArr count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:
-(NSString *)title atIndex:(NSInteger)index {
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
     return index;
 }
 
@@ -440,10 +460,8 @@
     return key;
 }
 
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{    
     return 80; 
 }
 
@@ -466,26 +484,24 @@
     NSArray *tArr = [dict objectForKey:key];
     NSString *currentID = [tArr objectAtIndex:indexPath.row];
     
-    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"eventID == %@", currentID];
 
     // fetch the event identified by currentID.
     NSArray *eventsArray = [NSManagedObject fetchObjectsForEntityName:@"Event" withPredicate:predicate withSortDescriptors:nil];
-    if (![eventsArray count]) return cell;
     
+    if (![eventsArray count]) 
+        return cell;
     
     Event* event = [eventsArray objectAtIndex:0];
     
     predicate = [NSPredicate predicateWithFormat:@"companySiteID == %@", event.companySiteID];
-
     NSArray *companyArray = [NSManagedObject fetchObjectsForEntityName:@"Company" withPredicate:predicate withSortDescriptors:nil];
     
-    
     CompanySearch *company = [[CompanySearch alloc] init];
+    
     if ([companyArray count])
         company = [companyArray objectAtIndex:0];
-    else
-    {
+    else {
         company.cosSiteName = @"No company";
         company.cosDescription = @"Can't display details.";
     }
@@ -495,7 +511,7 @@
     cell.eventTypeType2.text = [event.eventType stringByAppendingFormat:@" - %@",event.eventType2];
     cell.siteNameDesc.text = [company.cosSiteName stringByAppendingFormat:@" - %@",company.cosDescription];
     
-    [format timeStringFromSecondsSinceMidnight:[event.eveDueTime integerValue]];
+    [Format timeStringFromSecondsSinceMidnight:[event.eveDueTime integerValue]];
     
     int hours = [event.eveDueTime integerValue] / 3600;
     int minutes = ([event.eveDueTime integerValue] / 60) % 60;
@@ -508,14 +524,12 @@
     else 
         cell.watchedImage.hidden = TRUE; // hide the watched image
     
-    
     //if event is unread for me show unread image; else hide it.
     if (event.readEvent == 0) 
         cell.unreadClosedImage.hidden = FALSE;
     else 
         cell.unreadClosedImage.hidden = TRUE;
 
-    
     return cell;
 }
 
@@ -524,22 +538,24 @@
     [self performSegueWithIdentifier:@"pushDetails" sender:self];
 }
 
-
-
 //------------------------------------------------------------------
 //  PULL REFRESH
 //------------------------------------------------------------------
 
-- (void)setupStrings{
+- (void)setupStrings
+{
     textPull = [[NSString alloc] initWithString:@"Pull down to refresh..."];
     textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
     textLoading = [[NSString alloc] initWithString:@"Loading..."];
+    NSLog(@"%@", textPull);
+    NSLog(@"%@", textRelease);
+    NSLog(@"%@", textLoading);
 }
 
-- (void)addPullToRefreshHeader {
+- (void)addPullToRefreshHeader
+{
     refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, self.tableView.frame.size.width, REFRESH_HEADER_HEIGHT)];
     refreshHeaderView.backgroundColor = [UIColor whiteColor];
-    
     refreshHeaderView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.tableView.frame.size.width / 2) - 160, 0, 320, REFRESH_HEADER_HEIGHT)];
@@ -550,9 +566,7 @@
     refreshLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrowblack.png"]];
-    refreshArrow.frame = CGRectMake(floorf((self.tableView.frame.size.width / 2) - 150),
-                                    (floorf(REFRESH_HEADER_HEIGHT - 44) / 2),
-                                    44, 44);
+    refreshArrow.frame = CGRectMake(floorf((self.tableView.frame.size.width / 2) - 150), (floorf(REFRESH_HEADER_HEIGHT - 44) / 2), 44, 44);
     refreshArrow.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -566,12 +580,14 @@
     [self.tableView addSubview:refreshHeaderView];
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
     if (isLoading) return;
     isDragging = YES;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
     if (isLoading) {
         // Update the content inset, good for section headers
         if (scrollView.contentOffset.y > 0)
@@ -581,35 +597,41 @@
     } else if (isDragging && scrollView.contentOffset.y < 0) {
         // Update the arrow direction and label
         [UIView beginAnimations:nil context:NULL];
+        
         if (scrollView.contentOffset.y < -REFRESH_HEADER_HEIGHT) {
             // User is scrolling above the header
-            refreshLabel.text = self.textRelease;
+            refreshLabel.text = textRelease;
             [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
         } else { // User is scrolling somewhere within the header
-            refreshLabel.text = self.textPull;
+            refreshLabel.text = textPull;
             [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
         }
+        
         [UIView commitAnimations];
     }
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
     if (isLoading) return;
     isDragging = NO;
+    
     if (scrollView.contentOffset.y <= -REFRESH_HEADER_HEIGHT) {
         // Released above the header
         [self startLoading];
     }
+    
 }
 
-- (void)startLoading {
+- (void)startLoading
+{
     isLoading = YES;
     
     // Show the header
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
     self.tableView.contentInset = UIEdgeInsetsMake(REFRESH_HEADER_HEIGHT, 0, 0, 0);
-    refreshLabel.text = self.textLoading;
+    refreshLabel.text = textLoading;
     refreshArrow.hidden = YES;
     [refreshSpinner startAnimating];
     [UIView commitAnimations];
@@ -618,8 +640,8 @@
     [self reloadCoreData];
 }
 
-- (void)stopLoading {
-
+- (void)stopLoading
+{
     isLoading = NO;
     // Hide the header
     [UIView beginAnimations:nil context:NULL];
@@ -632,22 +654,15 @@
     self.tableView.contentInset = tableContentInset;
     [refreshArrow layer].transform = CATransform3DMakeRotation(M_PI * 2, 0, 0, 1);
     [UIView commitAnimations];
-
 }
 
-- (void)stopLoadingComplete:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+- (void)stopLoadingComplete:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
     // Reset the header
-    refreshLabel.text = self.textPull;
+    refreshLabel.text = textPull;
     refreshArrow.hidden = NO;
     [refreshSpinner stopAnimating];
 }
-
-
-
-
-
-
-
 
 //------------------------------------------------------------------
 //  SEGUE
@@ -657,10 +672,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     //if the segue is to the details screen
-    if ([segue.identifier isEqualToString:@"pushDetails"])
-    {
-        if (sender == self)
-        {
+    if ([segue.identifier isEqualToString:@"pushDetails"]) {
+        
+        if (sender == self) {
             NSInteger row = [[self tableView].indexPathForSelectedRow row];
             NSInteger section = [[self tableView].indexPathForSelectedRow section];
             
@@ -672,47 +686,38 @@
             NSString *currentID = [tArr objectAtIndex:row];
             
             //send the event id to the detail view controller
-            eventDetailsTableViewController *detailViewController = segue.destinationViewController;
+            EventDetailsTableViewController *detailViewController = segue.destinationViewController;
             detailViewController.eventDetails = [[EventSearch alloc] init];
             detailViewController.eventDetails.eventID = currentID;
             detailViewController.isCoreData = YES;
         }
-        else
-        {   
+        else {   
             //clear the user defaults for initial id and view
             [defaults setObject:@"" forKey:@"initialID"];
             [defaults setObject:@"" forKey:@"initialView"];
             [defaults setObject:@"" forKey:@"initialCore"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             defaults = [NSUserDefaults standardUserDefaults];
-            
-            
-            
+
             //send the event id to the detail view controller
-            eventDetailsTableViewController *detailViewController = segue.destinationViewController;
+            EventDetailsTableViewController *detailViewController = segue.destinationViewController;
             detailViewController.eventDetails = [[EventSearch alloc] init];
             detailViewController.eventDetails.eventID = [eventForSegue objectForKey:@"id"];
             detailViewController.eventDetails.eveNumber = [eventForSegue objectForKey:@"number"];
             detailViewController.isCoreData = [[eventForSegue objectForKey:@"core"] intValue];
         }
+        
     }
 }
 
-
-
-
-
-
-
-
-
-
-- (IBAction)clickToday:(id)sender {
+- (IBAction)clickToday:(id)sender
+{
     //[self performSelector:@selector(scrollToToday) withObject:nil afterDelay:0.5];
     [self scrollToToday];
 }
 
-- (void)scrollToToday{
+- (void)scrollToToday
+{
     //scroll to today (or soonest day after) - this is recalculated each time instead of during the refresh incase the data has not been updated since before today
     NSDateFormatter *dfToString = [[NSDateFormatter alloc] init];
     [dfToString setDateStyle:NSDateFormatterMediumStyle];
@@ -724,8 +729,7 @@
     
     BOOL eventFound = false;
     
-    for (NSInteger i = 0; i < [eventIDArray count]; i++)
-    {
+    for (NSInteger i = 0; i < [eventIDArray count]; i++) {
         NSDictionary *dict = [eventIDArray objectAtIndex:i];
         //get the key of the current dictionary
         NSArray *keys = [dict allKeys];
@@ -740,10 +744,8 @@
         //create a date from the components
         NSDate *today = [gregorian dateFromComponents:components];
         
-        
         //if the date is after today or is today
-        if([keyDate compare: today] == NSOrderedDescending || [keyDate compare: today] == NSOrderedSame)
-        {
+        if([keyDate compare: today] == NSOrderedDescending || [keyDate compare: today] == NSOrderedSame) {
             //goto the position of the row
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] atScrollPosition:UITableViewScrollPositionTop animated:YES];
             
@@ -751,6 +753,7 @@
             //stop looping
             break;
         }
+        
     }
     
     if (eventFound == false)
@@ -758,68 +761,54 @@
     
 }
 
-
-
-
-
-
-
-
 //------------------------------------------------------------------
 //  Search
 //------------------------------------------------------------------
 
 // when the user clicks search:
-- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    
+- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
     [self search:nil];
-    
 }
 
-- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
     //cancelled = YES;
     //[getCompaniesDom cancel];
     //isSearching = NO;
     [searchBar resignFirstResponder];
 }
 
-- (void)filterContentForSearchText:(NSString*)searchText 
-                             scope:(NSString*)scope
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller 
-shouldReloadTableForSearchString:(NSString *)searchString
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     return NO;
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller 
-shouldReloadTableForSearchScope:(NSInteger)searchOption
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
     return NO;
 }
 
-- (void)search:(id)sender {
-    
-    
-    if ([_searchBar.text length] < 3)
-    {
+- (void)search:(id)sender
+{
+    if ([self.searchBar.text length] < 3) {
         UIAlertView *alertStringTooShortAlert = [[UIAlertView alloc] initWithTitle:@"Search length" message:@"Event ID too short" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertStringTooShortAlert show];
     }
-    else
-    {
+    else {
         NSCharacterSet *decimalSet = [NSCharacterSet decimalDigitCharacterSet];
         // if trimming decimal characters out of string leaves nothing then proceed, else show alert and return
-        if (![[_searchBar.text stringByTrimmingCharactersInSet:decimalSet] isEqualToString:@""])
-        {
+        
+        if (![[self.searchBar.text stringByTrimmingCharactersInSet:decimalSet] isEqualToString:@""]) {
             UIAlertView *alertInvalidCharacters = [[UIAlertView alloc] initWithTitle:@"Invalid Search Criteria" message:@"Please enter integer value" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alertInvalidCharacters show];
             return;
         }
- 
         
         // look for the event within core data:
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"eveNumber == %@", _searchBar.text];
@@ -827,8 +816,7 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
         
         // if event is found then we know it is core data, else it will need to be searched for from event details view using web service.
         // store details of event (id, and if stored in core data) in 'eventForSegue'
-        if ([eventsArray count]) 
-        {
+        if ([eventsArray count])  {
             eventForSegue = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:_searchBar.text,@"1", nil] forKeys:[NSArray arrayWithObjects:@"number",@"core",nil]];
         }
         else {
@@ -839,49 +827,46 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
     }
 }
 
-
-
-
-
 //------------------------------------------------------------------
 //  Keyboard
 //------------------------------------------------------------------
 
-- (void)keyboardWillShow:(NSNotification *)note {  
+- (void)keyboardWillShow:(NSNotification *)note
+{  
     if (self.view.window)
-        keyboardToolBar.alpha = 0; // set alpha to 0 so that the keyboard toolbar can be faded into view in keyboardDidShow
+        self.keyboardToolBar.alpha = 0; // set alpha to 0 so that the keyboard toolbar can be faded into view in keyboardDidShow
 }  
 
-- (void)keyboardDidShow:(NSNotification *)note {  
-    if (self.view.window) //if this view is visible, add toolbar to keyboard
-    {
+- (void)keyboardDidShow:(NSNotification *)note
+{  
+    if (self.view.window) { //if this view is visible, add toolbar to keyboard
         // if clause is just an additional precaution, you could also dismiss it  
         UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:1];  
         UIView* keyboard;  
+        
         for(int i=0; i<[tempWindow.subviews count]; i++) {  
             keyboard = [tempWindow.subviews objectAtIndex:i];  
+            
             // keyboard found, add the button  
             if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2) {  
                 if([[keyboard description] hasPrefix:@"<UIPeripheralHost"] == YES)  
-                    [keyboard addSubview:keyboardToolBar];  
+                    [keyboard addSubview:self.keyboardToolBar];  
             } else {  
                 if([[keyboard description] hasPrefix:@"<UIKeyboard"] == YES)  
-                    [keyboard addSubview:keyboardToolBar];  
+                    [keyboard addSubview:self.keyboardToolBar];  
             }  
+            
         }  
         
         //fade keyboard into view, to soften popup.
         [UIView beginAnimations:@"showToolBar" context:nil];
         [UIView setAnimationDuration:.3];
-        CGRect aFrame = keyboardToolBar.frame;
-        keyboardToolBar.frame = aFrame;
-        keyboardToolBar.alpha = 1;
+        CGRect aFrame = self.keyboardToolBar.frame;
+        self.keyboardToolBar.frame = aFrame;
+        self.keyboardToolBar.alpha = 1;
         [UIView commitAnimations];
     }
     
 }  
-
-
-
 
 @end

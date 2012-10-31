@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface alertsAndBadges : NSObject
+@interface AlertsAndBadges : NSObject
 
-+(void)setAlertsAndBadges:(NSArray *)EventArray;
++ (void)setAlertsAndBadges:(NSArray *)eventArray;
 
 @end

@@ -8,29 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@class pickerViewController;
+@class PickerViewController;
 
-@protocol pickerViewControllerDelegate <NSObject>
--(void)pickerViewController:(pickerViewController *)controller
-                  didSelectItem: (NSString *)Item withSourceCellIdentifier:(NSString *)sourceCellIdentifier;
+@protocol PickerViewControllerDelegate <NSObject>
+
+- (void)pickerViewController:(PickerViewController *)controller didSelectItem:(NSString *)Item withSourceCellIdentifier:(NSString *)sourceCellIdentifier;
+
 @end
 
-@interface pickerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>{
-    
-    IBOutlet UIPickerView *picker;
-    NSInteger selectedIndex;
-}
+@interface PickerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate> 
 
-@property (nonatomic, weak) id <pickerViewControllerDelegate> delegate;
-
+@property (nonatomic, weak) id <PickerViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *sourceCellIdentifier;
 @property (strong, nonatomic) NSString *item;
 @property (strong, nonatomic) NSArray *itemArray;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
 
 - (IBAction)clickDone:(id)sender;
 - (IBAction)clickCancel:(id)sender;
-
-
-
 
 @end

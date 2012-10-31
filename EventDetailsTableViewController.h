@@ -10,21 +10,12 @@
 #import "EventSearch.h"
 #import "CompanySearch.h"
 #import "ContactSearch.h"
-#import "fetchXML.h"
-#import "editTableViewController.h"
+#import "FetchXML.h"
+#import "EditTableViewController.h"
 
-@class Reachability;
-
-@interface eventDetailsTableViewController : UITableViewController <UIActionSheetDelegate, fetchXMLDelegate, editTableViewControllerDelegate> {
-    NSMutableArray *attachmentArray;
-    Reachability* internetReachable;
-    Reachability* hostReachable;
-    BOOL internetActive;
-    BOOL hostActive;
-}
+@interface EventDetailsTableViewController : UITableViewController <UIActionSheetDelegate, FetchXMLDelegate, EditTableViewControllerDelegate>
 
 @property (nonatomic) BOOL isCoreData;
-
 @property (strong, nonatomic) EventSearch *eventDetails;
 @property (strong, nonatomic) CompanySearch *company;
 @property (strong, nonatomic) ContactSearch *contact;
@@ -44,11 +35,9 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellLblOurContact;
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellComments;
 @property (strong, nonatomic) IBOutlet UITableViewCell *cellCommentLink;
-
-- (IBAction)btnActions_Click:(id)sender;
-
 @property (strong, nonatomic) IBOutlet UIView *viewEventDetail;
 
+- (IBAction)btnActions_Click:(id)sender;
 -(void) checkNetworkStatus:(NSNotification *)notice;
 
 @end

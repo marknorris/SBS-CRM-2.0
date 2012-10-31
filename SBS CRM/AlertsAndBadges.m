@@ -6,24 +6,19 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "alertsAndBadges.h"
+#import "AlertsAndBadges.h"
 #import "EventSearch.h"
 
-
-@interface alertsAndBadges()
-
-@end
-
-@implementation alertsAndBadges
+@implementation AlertsAndBadges
 
 static NSInteger overDueCount = 0;
 
-+(void)setAlertsAndBadges:(NSArray *)EventArray{
++ (void)setAlertsAndBadges:(NSArray *)eventArray
+{
     overDueCount = 0;
     
     //loop through each of the events
-    for (EventSearch *eve in EventArray)
-    {
+    for (EventSearch *eve in eventArray) {
         // if needed set the default alert time. As we are currently saving the default alert time to core 
         // data there is no way to update this again without doing a refresh. TODO: consider this.
         //if (eve.eveDueTime == NULL || [eve.eveDueTime isEqualToString:@"0"] || [eve.eveDueTime isEqualToString:@""])
@@ -39,8 +34,7 @@ static NSInteger overDueCount = 0;
         if (dueDateTime == [NSDate distantPast])
             continue;
         
-        if ([dueDateTime compare:[NSDate date]] == NSOrderedAscending)
-        {
+        if ([dueDateTime compare:[NSDate date]] == NSOrderedAscending) {
             overDueCount++;
         }
         else {
@@ -52,18 +46,17 @@ static NSInteger overDueCount = 0;
             localNotif.userInfo = userinfo;
             [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
         }
+        
     }
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:overDueCount];
 }
-
 
 + (NSDate *)getDueDateTime:(NSDate *)dueDate:(NSString *)dueTime
 {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     //get the date components from due date
     NSDateComponents *components = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:dueDate];
-    
     
     // stop the date from being automatically adjusted.
     components.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];

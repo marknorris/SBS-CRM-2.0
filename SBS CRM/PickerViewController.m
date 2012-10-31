@@ -6,14 +6,22 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "pickerViewController.h"
+#import "PickerViewController.h"
 
-@implementation pickerViewController
-@synthesize delegate;
+@interface PickerViewController()
+{
+    NSInteger selectedIndex;
+}
 
-@synthesize sourceCellIdentifier;
-@synthesize itemArray;
-@synthesize item;
+@end
+
+@implementation PickerViewController
+
+@synthesize delegate = _delegate;
+@synthesize sourceCellIdentifier = _sourceCellIdentifier;
+@synthesize itemArray = _itemArray;
+@synthesize picker = _picker;
+@synthesize item = _item;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,8 +37,6 @@
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
-    
-    
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -43,15 +49,13 @@
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    [picker selectRow:[itemArray indexOfObject:item] inComponent:0 animated:NO];
+    [self.picker selectRow:[self.itemArray indexOfObject:self.item] inComponent:0 animated:NO];
 }
-
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
 {
@@ -64,9 +68,10 @@
     something =    [arrayNo objectAtIndex:row];
 }
 */
+
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
 {
-    return [itemArray count];
+    return [self.itemArray count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component;
@@ -74,14 +79,13 @@
     //NSLog(@"current item: %@", [itemArray objectAtIndex:row]);
     //NSLog(@"item: %@", item);
 
-    return [itemArray objectAtIndex:row];
+    return [self.itemArray objectAtIndex:row];
 }
-
-
 
 - (void)viewDidUnload
 {
-    picker = nil;
+    self.picker = nil;
+    [self setPicker:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -94,14 +98,14 @@
     return YES;
 }
 
-- (IBAction)clickDone:(id)sender {
-
-    
-    [self.delegate pickerViewController:self didSelectItem:[itemArray objectAtIndex:[picker selectedRowInComponent:0]]  withSourceCellIdentifier:sourceCellIdentifier];
+- (IBAction)clickDone:(id)sender
+{    
+    [self.delegate pickerViewController:self didSelectItem:[self.itemArray objectAtIndex:[self.picker selectedRowInComponent:0]]  withSourceCellIdentifier:self.sourceCellIdentifier];
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)clickCancel:(id)sender {
+- (IBAction)clickCancel:(id)sender
+{
     [self dismissModalViewControllerAnimated:YES];
 }
 

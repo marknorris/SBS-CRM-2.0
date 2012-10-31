@@ -8,18 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "KeychainItemWrapper.h"
-#import "fetchXML.h"
+#import "FetchXML.h"
 
 //##################################################################
 //  login View Controller - Public Interface
 //##################################################################
 
-@interface loginViewController : UIViewController <fetchXMLDelegate>
-
+@interface LoginViewController : UIViewController <FetchXMLDelegate>
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *stayLoggedIn;
 @property (strong, nonatomic) IBOutlet UIButton *logInButton;
-
 
 //-------------------------- User details --------------------------
 @property (strong, nonatomic) IBOutlet UITextField *txtUserName;
