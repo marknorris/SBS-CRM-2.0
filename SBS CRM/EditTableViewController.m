@@ -6,31 +6,29 @@
 //  Copyright (c) 2012 Shuttleworth Business Systems Limited. All rights reserved.
 //
 
-#import "editTableViewController.h"
-#import "format.h"
+#import "EditTableViewController.h"
+#import "Format.h"
 #import "AppDelegate.h"
 #import "XMLParser.h"
 #import "ContactSearch.h"
 #import "CompanySearch.h"
 #import "NSManagedObject+CoreDataManager.h"
+#import "LoadingSavingView.h"
 
-#import "loadingSavingView.h"
-
-@interface editTableViewController ()
-
+@interface EditTableViewController ()
 
 // Keyboard toolbar
 @property (strong, nonatomic) UIToolbar *keyboardToolBar;
 
 //fetchXMLs
-@property (nonatomic, strong) fetchXML *getContacts;
-@property (nonatomic, strong) fetchXML *getOurContacts;
-@property (nonatomic, strong) fetchXML *saveEvent;
+@property (nonatomic, strong) FetchXML *getContacts;
+@property (nonatomic, strong) FetchXML *getOurContacts;
+@property (nonatomic, strong) FetchXML *saveEvent;
 
 // activity indicatory
 @property (strong, nonatomic) UIActivityIndicatorView *refreshSpinner;
 
-@property (strong, nonatomic) loadingSavingView *savingView;
+@property (strong, nonatomic) LoadingSavingView *savingView;
 
 // arrays to store items for use with the look up table.
 @property (nonatomic, strong) NSMutableArray *lookUpItems;
@@ -40,35 +38,48 @@
 
 @property (nonatomic) float scrollPosition;
 
-
 - (void)fillCells;
 
 @end
 
-@implementation editTableViewController
+@implementation EditTableViewController
 
 // ---- Synthesize -----
 
 // cell / txt Outlets
-@synthesize btnCancel;
-@synthesize btnSave;
-@synthesize txtTitle, cellDueDate, cellDueTime, cellEndDate, cellEndTime, cellContact, cellInternalContact;
+@synthesize btnCancel = _btnCancel;
+@synthesize btnSave = _btnSave;
+@synthesize txtTitle = _txtTitle;
+@synthesize cellDueDate = _cellDueDate;
+@synthesize cellDueTime = _cellDueTime;
+@synthesize cellEndDate = _cellEndDate;
+@synthesize cellEndTime = _cellEndTime;
+@synthesize cellContact = _cellContact;
+@synthesize cellInternalContact = _cellInternalContact;
 // EventSearch proerty to hold event to be added
-@synthesize eventToEdit, contact, internalContact, contactName, internalContactName;
+@synthesize eventToEdit = _eventToEdit;
+@synthesize contact = _contact;
+@synthesize internalContact = _internalContact;
+@synthesize contactName = _contactName;
+@synthesize internalContactName = _internalContactName;
 // Keyboard toolbar
-@synthesize keyboardToolBar;
+@synthesize keyboardToolBar = _keyboardToolBar;
 //fetchXMLs
-@synthesize saveEvent, getContacts, getOurContacts;
+@synthesize saveEvent = _saveEvent;
+@synthesize getContacts = _getContacts;
+@synthesize getOurContacts = _getOurContacts;
 // arrays to store items for use with the look up table.
-@synthesize lookUpItems, ContactArray;
+@synthesize lookUpItems = _lookUpItems;
+@synthesize ContactArray = _ContactArray;
 // activity indicatory
-@synthesize refreshSpinner, savingView;
+@synthesize refreshSpinner = _refreshSpinner;
+@synthesize savingView = _savingView;
 // alert view for failed fetchXML;
-@synthesize fetchXMLFailedAlert;
+@synthesize fetchXMLFailedAlert = _fetchXMLFailedAlert;
 // save scroll position to reset when screen returns from lookup / picker views.
-@synthesize scrollPosition;
+@synthesize scrollPosition = _scrollPosition;
 
-@synthesize delegate;
+@synthesize delegate = _delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -79,42 +90,42 @@
     return self;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // Create toolbar for keyboard
-    keyboardToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width, 44)];
-    keyboardToolBar.tintColor = [UIColor blackColor];
+    self.keyboardToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,self.view.bounds.size.width, 44)];
+    self.keyboardToolBar.tintColor = [UIColor blackColor];
     UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(resignKeyboard:)];
     doneButton.style = UIBarButtonItemStyleDone;
-    [keyboardToolBar setItems:[[NSArray alloc] initWithObjects:extraSpace,doneButton,nil]];
+    [self.keyboardToolBar setItems:[[NSArray alloc] initWithObjects:extraSpace,doneButton,nil]];
     // add keyboard to text field
-    txtTitle.inputAccessoryView = keyboardToolBar;
-    
+    self.txtTitle.inputAccessoryView = self.keyboardToolBar;
     
     // prep refresh spinner
-    refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    refreshSpinner.frame = CGRectMake(self.view.bounds.size.width / 2 - 10, cellContact.bounds.size.height / 2 - 10, 20, 20);
-    refreshSpinner.hidesWhenStopped = YES;
+    self.refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.refreshSpinner.frame = CGRectMake(self.view.bounds.size.width / 2 - 10, self.cellContact.bounds.size.height / 2 - 10, 20, 20);
+    self.refreshSpinner.hidesWhenStopped = YES;
     
-    fetchXMLFailedAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    self.fetchXMLFailedAlert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     
-    scrollPosition = 0;
+    self.scrollPosition = 0;
     
-    txtTitle.text = eventToEdit.eveTitle;
+    self.txtTitle.text = self.eventToEdit.eveTitle;
     [self fillCells];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
-    [self.tableView setContentOffset:CGPointMake(0, scrollPosition)];
+    [self.tableView setContentOffset:CGPointMake(0, self.scrollPosition)];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    scrollPosition = self.tableView.contentOffset.y;
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    self.scrollPosition = self.tableView.contentOffset.y;
 }
 
 - (void)viewDidUnload
@@ -133,10 +144,10 @@
     // e.g. self.myOutlet = nil;
 }
 
-
 // hide keyboard
-- (void)resignKeyboard:(id)sender  {
-    [txtTitle resignFirstResponder];
+- (void)resignKeyboard:(id)sender
+{
+    [self.txtTitle resignFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -144,9 +155,7 @@
     return YES;
 }
 
-
 #pragma mark - Table view delegate
-
 
 //------------------------------------------------------------------------
 //                  Determine actions by selected cell
@@ -162,29 +171,27 @@
             break;
         case 3: // End date / time
             //if there is a company site ID search for contacts:
-            if ([eventToEdit.companySiteID length] > 0)
-            {
+            if ([self.eventToEdit.companySiteID length] > 0) {
                 //prep fetchXML.
-                getContacts = [[fetchXML alloc] initWithUrl:[NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsByCompanyABL?searchCompanySiteID=%@",eventToEdit.companySiteID]] delegate:self className:@"ContactSearch"];
+                self.getContacts = [[FetchXML alloc] initWithUrl:[NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsByCompanyABL?searchCompanySiteID=%@", self.eventToEdit.companySiteID]] delegate:self className:@"ContactSearch"];
                 
-                if (![getContacts fetchXML]) //if get dom fails at this point, display error
-                    [fetchXMLFailedAlert show];
+                if (![self.getContacts fetchXML]) //if get dom fails at this point, display error
+                    [self.fetchXMLFailedAlert show];
                 else // else show network activity (in selected cell);
-                    [cellContact addSubview:refreshSpinner]; [refreshSpinner startAnimating];
+                    [self.cellContact addSubview:self.refreshSpinner]; [self.refreshSpinner startAnimating];
             }
             else 
                 [[[UIAlertView alloc] initWithTitle:@"Please select a company" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
             break;
         case 4: // End date / time
-            if (appCompanySiteID > 0)
-            {
+            if (appCompanySiteID > 0) {
                 //prep fetchXML
-                getOurContacts = [[fetchXML alloc] initWithUrl:[NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsByCompanyABL?searchCompanySiteID=%d",appCompanySiteID]] delegate:self className:@"ContactSearch"];
+                self.getOurContacts = [[FetchXML alloc] initWithUrl:[NSURL URLWithString:[appURL stringByAppendingFormat:@"/service1.asmx/searchContactsByCompanyABL?searchCompanySiteID=%d", appCompanySiteID]] delegate:self className:@"ContactSearch"];
                 
-                if (![getOurContacts fetchXML]) //if get dom fails at this point, display error
-                    [fetchXMLFailedAlert show]; 
+                if (![self.getOurContacts fetchXML]) //if get dom fails at this point, display error
+                    [self.fetchXMLFailedAlert show]; 
                 else // else show network activity (in selected cell);
-                    [cellInternalContact addSubview:refreshSpinner]; [refreshSpinner startAnimating];
+                    [self.cellInternalContact addSubview:self.refreshSpinner]; [self.refreshSpinner startAnimating];
             }
             else 
                 [[[UIAlertView alloc] initWithTitle:@"Internal Company not found" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
@@ -198,117 +205,111 @@
 //------------------------------------------------------------------------
 //            Pass values to the destination view controller
 //------------------------------------------------------------------------
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{    
     NSIndexPath* indexPath = (NSIndexPath *)sender;
     
-    if ([segue.identifier isEqualToString:@"toDateTimePicker"])
-    {
-        dateTimePickerViewController *dtpvc = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"toDateTimePicker"]) {
+        DateTimePickerViewController *dtpvc = segue.destinationViewController;
         dtpvc.delegate = self;
         dtpvc.sender = sender;
         
         switch (indexPath.section) {
             case 1: // due
                 //customise based on the sender - set mode and currently selected date / time.
-                if(indexPath.row == 0) // due date
-                {
-                    dtpvc.dateTime = eventToEdit.eveDueDate;
+                if(indexPath.row == 0) { // due date
+                    dtpvc.dateTime = self.eventToEdit.eveDueDate;
                     dtpvc.mode = UIDatePickerModeDate;
                 }
                 else { // due time
-                    dtpvc.dateTime = [format dateFromSecondsSinceMidnight:[eventToEdit.eveDueTime integerValue]];
+                    dtpvc.dateTime = [Format dateFromSecondsSinceMidnight:[self.eventToEdit.eveDueTime integerValue]];
                     dtpvc.mode = UIDatePickerModeTime;
                 }
                 break;
             case 2: // end
                 //customise based on the sender
-                if(indexPath.row == 0) // end date
-                {
-                    dtpvc.dateTime = eventToEdit.eveEndDate;
+                if(indexPath.row == 0) { // end date
+                    dtpvc.dateTime = self.eventToEdit.eveEndDate;
                     dtpvc.mode = UIDatePickerModeDate;
                 }
                 else { // end time.
-                    dtpvc.dateTime = [format dateFromSecondsSinceMidnight:[eventToEdit.eveEndTime integerValue]];
+                    dtpvc.dateTime = [Format dateFromSecondsSinceMidnight:[self.eventToEdit.eveEndTime integerValue]];
                     dtpvc.mode = UIDatePickerModeTime;
                 }
                 break;
         }
         
     }
-    else if ([segue.identifier isEqualToString:@"toLookUpTableView"]){
-        
+    else if ([segue.identifier isEqualToString:@"toLookUpTableView"]) {
         //set the required values for the look up view controller
-        lookUpTableViewController *lutvc = segue.destinationViewController;
+        LookUpTableViewController *lutvc = segue.destinationViewController;
         lutvc.delegate = self; //set self as the delegate
-        lutvc.itemArray = lookUpItems; // set the array of items
+        lutvc.itemArray = self.lookUpItems; // set the array of items
         
         switch (indexPath.section) {
             case 3: // contact
                 lutvc.sourceCellIdentifier = [NSString stringWithFormat:@"%d%02d",indexPath.section, indexPath.row]; // identify by section
-                lutvc.item = contactName;
+                lutvc.item = self.contactName;
                 break;
             case 4: // internal contact
                 lutvc.sourceCellIdentifier = [NSString stringWithFormat:@"%d%02d",indexPath.section, indexPath.row]; // identify by section
-                lutvc.item = internalContactName;
+                lutvc.item = self.internalContactName;
                 break;
         }
     }
     
 }
 
-
 // dismiss the view
-- (IBAction)btnCancel_Click:(id)sender {
+- (IBAction)btnCancel_Click:(id)sender
+{
     //dismiss the view, does not cancel any fetchXML's as I don't want to interrupt events that are being saved. Also once, data is sent, the event is updated elsewhere, so cancelling would likely only stop confirmation or failure notification coming back.
     [self dismissModalViewControllerAnimated:YES];
 }
-
-
 
 //------------------------------------------------------------------------
 //                      Save the event to database
 //------------------------------------------------------------------------
 - (IBAction)btnSave_Click:(id)sender {
-    btnSave.enabled = false;
-    btnCancel.enabled = false;
-
+    self.btnSave.enabled = false;
+    self.btnCancel.enabled = false;
     [self saveEventToDatabase];
 }
 
 - (void)saveEventToDatabase{
-     savingView = [[loadingSavingView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 60, self.view.frame.size.height / 2 - 50, 120, 30) withMessage:@"Saving..."];
-    
-    [self.tableView addSubview:savingView];
-    
-    
+    self.savingView = [[LoadingSavingView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 60, self.view.frame.size.height / 2 - 50, 120, 30) withMessage:@"Saving..."];
+    [self.tableView addSubview:self.savingView];
     
     UIAlertView *domGetFailed = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Event Not Saved" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     
-    eventToEdit.eveTitle = txtTitle.text;
+    self.eventToEdit.eveTitle = self.txtTitle.text;
     
-    NSString *title = [eventToEdit.eveTitle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *title = [self.eventToEdit.eveTitle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSDateFormatter *dfToString = [[NSDateFormatter alloc] init];
     [dfToString setDateFormat:@"dd/MM/YYYY"];
-    NSString *formattedDueDate = [dfToString stringFromDate:eventToEdit.eveDueDate];
+    NSString *formattedDueDate = [dfToString stringFromDate:self.eventToEdit.eveDueDate];
     
     NSString *endDate;
-    if (!eventToEdit.eveEndDate)
+    
+    if (!self.eventToEdit.eveEndDate)
         endDate = @"";
-    else endDate = [dfToString stringFromDate:eventToEdit.eveEndDate];
+    else 
+        endDate = [dfToString stringFromDate:self.eventToEdit.eveEndDate];
     
-    saveEvent = [[fetchXML alloc] initWithUrl:[NSURL URLWithString:[appURL stringByAppendingFormat:@"/Service1.asmx/editEvent?eventId=%d&eveTitlestring=%@&dueDateString=%@&dueTime=%@&endDateString=%@&endTime=%@&contactID=%@&ourContactID=%@&userID=%d",[eventToEdit.eventID integerValue], title ?: @"", formattedDueDate ?: @"", eventToEdit.eveDueTime ?: @"-1",endDate ?: @"", eventToEdit.eveEndTime ?: @"-1",eventToEdit.contactID ?: @"", eventToEdit.ourContactID ?: @"", appUserID]] delegate:self className:@"NSNumber"];
+    self.saveEvent = [[FetchXML alloc] initWithUrl:[NSURL URLWithString:[appURL stringByAppendingFormat:@"/Service1.asmx/editEvent?eventId=%d&eveTitlestring=%@&dueDateString=%@&dueTime=%@&endDateString=%@&endTime=%@&contactID=%@&ourContactID=%@&userID=%d", [self.eventToEdit.eventID integerValue], title ?: @"", formattedDueDate ?: @"", self.eventToEdit.eveDueTime ?: @"-1",endDate ?: @"", self.eventToEdit.eveEndTime ?: @"-1", self.eventToEdit.contactID ?: @"", self.eventToEdit.ourContactID ?: @"", appUserID]] delegate:self className:@"NSNumber"];
     
-    if (![saveEvent fetchXML])
-    {[domGetFailed show]; return;}
+    if (![self.saveEvent fetchXML]) {
+        [domGetFailed show];
+        return;
+    }
+    
 }
-
 
 //------------------------------------------------------------------------
 //          Handle the data returned from the dateTimePickerView
 //------------------------------------------------------------------------
-- (void) dateTimePickerViewController: (dateTimePickerViewController *)controller didSelectDateTime:(NSDate *)returnedDate withSourceCellIdentifier:(NSString *)returnedSourceCellIdentifier withSender:(id)cellIndex 
+- (void)dateTimePickerViewController: (DateTimePickerViewController *)controller didSelectDateTime:(NSDate *)returnedDate withSourceCellIdentifier:(NSString *)returnedSourceCellIdentifier withSender:(id)cellIndex 
 {
     NSIndexPath *indexPath = (NSIndexPath *)cellIndex;
     
@@ -316,26 +317,23 @@
     switch (indexPath.section) {
         case 1:
             if (indexPath.row == 0)
-                eventToEdit.eveDueDate = returnedDate;
+                self.eventToEdit.eveDueDate = returnedDate;
             else
-                eventToEdit.eveDueTime = [format secondsSinceMidnightFromDate:returnedDate];
+                self.eventToEdit.eveDueTime = [Format secondsSinceMidnightFromDate:returnedDate];
             break;
         case 2:
             if (indexPath.row == 0)
-                eventToEdit.eveEndDate = returnedDate;
+                self.eventToEdit.eveEndDate = returnedDate;
             else
-                eventToEdit.eveEndTime = [format secondsSinceMidnightFromDate:returnedDate];
+                self.eventToEdit.eveEndTime = [Format secondsSinceMidnightFromDate:returnedDate];
             break;
     }
-    
-    
     
     // refill the cells with the updated information.
     [self fillCells];
 }
 
-
-- (void)lookUpTableViewController:(lookUpTableViewController *)controller didSelectItem:(NSInteger *)row withSourceCellIdentifier:(NSString *)sourceIdentifier
+- (void)lookUpTableViewController:(LookUpTableViewController *)controller didSelectItem:(NSInteger *)row withSourceCellIdentifier:(NSString *)sourceIdentifier
 {
     
     NSLog(@"ident: %@ indent-int:%d",sourceIdentifier,[sourceIdentifier intValue]);
@@ -344,93 +342,85 @@
         case 300:
         {
             //retrieved the contact in the contact array that has been selected (by returned index)
-            contact = [ContactArray objectAtIndex:(int)row];
-            NSString *fullName = [format nameFromComponents:[NSMutableArray arrayWithObjects:contact.conTitle,contact.conFirstName, contact.conMiddleName, contact.conSurname, nil]];
-            contactName = fullName;
-            eventToEdit.contactID = [contact contactID];
-            ContactArray = nil; // contacts no longer needed.
+            self.contact = [self.ContactArray objectAtIndex:(int)row];
+            NSString *fullName = [Format nameFromComponents:[NSMutableArray arrayWithObjects:self.contact.conTitle, self.contact.conFirstName, self.contact.conMiddleName, self.contact.conSurname, nil]];
+            self.contactName = fullName;
+            self.eventToEdit.contactID = [self.contact contactID];
+            self.ContactArray = nil; // contacts no longer needed.
             break;
         }
         case 400:
         {
-            internalContact = [ContactArray objectAtIndex:(int)row];
-            NSString *fullName = [format nameFromComponents:[NSMutableArray arrayWithObjects:internalContact.conTitle,internalContact.conFirstName, internalContact.conMiddleName, internalContact.conSurname, nil]];
-            internalContactName = fullName;
-            eventToEdit.ourContactID = [internalContact contactID];
-            ContactArray = nil; // contacts no longer needed.
+            self.internalContact = [self.ContactArray objectAtIndex:(int)row];
+            NSString *fullName = [Format nameFromComponents:[NSMutableArray arrayWithObjects:self.internalContact.conTitle, self.internalContact.conFirstName, self.internalContact.conMiddleName, self.internalContact.conSurname, nil]];
+            self.internalContactName = fullName;
+            self.eventToEdit.ourContactID = [self.internalContact contactID];
+            self.ContactArray = nil; // contacts no longer needed.
             break;
         }
     }
     
-    
     [self fillCells];
 }
-
-
-
 
 //------------------------------------------------------------------------
 //             Handle the data returned from the server
 //------------------------------------------------------------------------
-- (void)docRecieved:(NSDictionary *)doc :(id)sender {
+- (void)docRecieved:(NSDictionary *)doc :(id)sender 
+{
     // network activity has ended so stop refreshspinner
-    [refreshSpinner stopAnimating];
-
+    [self.refreshSpinner stopAnimating];
     
     //retrieve the class key
     NSString *classKey = [doc objectForKey:@"ClassName"];
     //send it through to the xml parser to be places in classe indicated by class key.
     NSArray *Array = [[[XMLParser alloc] init]parseXMLDoc:[doc objectForKey:@"Document"] toClass:NSClassFromString(classKey)];
-    lookUpItems = [[NSMutableArray alloc] init];
+    self.lookUpItems = [[NSMutableArray alloc] init];
     
-    if (sender == getContacts)
-    {
+    if (sender == self.getContacts) {
         // store returned contacts in array
-        ContactArray = [[NSArray alloc] initWithArray:Array];
-        for (ContactSearch *con in Array) // loop through contact and concatenate name, add name to lookUpItems array (to be sent to look up view)
-        {
-            NSString *fullName = [format nameFromComponents:[NSMutableArray arrayWithObjects:con.conTitle,con.conFirstName, con.conMiddleName, con.conSurname, nil]];
-            [lookUpItems addObject:fullName];
+        self.ContactArray = [[NSArray alloc] initWithArray:Array];
+        
+        for (ContactSearch *con in Array) { // loop through contact and concatenate name, add name to lookUpItems array (to be sent to look up view)
+            NSString *fullName = [Format nameFromComponents:[NSMutableArray arrayWithObjects:con.conTitle,con.conFirstName, con.conMiddleName, con.conSurname, nil]];
+            [self.lookUpItems addObject:fullName];
         }
+        
         //segue to the look up view.
         [self performSegueWithIdentifier:@"toLookUpTableView" sender:[NSIndexPath indexPathForRow:0 inSection:3]];
-        getContacts = nil;
+        self.getContacts = nil;
     }
-    else if (sender == getOurContacts)
-    {
+    else if (sender == self.getOurContacts) {
         // store returned contacts in array
-        ContactArray = [[NSArray alloc] initWithArray:Array];
-        for (ContactSearch *con in Array) // loop through contact and concatenate name, add name to lookUpItems array (to be sent to look up view)
-        {
-            NSString *fullName = [format nameFromComponents:[NSMutableArray arrayWithObjects:con.conTitle,con.conFirstName, con.conMiddleName, con.conSurname, nil]];
-            [lookUpItems addObject:fullName];
+        self.ContactArray = [[NSArray alloc] initWithArray:Array];
+        
+        for (ContactSearch *con in Array) { // loop through contact and concatenate name, add name to lookUpItems array (to be sent to look up view)
+            NSString *fullName = [Format nameFromComponents:[NSMutableArray arrayWithObjects:con.conTitle,con.conFirstName, con.conMiddleName, con.conSurname, nil]];
+            [self.lookUpItems addObject:fullName];
         }
+        
         //segue to the look up view.
         [self performSegueWithIdentifier:@"toLookUpTableView" sender:[NSIndexPath indexPathForRow:0 inSection:4]];
-        getOurContacts = nil;
+        self.getOurContacts = nil;
     }
-    else if (sender == saveEvent)
-    {
-        [savingView removeFromSuperview];
+    else if (sender == self.saveEvent) {
+        [self.savingView removeFromSuperview];
         //if data recieved place it into
         int errorResponse = [(([Array count] > 0)? [Array objectAtIndex:0] : @"6") integerValue];
         
-        if (errorResponse == 0) //if save successful
-        {
+        if (errorResponse == 0) { //if save successful
             // set event to read via webservice
-            NSURL *url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/Service1.asmx/setReadUnreadABL?readUnread=%@&eventID=%@&userID=%d",@"True", eventToEdit.eventID, appUserID]];
+            NSURL *url = [NSURL URLWithString:[appURL stringByAppendingFormat:@"/Service1.asmx/setReadUnreadABL?readUnread=%@&eventID=%@&userID=%d",@"True", self.eventToEdit.eventID, appUserID]];
             
-            fetchXML* setReadUnread = [[fetchXML alloc] initWithUrl:url delegate:self className:@"NSNumber"];
+            FetchXML* setReadUnread = [[FetchXML alloc] initWithUrl:url delegate:self className:@"NSNumber"];
             
             if (![setReadUnread fetchXML])
                 [[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Could not connect to the server" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];   
             
-            
-            [self updateCoreDataEvent:eventToEdit];
+            [self updateCoreDataEvent:self.eventToEdit];
             [self dismissModalViewControllerAnimated:YES];
         }
         else {
-            
             UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error Saving Data" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             
             //set error message:
@@ -458,205 +448,70 @@
             }
             
             [errorAlert show];
-            btnSave.enabled = true; //re-enable done button
-            btnCancel.enabled = true;
+            self.btnSave.enabled = true; //re-enable done button
+            self.btnCancel.enabled = true;
         }
         
     }
 }
 
-- (void)fetchXMLError:(NSString *)errorResponse :(id)sender {
+- (void)fetchXMLError:(NSString *)errorResponse :(id)sender
+{
     
-    if (sender == getContacts){
-        getContacts = nil;
+    if (sender == self.getContacts){
+        self.getContacts = nil;
         [[[UIAlertView alloc] initWithTitle:@"Error Fetching Data" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
     }
-    else if (sender == getOurContacts) {
-        
-    getOurContacts = nil;
-    [[[UIAlertView alloc] initWithTitle:@"Error Fetching Data" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    else if (sender == self.getOurContacts) {
+        self.getOurContacts = nil;
+        [[[UIAlertView alloc] initWithTitle:@"Error Fetching Data" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
     }
-    else if (sender == saveEvent) {
-        [savingView removeFromSuperview];
-        btnSave.enabled = false;
-        btnCancel.enabled = false;
-        saveEvent = nil;
+    else if (sender == self.saveEvent) {
+        [self.savingView removeFromSuperview];
+        self.btnSave.enabled = false;
+        self.btnCancel.enabled = false;
+        self.saveEvent = nil;
         [[[UIAlertView alloc] initWithTitle:@"Error Saving Data" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
     }
-    [refreshSpinner stopAnimating];
-
     
+    [self.refreshSpinner stopAnimating];
 }
 
 //------------------------------------------------------------------------
 //             Fill cells with their respective event data
 //------------------------------------------------------------------------
-- (void)fillCells {
-    
+- (void)fillCells
+{    
     NSDateFormatter *dfToString;   
     dfToString = [[NSDateFormatter alloc] init];
     
     //check if properties exist - if yes, place in cell, else enter placeholder text.
     [dfToString setDateFormat:@"HH:mm"];
     // if time string is not null or empty string, then convert to date (from seconds since midnight) and then convert to formatted string for display
-    cellEndTime.detailTextLabel.text = [eventToEdit.eveEndTime length] > 0 ? [dfToString stringFromDate:[format dateFromSecondsSinceMidnight:[eventToEdit.eveEndTime integerValue]]] : @"No End Time";
-    cellDueTime.detailTextLabel.text = [eventToEdit.eveDueTime length] > 0 ? [dfToString stringFromDate:[format dateFromSecondsSinceMidnight:[eventToEdit.eveDueTime integerValue]]] : @"No Due Time";
+    self.cellEndTime.detailTextLabel.text = [self.eventToEdit.eveEndTime length] > 0 ? [dfToString stringFromDate:[Format dateFromSecondsSinceMidnight:[self.eventToEdit.eveEndTime integerValue]]] : @"No End Time";
+    self.cellDueTime.detailTextLabel.text = [self.eventToEdit.eveDueTime length] > 0 ? [dfToString stringFromDate:[Format dateFromSecondsSinceMidnight:[self.eventToEdit.eveDueTime integerValue]]] : @"No Due Time";
     
     [dfToString setDateStyle:NSDateFormatterMediumStyle];
-    cellEndDate.detailTextLabel.text = eventToEdit.eveEndDate != NULL ? [dfToString stringFromDate:eventToEdit.eveEndDate] : @"No End Date";
-    cellDueDate.detailTextLabel.text = eventToEdit.eveDueDate != NULL ? [dfToString stringFromDate:eventToEdit.eveDueDate] : @"No Due Date";
+    self.cellEndDate.detailTextLabel.text = self.eventToEdit.eveEndDate != NULL ? [dfToString stringFromDate:self.eventToEdit.eveEndDate] : @"No End Date";
+    self.cellDueDate.detailTextLabel.text = self.eventToEdit.eveDueDate != NULL ? [dfToString stringFromDate:self.eventToEdit.eveDueDate] : @"No Due Date";
     
-    cellContact.textLabel.text = [contactName length] > 0 ? contactName : @"No Contact";
-    cellInternalContact.textLabel.text = [internalContactName length] > 0 ? internalContactName : @"No Contact";
-    
+    self.cellContact.textLabel.text = [self.contactName length] > 0 ? self.contactName : @"No Contact";
+    self.cellInternalContact.textLabel.text = [self.internalContactName length] > 0 ? self.internalContactName : @"No Contact";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- (BOOL)updateCoreDataEvent:(EventSearch *)EventToSave{
-    
-    
-        
- 
-    
+- (BOOL)updateCoreDataEvent:(EventSearch *)EventToSave
+{
     // set a predicate to find the event that needs to be updated.
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"eventID == %@", eventToEdit.eventID];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"eventID == %@", self.eventToEdit.eventID];
     
     BOOL saved = [NSManagedObject updateCoreDataObject:EventToSave forEntityName:@"Event" withPredicate:predicate];
     
-       [delegate getCoreData];
-          [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCoreData" object:nil];
+    [self.delegate getCoreData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCoreData" object:nil];
     
     //[delegate getCoreData];
     
     return saved;
-    /*
-    // set a predicate to find the event that needs to be updated.
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"eventID == %@", eventToEdit.eventID];
-    
-    EventSearch *eventToUpdate = [[NSManagedObject fetchObjectsForEntityName:@"Event" withPredicate:predicate withSortDescriptors:nil] objectAtIndex:0];
-    
-    
-    eventToUpdate.eveTitle = txtTitle.text;
-    eventToUpdate.eveDueDate = EventToSave.eveDueDate;
-    eventToUpdate.eveDueTime = EventToSave.eveDueTime;
-    eventToUpdate.eveEndDate = EventToSave.eveEndDate;
-    eventToUpdate.eveEndTime = EventToSave.eveEndTime;
-    eventToUpdate.ourContactID = EventToSave.contactID;
-    eventToUpdate.contactID = EventToSave.ourContactID;
-    
-    
-    if (![context save:&error]) //if save fails show error
-    {
-        [[[UIAlertView alloc] initWithTitle:@"Error saving data to device" message:@"Refresh events table to see updated data" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
-        return NO;
-    }
-    
-    //if the internal contact ID has changed, check to see if the contact is already saved in core data. If not save them.
-    if (![EventToSave.ourContactID isEqualToString:internalContact.contactID])
-    {
-        entity = [NSEntityDescription entityForName:@"Contact" inManagedObjectContext:context];
-        request = [[NSFetchRequest alloc] init];
-        [request setEntity:entity];
-        
-        //find the event where the event ID matches that of the current event.
-        predicate = [NSPredicate predicateWithFormat:@"contactID == %@", internalContact.contactID];
-        [request setPredicate:predicate];
-        NSError *error;
-        
-        // if the contact was not found, save them.
-        if ([[context executeFetchRequest:request error:&error] count] == 0 && !error)
-        {
-            NSArray *Array = [[NSArray alloc] initWithObjects:internalContact, nil];
-            [NSManagedObject storeInCoreData:Array forEntityName:@"Contact"];
-        }
-    }
-    
-    //if the external contact has changed, check to see if the contact is already saved in core data. If not save them.
-    if (![EventToSave.contactID isEqualToString:contact.contactID])
-    {
-        entity = [NSEntityDescription entityForName:@"Contact" inManagedObjectContext:context];
-        request = [[NSFetchRequest alloc] init];
-        [request setEntity:entity];
-        
-        //find the event where the event ID matches that of the current event.
-        predicate = [NSPredicate predicateWithFormat:@"contactID == %@", contact.contactID];
-        [request setPredicate:predicate];
-        NSError *error;
-        
-        // if the contact was not found, save them.
-        if ([[context executeFetchRequest:request error:&error] count] == 0 && !error)
-        {
-            NSArray *Array = [[NSArray alloc] initWithObjects:contact, nil];
-            [NSManagedObject storeInCoreData:Array forEntityName:@"Contact"];
-        }
-    }
-    
-    //if the event was not deleted update the data in the detail view
-    [delegate getCoreData];
-    
-    // if the event is not a watched event and internal contact has changed the delete it,
-    if (EventToSave.watched == [NSNumber numberWithInt:0] && ![EventToSave.ourContactID isEqualToString:internalContact.contactID])
-    {
-        
-        [context deleteObject:eveToUpdate];
-        
-        if (![context save:&error]) //if save fails show error
-        {
-            [[[UIAlertView alloc] initWithTitle:@"Error loading data from device" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
-            return;
-        }
-        //refresh the tableview on myevents screen.
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCoreData" object:nil];
-        
-    }
-    */
-    
-    /*
-     //create a user info dictionary to store the evenId
-     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:EventToSave.eventID forKey:@"eventId"];
-     //send notification to refresh the tableview on myevents screen.
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadEvent" object:self userInfo:userInfo];
-     */
-    
-    
-    
-    
-    
 }
 
-
-
 @end
-

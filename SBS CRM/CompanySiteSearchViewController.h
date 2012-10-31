@@ -7,21 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "fetchXML.h"
+#import "FetchXML.h"
 #import "CompanySearch.h"
 
-@class companySiteSearchViewController;
+@class CompanySiteSearchViewController;
 
-@protocol companySiteSearchViewControllerDelegate <NSObject>
--(void)companySiteSearchViewController:(companySiteSearchViewController *)controller
-                  didSelectCompany: (CompanySearch *)selectedCompany;
+@protocol CompanySiteSearchViewControllerDelegate <NSObject>
+
+-(void)companySiteSearchViewController:(CompanySiteSearchViewController *)controller didSelectCompany:(CompanySearch *)selectedCompany;
+
 @end
 
-@interface companySiteSearchViewController : UITableViewController <fetchXMLDelegate>
+@interface CompanySiteSearchViewController : UITableViewController <FetchXMLDelegate>
+
 - (IBAction)btnCancel_Click:(id)sender;
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBarOutlet;
 
-
-@property (nonatomic, weak) id <companySiteSearchViewControllerDelegate> delegate;
+@property (nonatomic, strong) IBOutlet UISearchBar *searchBarOutlet;
+@property (nonatomic, weak) id<CompanySiteSearchViewControllerDelegate> delegate;
 
 @end
