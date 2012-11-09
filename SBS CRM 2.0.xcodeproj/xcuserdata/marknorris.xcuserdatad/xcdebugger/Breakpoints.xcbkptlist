@@ -7,26 +7,65 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "SBS CRM/myEventsTableViewController.m"
-         timestampString = "373204762.562161"
+         filePath = "SBS CRM/Version+RestKit.m"
+         timestampString = "373898255.676481"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "311"
-         endingLineNumber = "311"
-         landmarkName = "-refreshTableView"
+         startingLineNumber = "28"
+         endingLineNumber = "28"
+         landmarkName = "+configureEntity"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SBS CRM/EventsTableViewController.m"
+         timestampString = "373999308.507366"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "622"
+         endingLineNumber = "622"
+         landmarkName = "-scrollViewDidEndDragging:willDecelerate:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SBS CRM/DateSortDescriptor.m"
+         timestampString = "374019863.168585"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
+         landmarkName = "-compareObject:toObject:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SBS CRM/Event2+RestKit.m"
+         timestampString = "374157057.126012"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
+         landmarkName = "-firstEventComment"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "SBS CRM/EventsTableViewController.m"
-         timestampString = "373376247.545955"
+         filePath = "SBS CRM/EventsTableViewController2.m"
+         timestampString = "374103662.674371"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "606"
-         endingLineNumber = "606"
-         landmarkName = "-scrollViewDidScroll:"
+         startingLineNumber = "327"
+         endingLineNumber = "327"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

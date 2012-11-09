@@ -10,6 +10,7 @@
 #import "TestFlight.h"
 #import "UserDetails.h"
 #import <RestKit/RestKit.h>
+#import "SBSRestKit.h"
 
 extern NSInteger appUserID;
 extern NSInteger appContactID;

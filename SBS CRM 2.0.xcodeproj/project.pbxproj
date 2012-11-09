@@ -8,12 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		07AF5270164041DB008428B9 /* LoadingSavingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF526F164041DB008428B9 /* LoadingSavingView.m */; };
+		07AF532E1642E2AC008428B9 /* SBS_CRM2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07AF532C1642E2AB008428B9 /* SBS_CRM2.xcdatamodeld */; };
+		07AF533C16431BFC008428B9 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF533B16431BFC008428B9 /* LoadingView.m */; };
+		07AF533F16431F6D008428B9 /* Event2+RestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF533E16431F6C008428B9 /* Event2+RestKit.m */; };
+		07AF534216432112008428B9 /* SBSRestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF534116432111008428B9 /* SBSRestKit.m */; };
+		07AF53481643FFA4008428B9 /* EventComment+RestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AF53471643FFA2008428B9 /* EventComment+RestKit.m */; };
 		07C08E63162C6E0200CB9CB5 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C08E57162C6C3700CB9CB5 /* libRestKit.a */; };
 		07C08E64162C6E3A00CB9CB5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D92D124158B3C6100FCF5AA /* MobileCoreServices.framework */; };
 		07C08E67162C6E3A00CB9CB5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C08E65162C6E3A00CB9CB5 /* CFNetwork.framework */; };
 		07C08E68162C6E3A00CB9CB5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C08E66162C6E3A00CB9CB5 /* libxml2.dylib */; };
 		07CCC4C0162C1A33009556C5 /* arrowblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 07CCC4BF162C1A33009556C5 /* arrowblack.png */; };
 		07CCC4C2162C1A89009556C5 /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07CCC4C1162C1A89009556C5 /* Default~ipad.png */; };
+		07D0A35516472BCE005397EC /* InfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0A35416472BCE005397EC /* InfoTableViewController.m */; };
+		07D0A35816492772005397EC /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0A35716492772005397EC /* Version.m */; };
+		07D0A35E16496840005397EC /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0A35D16496840005397EC /* CoreDataTableViewController.m */; };
+		07D0A366164ABE23005397EC /* EventsTableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0A365164ABE23005397EC /* EventsTableViewController2.m */; };
+		07D0A394164C4D58005397EC /* Company2+RestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D0A393164C4D53005397EC /* Company2+RestKit.m */; };
+		07E2A71D164C5CE1005D20CB /* Company2.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E2A71C164C5CE0005D20CB /* Company2.m */; };
+		07E2A723164C67E0005D20CB /* EventComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E2A722164C67E0005D20CB /* EventComment.m */; };
+		07E2A72C164D12C5005D20CB /* Event2.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E2A72B164D12C5005D20CB /* Event2.m */; };
 		4D064591158B418B000E1170 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D064590158B418B000E1170 /* Reachability.m */; };
 		4D22B8E214F50C72000F6D57 /* DateTimePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D22B8E114F50C72000F6D57 /* DateTimePickerViewController.m */; };
 		4D4C5B7A15090391005B2E73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4C5B7915090391005B2E73 /* CoreLocation.framework */; };
@@ -53,7 +66,6 @@
 		4D8647A414E40D0400967A9E /* EventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8647A314E40D0400967A9E /* EventsTableViewController.m */; };
 		4D8647A714E40D2E00967A9E /* SyncData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8647A614E40D2E00967A9E /* SyncData.m */; };
 		4D8647AA14E411AB00967A9E /* Attachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8647A914E411AB00967A9E /* Attachment.m */; };
-		4D8647AD14E411AD00967A9E /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8647AC14E411AD00967A9E /* Company.m */; };
 		4D8647B314E411AE00967A9E /* Communication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8647B214E411AE00967A9E /* Communication.m */; };
 		4D8647BA14E4156300967A9E /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8647B914E4156300967A9E /* EventTableViewCell.xib */; };
 		4D8647BD14E417A100967A9E /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8647BC14E417A000967A9E /* EventTableViewCell.m */; };
@@ -171,11 +183,38 @@
 
 /* Begin PBXFileReference section */
 		07AF526F164041DB008428B9 /* LoadingSavingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingSavingView.m; sourceTree = "<group>"; };
+		07AF532D1642E2AC008428B9 /* SBS_CRM2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SBS_CRM2.xcdatamodel; sourceTree = "<group>"; };
+		07AF533A16431BFC008428B9 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		07AF533B16431BFC008428B9 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		07AF533D16431F6C008428B9 /* Event2+RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event2+RestKit.h"; sourceTree = "<group>"; };
+		07AF533E16431F6C008428B9 /* Event2+RestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event2+RestKit.m"; sourceTree = "<group>"; };
+		07AF534016432111008428B9 /* SBSRestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSRestKit.h; sourceTree = "<group>"; };
+		07AF534116432111008428B9 /* SBSRestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSRestKit.m; sourceTree = "<group>"; };
+		07AF53461643FFA1008428B9 /* EventComment+RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EventComment+RestKit.h"; sourceTree = "<group>"; };
+		07AF53471643FFA2008428B9 /* EventComment+RestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EventComment+RestKit.m"; sourceTree = "<group>"; };
 		07C08E4B162C6C3600CB9CB5 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		07C08E65162C6E3A00CB9CB5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		07C08E66162C6E3A00CB9CB5 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		07CCC4BF162C1A33009556C5 /* arrowblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowblack.png; sourceTree = "<group>"; };
 		07CCC4C1162C1A89009556C5 /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~ipad.png"; sourceTree = SOURCE_ROOT; };
+		07D0A35316472BCE005397EC /* InfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoTableViewController.h; sourceTree = "<group>"; };
+		07D0A35416472BCE005397EC /* InfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoTableViewController.m; sourceTree = "<group>"; };
+		07D0A35616492772005397EC /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		07D0A35716492772005397EC /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
+		07D0A35C16496840005397EC /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		07D0A35D16496840005397EC /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		07D0A365164ABE23005397EC /* EventsTableViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsTableViewController2.m; sourceTree = "<group>"; };
+		07D0A367164ABF8C005397EC /* EventsTableViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsTableViewController2.h; sourceTree = "<group>"; };
+		07D0A392164C4D51005397EC /* Company2+RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Company2+RestKit.h"; sourceTree = "<group>"; };
+		07D0A393164C4D53005397EC /* Company2+RestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Company2+RestKit.m"; sourceTree = "<group>"; };
+		07D0A399164C4FAD005397EC /* Company.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		07D0A39A164C4FAE005397EC /* Company.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		07E2A71B164C5CE0005D20CB /* Company2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company2.h; sourceTree = "<group>"; };
+		07E2A71C164C5CE0005D20CB /* Company2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company2.m; sourceTree = "<group>"; };
+		07E2A721164C67E0005D20CB /* EventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventComment.h; sourceTree = "<group>"; };
+		07E2A722164C67E0005D20CB /* EventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventComment.m; sourceTree = "<group>"; };
+		07E2A72A164D12C5005D20CB /* Event2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event2.h; sourceTree = "<group>"; };
+		07E2A72B164D12C5005D20CB /* Event2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event2.m; sourceTree = "<group>"; };
 		4D06458F158B418B000E1170 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4D064590158B418B000E1170 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4D064593158B9432000E1170 /* LoadingSavingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingSavingView.h; path = ../LoadingSavingView.h; sourceTree = "<group>"; };
@@ -240,8 +279,6 @@
 		4D8647A614E40D2E00967A9E /* SyncData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncData.m; sourceTree = "<group>"; };
 		4D8647A814E411AB00967A9E /* Attachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attachment.h; sourceTree = "<group>"; };
 		4D8647A914E411AB00967A9E /* Attachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attachment.m; sourceTree = "<group>"; };
-		4D8647AB14E411AD00967A9E /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
-		4D8647AC14E411AD00967A9E /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		4D8647B114E411AE00967A9E /* Communication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communication.h; sourceTree = "<group>"; };
 		4D8647B214E411AE00967A9E /* Communication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communication.m; sourceTree = "<group>"; };
 		4D8647B914E4156300967A9E /* EventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
@@ -565,21 +602,40 @@
 		4D8647B814E411E100967A9E /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				4D8647A814E411AB00967A9E /* Attachment.h */,
+				4D8647A914E411AB00967A9E /* Attachment.m */,
+				4D8647B114E411AE00967A9E /* Communication.h */,
+				4D8647B214E411AE00967A9E /* Communication.m */,
+				07D0A399164C4FAD005397EC /* Company.h */,
+				07D0A39A164C4FAE005397EC /* Company.m */,
+				07D0A392164C4D51005397EC /* Company2+RestKit.h */,
+				07D0A393164C4D53005397EC /* Company2+RestKit.m */,
+				4D8F975814E9142900FA0013 /* Contact.h */,
+				4D8F975914E9142900FA0013 /* Contact.m */,
+				4D8CD1751581F5DD0055E07E /* Convert.h */,
+				4D8CD1761581F5DD0055E07E /* Convert.m */,
+				07D0A35C16496840005397EC /* CoreDataTableViewController.h */,
+				07D0A35D16496840005397EC /* CoreDataTableViewController.m */,
+				4DB68C00150A23BD00C369DB /* Event.h */,
+				4DB68C01150A23BD00C369DB /* Event.m */,
+				07AF533D16431F6C008428B9 /* Event2+RestKit.h */,
+				07AF533E16431F6C008428B9 /* Event2+RestKit.m */,
+				07AF53461643FFA1008428B9 /* EventComment+RestKit.h */,
+				07AF53471643FFA2008428B9 /* EventComment+RestKit.m */,
 				4D7FE4ED1576DF47008CA61F /* NSManagedObject+CoreDataManager.h */,
 				4D7FE4EE1576DF47008CA61F /* NSManagedObject+CoreDataManager.m */,
 				4D78CFFD14E2C9F8008B65A6 /* SBS_CRM.xcdatamodeld */,
-				4DB68C00150A23BD00C369DB /* Event.h */,
-				4DB68C01150A23BD00C369DB /* Event.m */,
-				4D8F975814E9142900FA0013 /* Contact.h */,
-				4D8F975914E9142900FA0013 /* Contact.m */,
-				4D8647B114E411AE00967A9E /* Communication.h */,
-				4D8647B214E411AE00967A9E /* Communication.m */,
-				4D8647AB14E411AD00967A9E /* Company.h */,
-				4D8647AC14E411AD00967A9E /* Company.m */,
-				4D8647A814E411AB00967A9E /* Attachment.h */,
-				4D8647A914E411AB00967A9E /* Attachment.m */,
-				4D8CD1751581F5DD0055E07E /* Convert.h */,
-				4D8CD1761581F5DD0055E07E /* Convert.m */,
+				07E2A721164C67E0005D20CB /* EventComment.h */,
+				07E2A722164C67E0005D20CB /* EventComment.m */,
+				07E2A72A164D12C5005D20CB /* Event2.h */,
+				07E2A72B164D12C5005D20CB /* Event2.m */,
+				07AF532C1642E2AB008428B9 /* SBS_CRM2.xcdatamodeld */,
+				07E2A71B164C5CE0005D20CB /* Company2.h */,
+				07E2A71C164C5CE0005D20CB /* Company2.m */,
+				07AF534016432111008428B9 /* SBSRestKit.h */,
+				07AF534116432111008428B9 /* SBSRestKit.m */,
+				07D0A35616492772005397EC /* Version.h */,
+				07D0A35716492772005397EC /* Version.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -676,6 +732,10 @@
 				4DB37B3E14E92FA40085D903 /* CompanyTableViewController.m */,
 				4D8647A214E40D0400967A9E /* EventsTableViewController.h */,
 				4D8647A314E40D0400967A9E /* EventsTableViewController.m */,
+				07D0A367164ABF8C005397EC /* EventsTableViewController2.h */,
+				07D0A365164ABE23005397EC /* EventsTableViewController2.m */,
+				07D0A35316472BCE005397EC /* InfoTableViewController.h */,
+				07D0A35416472BCE005397EC /* InfoTableViewController.m */,
 			);
 			name = "Main View Controllers";
 			sourceTree = "<group>";
@@ -726,6 +786,8 @@
 			children = (
 				4D8A428115230CA60019E565 /* Format.h */,
 				4D8A428215230CA60019E565 /* Format.m */,
+				07AF533A16431BFC008428B9 /* LoadingView.h */,
+				07AF533B16431BFC008428B9 /* LoadingView.m */,
 				4DD14F3F15C2DD7C0059151B /* PropertyInfo.h */,
 				4DD14F4015C2DD7C0059151B /* PropertyInfo.m */,
 				4DE891F815C8141000A21B54 /* AlertsAndBadges.h */,
@@ -961,7 +1023,6 @@
 				4D8647A414E40D0400967A9E /* EventsTableViewController.m in Sources */,
 				4D8647A714E40D2E00967A9E /* SyncData.m in Sources */,
 				4D8647AA14E411AB00967A9E /* Attachment.m in Sources */,
-				4D8647AD14E411AD00967A9E /* Company.m in Sources */,
 				4D8647B314E411AE00967A9E /* Communication.m in Sources */,
 				4D8647BD14E417A100967A9E /* EventTableViewCell.m in Sources */,
 				4D7241F414E52114002E5052 /* PullRefreshTableViewController.m in Sources */,
@@ -1004,6 +1065,19 @@
 				4DD14F4115C2DD7C0059151B /* PropertyInfo.m in Sources */,
 				4DE891FA15C8141000A21B54 /* AlertsAndBadges.m in Sources */,
 				07AF5270164041DB008428B9 /* LoadingSavingView.m in Sources */,
+				07AF532E1642E2AC008428B9 /* SBS_CRM2.xcdatamodeld in Sources */,
+				07AF533C16431BFC008428B9 /* LoadingView.m in Sources */,
+				07AF533F16431F6D008428B9 /* Event2+RestKit.m in Sources */,
+				07AF534216432112008428B9 /* SBSRestKit.m in Sources */,
+				07AF53481643FFA4008428B9 /* EventComment+RestKit.m in Sources */,
+				07D0A35516472BCE005397EC /* InfoTableViewController.m in Sources */,
+				07D0A35816492772005397EC /* Version.m in Sources */,
+				07D0A35E16496840005397EC /* CoreDataTableViewController.m in Sources */,
+				07D0A366164ABE23005397EC /* EventsTableViewController2.m in Sources */,
+				07D0A394164C4D58005397EC /* Company2+RestKit.m in Sources */,
+				07E2A71D164C5CE1005D20CB /* Company2.m in Sources */,
+				07E2A723164C67E0005D20CB /* EventComment.m in Sources */,
+				07E2A72C164D12C5005D20CB /* Event2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1223,6 +1297,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		07AF532C1642E2AB008428B9 /* SBS_CRM2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				07AF532D1642E2AC008428B9 /* SBS_CRM2.xcdatamodel */,
+			);
+			currentVersion = 07AF532D1642E2AC008428B9 /* SBS_CRM2.xcdatamodel */;
+			path = SBS_CRM2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		4D78CFFD14E2C9F8008B65A6 /* SBS_CRM.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

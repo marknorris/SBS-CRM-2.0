@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Event.h"
+#import "Event2.h"
 #import "Communication.h"
 #import "Contact.h"
 #import "Company.h"
@@ -33,13 +34,13 @@ NSDate *appDefaultAlertTime;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+    NSLog(@"Documents Directory: %@", self.applicationDocumentsDirectory);
     //reset user defaults for the initial view incase they were not correctly reset previosly.
     [[NSUserDefaults standardUserDefaults]  setValue:@"" forKey:@"initialID"];
     [[NSUserDefaults standardUserDefaults]  setValue:@"" forKey:@"initialView"];
     [[NSUserDefaults standardUserDefaults]  setValue:@"" forKey:@"initialCore"];
     
-    [TestFlight takeOff:@"4162eaa944120d432e6b8e6a3f24aadd_NjQwMjEyMDEyLTAyLTIwIDA4OjAxOjI1Ljc5NzE2OA"];
+//    [TestFlight takeOff:@"4162eaa944120d432e6b8e6a3f24aadd_NjQwMjEyMDEyLTAyLTIwIDA4OjAxOjI1Ljc5NzE2OA"];
     //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     //self.window.backgroundColor = [UIColor whiteColor];
@@ -169,6 +170,7 @@ didReceiveLocalNotification:(UILocalNotification *)notification
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+//    [self configureRestKit];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -307,13 +309,17 @@ didReceiveLocalNotification:(UILocalNotification *)notification
 ////    RKURL *baseURL = [RKURL URLWithBaseURLString:[@"http://" stringByAppendingString:[[Settings settingsManager] baseURL]]];
 ////    RKURL *baseURL = [RKURL URLWithBaseURLString:[@"http://" stringByAppendingString:[[Settings settingsManager] baseURL]]];
 //    RKURL *baseURL = [RKURL URLWithString:@"http://192.168.0.3/crm"];
+////    RKURL *baseURL = [RKURL URLWithString:@"http://172.16.4.5/crm"];
 //    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:baseURL];
 //    RKLogInfo(@"I am your RKClient singleton %@", [objectManager client]);
 //    RKLogInfo(@"Base URL: %@", [baseURL debugDescription]);
 //    [objectManager setSerializationMIMEType:RKMIMETypeJSON];
-//    
+//    NSLog(@"%@", self.applicationDocumentsDirectory);
+//    [objectManager setObjectStore:[RKManagedObjectStore objectStoreWithStoreFilename:@"SBS_CRM2.sqlite"]];
+//
 //    // Send this string with each request
-//    [[objectManager client] setValue:@"123-456-789" forHTTPHeaderField:@"X-UDID"];
+//    [[objectManager client] setValue:@"123-456-789" 
+//                  forHTTPHeaderField:@"X-UDID"];
 //    
 //    // User Basic HTTP Authentication
 //    [[objectManager client] setAuthenticationType:RKRequestAuthenticationTypeOAuth1];
@@ -327,35 +333,50 @@ didReceiveLocalNotification:(UILocalNotification *)notification
 //    // Grab the reference to the router from the manager
 //    RKObjectRouter *router = [objectManager router];
 //    
-//    // Define a default resource path for all unspecified HTTP verbs
-//    [router routeClass:[ttEvent class] toResourcePath:@"/dataset/:EventID" forMethod:RKRequestMethodDELETE];
-//    [router routeClass:[ttEvent class] toResourcePath:@"/dataset/:EventID" forMethod:RKRequestMethodPUT];
-//    [router routeClass:[ttEvent class] toResourcePath:@"/dataset"];
+//    // Define a resource path for specified HTTP verbs
+//    [router routeClass:[Event2 class] 
+//        toResourcePath:@"/events" 
+//             forMethod:RKRequestMethodGET];
+//    [router routeClass:[Event2 class] 
+//        toResourcePath:@"/event/:EventID" 
+//             forMethod:RKRequestMethodDELETE];
+//    [router routeClass:[Event2 class] 
+//        toResourcePath:@"/event/:EventID" 
+//             forMethod:RKRequestMethodPOST];
+//    [router routeClass:[Event2 class] 
+//        toResourcePath:@"/event/:EventID" 
+//             forMethod:RKRequestMethodPUT];
 //    
-//    // ttEvent mapping
-//    RKObjectMapping* ttEventMapping = [RKObjectMapping mappingForClass:[ttEvent class]];
+//    // Event mapping
+//    RKManagedObjectMapping* EventMapping = [RKManagedObjectMapping mappingForClass:[Event2 class] 
+//                                                              inManagedObjectStore:objectManager.objectStore];
 //    // Automatic mapping of attributes
-//    NSDictionary *ttEventDictionary = [[RKObjectPropertyInspector sharedInspector] propertyNamesAndTypesForClass:[ttEvent class]];
-//    [ttEventMapping mapAttributesFromSet:[NSSet setWithArray:[ttEventDictionary allKeys]]];
-//    [[objectManager mappingProvider] setSerializationMapping:ttEventMapping forClass:[ttEvent class]];
+//    NSDictionary *EventDictionary = [[RKObjectPropertyInspector sharedInspector] propertyNamesAndTypesForClass:[Event2 class]];
+//    [EventMapping mapAttributesFromSet:[NSSet setWithArray:[EventDictionary allKeys]]];
+//    [[objectManager mappingProvider] setSerializationMapping:EventMapping 
+//                                                    forClass:[Event2 class]];
+//    [[objectManager mappingProvider] setMapping:EventMapping 
+//                                     forKeyPath:@"ttEvent"];
 //    
-//    // ttComments mapping
-//    RKObjectMapping* ttCommentsMapping = [RKObjectMapping mappingForClass:[ttComments class]];
-//    // Automatic mapping of attributes
-//    NSDictionary *ttCommentsDictionary = [[RKObjectPropertyInspector sharedInspector] propertyNamesAndTypesForClass:[ttComments class]];
-//    [ttCommentsMapping mapAttributesFromSet:[NSSet setWithArray:[ttCommentsDictionary allKeys]]];
+////    // Comments mapping
+////    RKManagedObjectMapping* CommentsMapping = [RKManagedObjectMapping mappingForClass:[Comments class] inManagedObjectStore:objectManager.objectStore];
+////    // Automatic mapping of attributes
+////    NSDictionary *CommentsDictionary = [[RKObjectPropertyInspector sharedInspector] propertyNamesAndTypesForClass:[Comments class]];
+////    [CommentsMapping mapAttributesFromSet:[NSSet setWithArray:[CommentsDictionary allKeys]]];
+////    
+////    // EventDetails mapping
+////    RKManagedObjectMapping* EventDetailsMapping = [RKManagedObjectMapping mappingForClass:[EventDetails class] inManagedObjectStore:objectManager.objectStore];
+////    // KeyPath is the object in the JSON. Relationship is the attribute in dsEventDetails to map to
+////    [EventDetailsMapping mapKeyPath:@"Event" 
+////                     toRelationship:@"Event" 
+////                        withMapping:EventMapping];
+////    [EventDetailsMapping mapKeyPath:@"Comments" 
+////                     toRelationship:@"Comments" 
+////                        withMapping:EventMapping];
+////    [[objectManager mappingProvider] setMapping:EventDetailsMapping 
+////                                     forKeyPath:@""];
 //    
-//    // dsEventDetails mapping
-//    RKObjectMapping* dsEventDetailsMapping = [RKObjectMapping mappingForClass:[dsEventDetails class]];
-//    // KeyPath is the object in the JSON. Relationship is the attribute in dsEventDetails to map to
-//    [dsEventDetailsMapping mapKeyPath:@"ttEvent" 
-//                       toRelationship:@"Event" 
-//                          withMapping:ttEventMapping];
-//    [dsEventDetailsMapping mapKeyPath:@"ttComments" 
-//                       toRelationship:@"Comments" 
-//                          withMapping:ttEventMapping];
-//    [[objectManager mappingProvider] setMapping:dsEventDetailsMapping 
-//                                     forKeyPath:@""];
+////    RKObjectManager *objectManager = [RKObjectManager sharedManager];
 //}
 
 @end

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Company2" representedClassName="Company2" syncable="YES">
+        <attribute name="addCounty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addPostCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addStreetAddress1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addStreetAddress2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addStreetAddress3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addTown" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coaCompanyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companySiteID" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="cosDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cosSiteName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="couCountryName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="event" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Event2" inverseName="eventCompany" inverseEntity="Event2" syncable="YES"/>
+    </entity>
+    <entity name="Event2" representedClassName="Event2" syncable="YES">
+        <attribute name="companySiteID" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="contactID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="ettDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveComments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eveCreatedDateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="eveDueDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="eveDueDateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="eveEndDueDateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="eventID" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="eveNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="eveStatus" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="eveTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="evoRead" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="evpDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="evtDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="louDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ourContactID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="watched" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="eventComments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="EventComment" inverseName="event" inverseEntity="EventComment" syncable="YES"/>
+        <relationship name="eventCompany" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Company2" inverseName="event" inverseEntity="Company2" syncable="YES"/>
+    </entity>
+    <entity name="EventComment" representedClassName="EventComment" syncable="YES">
+        <attribute name="ecoBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ecoComment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ecoDateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="ecoSequence" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="eventCommentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="eventID" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <relationship name="event" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Event2" inverseName="eventComments" inverseEntity="Event2" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Company2" positionX="160" positionY="192" width="128" height="225"/>
+        <element name="Event2" positionX="54" positionY="0" width="128" height="345"/>
+        <element name="EventComment" positionX="-225" positionY="198" width="128" height="150"/>
+    </elements>
+</model>
